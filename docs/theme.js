@@ -39,6 +39,9 @@
       homebrewManual: "Select the command and copy it manually.",
       moreProjects: "More projects on GitHub",
       downloads: "Downloads",
+      downloadGizmothMacArm: "macOS Apple Silicon (.dmg)",
+      downloadGizmothMacIntel: "macOS Intel (.dmg)",
+      downloadGizmothWindows: "Windows x64 (.exe)",
       downloadCH348: "macOS installer (.pkg)",
       downloadTailSplitMac: "macOS Apple Silicon (.dmg)",
       downloadTailSplitWindows: "Windows x64 (.exe)",
@@ -84,6 +87,9 @@
       homebrewManual: "请选中命令并手动复制。",
       moreProjects: "在 GitHub 查看更多项目",
       downloads: "下载",
+      downloadGizmothMacArm: "macOS Apple 芯片（.dmg）",
+      downloadGizmothMacIntel: "macOS Intel（.dmg）",
+      downloadGizmothWindows: "Windows x64（.exe）",
       downloadCH348: "macOS 安装包（.pkg）",
       downloadTailSplitMac: "macOS Apple 芯片（.dmg）",
       downloadTailSplitWindows: "Windows x64（.exe）",
@@ -99,7 +105,11 @@
 
   const downloads = {
     "GizClaw/gizclaw": [],
-    "GizClaw/gizmoth": [],
+    "GizClaw/gizmoth": [
+      { label: "downloadGizmothMacArm", pattern: /^GizMoth_.+_aarch64-apple-darwin\.dmg$/i },
+      { label: "downloadGizmothMacIntel", pattern: /^GizMoth_.+_x86_64-apple-darwin\.dmg$/i },
+      { label: "downloadGizmothWindows", pattern: /^GizMoth_.+_x86_64-pc-windows-msvc-setup\.exe$/i },
+    ],
     "GizClaw/gizos": [],
     "idy/nootify": [{ label: "downloadNootify", pattern: /^Nootify_.+_(?:aarch64|arm64)\.dmg$/i }],
     "idy/ch348-macos": [{ label: "downloadCH348", pattern: /^CH348-.*-macos-.*\.pkg$/i }],
