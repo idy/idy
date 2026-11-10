@@ -9,7 +9,7 @@
       pageTitle: notFound ? "Page not found — idy.dev" : "Open-source projects — idy.dev",
       pageDescription: notFound
         ? "This page could not be found. Explore the open-source projects at idy.dev."
-        : "Open-source projects by idy: GizClaw, GizMoth, GizOS, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, WGC NE, sing-box-flutter, and the Homebrew tap. Explore the projects and their latest releases.",
+        : "Open-source projects by idy: GizClaw, GizMoth, GizOS, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, WGC NE, sing-box-flutter, Magpie Design System, and the Homebrew tap. Explore the projects and their latest releases.",
       heading: "Open-source projects",
       followLabel: "Follow idy on GitHub (opens in a new tab)",
       intro: "Open-source projects for connected devices, macOS, and networking.",
@@ -27,6 +27,8 @@
       wgcDescription: "A Go library for authenticated, encrypted messages using WireGuard sessions. Authorize peers by public key, bring your own transport, and exchange arbitrary application payloads.",
       wgcNeDescription: "A Flutter plugin and Apple Network Extension SDK built on WGC and sing-box. Use standard UDP or compile your own transport into the native core; each app keeps its own signed tunnel extension.",
       singBoxFlutterDescription: "A Flutter plugin for native sing-box VPN on Android and iOS, with Tailscale-enabled native builds using Tailscale Go. Control the VPN and receive connection events from Dart.",
+      magpieDescription: "Buildless CSS tokens, components, and an app shell for desktop panels and web apps, with light and dark themes.",
+      componentCatalogue: "Component catalogue",
       downloadSingBoxAndroid: "Android native core (.tar.gz)",
       downloadSingBoxApple: "Apple native core (.tar.gz)",
       projectPage: "Project page",
@@ -60,7 +62,7 @@
       pageTitle: notFound ? "页面未找到 — idy.dev" : "开源项目 — idy.dev",
       pageDescription: notFound
         ? "未找到此页面。欢迎浏览 idy.dev 的开源项目。"
-        : "idy 的开源项目：GizClaw、GizMoth、GizOS、Nootify、CH348 macOS、TailSplit、TailRelay、WGC、WGC NE、sing-box-flutter 和 Homebrew tap。了解各项目，获取最新版本和下载链接。",
+        : "idy 的开源项目：GizClaw、GizMoth、GizOS、Nootify、CH348 macOS、TailSplit、TailRelay、WGC、WGC NE、sing-box-flutter、Magpie Design System 和 Homebrew tap。了解各项目，获取最新版本和下载链接。",
       heading: "开源项目",
       followLabel: "follow — 在 GitHub 关注 idy（在新标签页打开）",
       intro: "面向联网设备、macOS 和网络应用的开源项目。",
@@ -78,6 +80,8 @@
       wgcDescription: "使用 WireGuard 会话传输经过认证和加密消息的 Go 库。通过公钥授权对端，自选传输方式，交换任意应用数据。",
       wgcNeDescription: "基于 WGC 和 sing-box 的 Flutter 插件与 Apple Network Extension SDK。可使用标准 UDP，也可将自定义传输编译进原生核心；每个应用使用独立签名的隧道扩展。",
       singBoxFlutterDescription: "在 Android 和 iOS 上运行原生 sing-box VPN 的 Flutter 插件，使用 Tailscale Go 构建支持 Tailscale 的原生核心。通过 Dart 控制 VPN 并接收连接状态事件。",
+      magpieDescription: "无需构建的 CSS 变量、组件和应用布局，适用于桌面面板与 Web 应用，支持浅色和深色主题。",
+      componentCatalogue: "组件演示",
       downloadSingBoxAndroid: "Android 原生核心（.tar.gz）",
       downloadSingBoxApple: "Apple 原生核心（.tar.gz）",
       projectPage: "项目主页",
