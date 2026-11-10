@@ -9,7 +9,7 @@
       pageTitle: notFound ? "Page not found — idy.dev" : "Open-source projects — idy.dev",
       pageDescription: notFound
         ? "This page could not be found. Explore the open-source projects at idy.dev."
-        : "Open-source projects by idy: GizClaw, GizMoth, GizOS, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, WGC NE, and the Homebrew tap. Explore the projects and their latest releases.",
+        : "Open-source projects by idy: GizClaw, GizMoth, GizOS, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, WGC NE, sing-box-flutter, and the Homebrew tap. Explore the projects and their latest releases.",
       heading: "Open-source projects",
       followLabel: "Follow idy on GitHub (opens in a new tab)",
       intro: "Open-source projects for connected devices, macOS, and networking.",
@@ -26,6 +26,9 @@
       tailrelayDescription: "Runs a Tailscale exit node through a specified SOCKS5 proxy. Each instance keeps its own device identity and configuration, so several exits can share one machine. Supports Linux and macOS.",
       wgcDescription: "A Go library for authenticated, encrypted messages using WireGuard sessions. Authorize peers by public key, bring your own transport, and exchange arbitrary application payloads.",
       wgcNeDescription: "A Flutter plugin and Apple Network Extension SDK built on WGC and sing-box. Use standard UDP or compile your own transport into the native core; each app keeps its own signed tunnel extension.",
+      singBoxFlutterDescription: "A Flutter plugin for native sing-box VPN on Android and iOS, with Tailscale-enabled native builds using Tailscale Go. Control the VPN and receive connection events from Dart.",
+      downloadSingBoxAndroid: "Android native core (.tar.gz)",
+      downloadSingBoxApple: "Apple native core (.tar.gz)",
       projectPage: "Project page",
       testResults: "Test results",
       goReference: "Go reference",
@@ -57,7 +60,7 @@
       pageTitle: notFound ? "页面未找到 — idy.dev" : "开源项目 — idy.dev",
       pageDescription: notFound
         ? "未找到此页面。欢迎浏览 idy.dev 的开源项目。"
-        : "idy 的开源项目：GizClaw、GizMoth、GizOS、Nootify、CH348 macOS、TailSplit、TailRelay、WGC、WGC NE 和 Homebrew tap。了解各项目，获取最新版本和下载链接。",
+        : "idy 的开源项目：GizClaw、GizMoth、GizOS、Nootify、CH348 macOS、TailSplit、TailRelay、WGC、WGC NE、sing-box-flutter 和 Homebrew tap。了解各项目，获取最新版本和下载链接。",
       heading: "开源项目",
       followLabel: "follow — 在 GitHub 关注 idy（在新标签页打开）",
       intro: "面向联网设备、macOS 和网络应用的开源项目。",
@@ -74,6 +77,9 @@
       tailrelayDescription: "通过指定的 SOCKS5 代理运行 Tailscale 出口节点。每个实例使用独立的设备身份和配置，可在一台机器上运行多个出口。支持 Linux 和 macOS。",
       wgcDescription: "使用 WireGuard 会话传输经过认证和加密消息的 Go 库。通过公钥授权对端，自选传输方式，交换任意应用数据。",
       wgcNeDescription: "基于 WGC 和 sing-box 的 Flutter 插件与 Apple Network Extension SDK。可使用标准 UDP，也可将自定义传输编译进原生核心；每个应用使用独立签名的隧道扩展。",
+      singBoxFlutterDescription: "在 Android 和 iOS 上运行原生 sing-box VPN 的 Flutter 插件，使用 Tailscale Go 构建支持 Tailscale 的原生核心。通过 Dart 控制 VPN 并接收连接状态事件。",
+      downloadSingBoxAndroid: "Android 原生核心（.tar.gz）",
+      downloadSingBoxApple: "Apple 原生核心（.tar.gz）",
       projectPage: "项目主页",
       testResults: "测试结果",
       goReference: "Go API 文档",
@@ -120,6 +126,10 @@
     "idy/tailrelay": [{ label: "downloadTailRelay", pattern: /^tailrelay_.*_linux_amd64\.tar\.gz$/i }],
     "idy/wgc": [{ label: "downloadWGC", source: true }],
     "idy/wgc-ne": [{ label: "downloadWGCNE", pattern: /^WGCCore-.*\.xcframework\.zip$/i }],
+    "idy/sing-box-flutter": [
+      { label: "downloadSingBoxAndroid", pattern: /^libbox-.+-android\.tar\.gz$/i },
+      { label: "downloadSingBoxApple", pattern: /^libbox-.+-apple\.tar\.gz$/i },
+    ],
   };
 
   const projects = Array.from(document.querySelectorAll("[data-repository]"), element => ({
