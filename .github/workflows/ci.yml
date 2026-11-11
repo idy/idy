@@ -1,4 +1,4 @@
-name: Verify pinned repositories
+name: Verify website and pinned repositories
 
 on:
   pull_request:
@@ -14,8 +14,21 @@ jobs:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           persist-credentials: false
-      - name: Test snapshot validation
-        run: node --test tests/*.test.mjs
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install build and test dependencies
+        run: npm ci
+      - name: Check committed SDK artifacts
+        run: npm run check:dist
+      - name: Build SDK and check its types
+        run: npm run build && npm run test:types
+      - name: Test website SDK and snapshot validation
+        run: npm test
+      - name: Check npm package contents
+        run: npm pack --workspace @idy/site-sdk --dry-run
       - name: Compare snapshot with GitHub
         env:
           GH_TOKEN: ${{ github.token }}

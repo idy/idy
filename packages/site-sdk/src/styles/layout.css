@@ -1,0 +1,29 @@
+.idy-container { width: min(var(--idy-page-width), calc(100% - 2 * var(--idy-page-gutter))); margin-inline: auto; }
+.idy-section { padding-block: var(--idy-section-space); }
+.idy-section + .idy-section { border-top: 1px solid var(--idy-line); }
+.idy-stack { display: flex; flex-direction: column; gap: var(--idy-gap, var(--idy-space-3)); }
+.idy-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--idy-gap, var(--idy-space-2)); }
+.idy-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: var(--idy-gap, var(--idy-space-5)); }
+.idy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--idy-column-min, 17rem)), 1fr)); gap: var(--idy-gap, var(--idy-space-4)); }
+.idy-stack > *, .idy-split > *, .idy-grid > * { min-width: 0; }
+.idy-hero { padding-block: var(--idy-section-space); }
+.idy-hero .idy-title + .idy-lead { margin-top: var(--idy-space-3); }
+.idy-hero .idy-cluster { margin-top: var(--idy-space-4); }
+.idy-project-row { display: grid; grid-template-columns: minmax(9rem, .85fr) minmax(0, 1.7fr) minmax(11rem, .85fr); grid-template-areas: "title description release" "title links release"; align-items: start; gap: var(--idy-space-1) var(--idy-space-4); padding-block: 2.25rem; border-bottom: 1px solid var(--idy-line); }
+.idy-project-row > h2 { grid-area: title; margin: 0; font-size: var(--idy-text-subheading); line-height: 1.3; }
+.idy-project-row > p:not(.idy-project-links) { grid-area: description; margin: 0; max-width: var(--idy-measure); color: var(--idy-muted); }
+.idy-project-links { grid-area: links; display: flex; flex-wrap: wrap; gap: 0 var(--idy-space-3); margin: 0; font-size: var(--idy-text-small); }
+.idy-project-links a { display: inline-flex; align-items: center; min-height: var(--idy-control-height); }
+.idy-project-links a:first-child { color: var(--idy-ink); font-weight: 700; }
+.idy-project-row > .idy-release { grid-area: release; }
+@media (max-width: 900px) {
+  .idy-project-row { grid-template-columns: minmax(8rem, .7fr) minmax(0, 1.5fr); grid-template-areas: "title description" "title links" "title release"; column-gap: var(--idy-space-3); }
+}
+@media (max-width: 760px) {
+  .idy-split { grid-template-columns: minmax(0, 1fr); gap: var(--idy-space-3); }
+}
+@media (max-width: 600px) {
+  :root { --idy-page-gutter: 1.25rem; }
+  .idy-split { grid-template-columns: minmax(0, 1fr); gap: var(--idy-space-3); }
+  .idy-project-row { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "description" "links" "release"; padding-block: 1.75rem; }
+}

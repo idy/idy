@@ -1,0 +1,9 @@
+{
+  "version": "0.0.1",
+  "configurations": [{
+    "name": "idy-site",
+    "runtimeExecutable": "node",
+    "runtimeArgs": ["scripts/preview.mjs"],
+    "port": 8000
+  }]
+}

@@ -1,4 +1,4 @@
-/* Shared idy.dev header and typography. Keep this file in sync across sites. */
+/* Canonical header and font rules, bundled by @idy/site-sdk. */
 @font-face { font-family: Montserrat; font-style: normal; font-weight: 400 800; font-display: swap; src: url("montserrat-latin.woff2") format("woff2"); }
 @font-face { font-family: Monda; font-style: normal; font-weight: 400 700; font-display: swap; src: url("monda-latin.woff2") format("woff2"); }
 @font-face { font-family: Lato; font-style: normal; font-weight: 400; font-display: swap; src: url("lato-regular-latin.woff2") format("woff2"); }
@@ -16,7 +16,9 @@ h1, h2, h3, h4 { font-family: var(--idy-heading); letter-spacing: -.03em; }
 .ph-github-logo::before { content: "\e576"; } .ph-star::before { content: "\e46a"; }
 .idy-header.compact-header { border-bottom: 1px solid var(--idy-line); background: var(--idy-surface); }
 .compact-header .idy-header-inner { width: min(1160px, calc(100% - 64px)); min-height: 72px; display: flex; flex-wrap: nowrap; align-items: center; gap: 36px; padding-block: 0; }
-.compact-header .idy-home { min-height: 44px; flex: none; font-family: var(--idy-heading); font-size: 21px; font-weight: 700; letter-spacing: -.035em; }
+.compact-header .idy-home { display: block; min-width: 0; min-height: 44px; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; font-family: var(--idy-heading); font-size: 21px; font-weight: 700; line-height: 44px; letter-spacing: -.035em; }
+.compact-header .idy-project { min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; }
+.compact-header [hidden] { display: none !important; }
 .compact-header .idy-nav { display: flex; align-items: center; justify-content: flex-start; gap: 25px; flex: 1 1 auto; min-width: 0; }
 .compact-header .idy-nav a { min-height: 44px; color: var(--idy-muted); font-family: var(--idy-font); font-size: 13px; font-weight: 400; text-decoration: none; }
 .compact-header .idy-nav a:hover, .compact-header .idy-nav a:focus-visible { color: var(--idy-ink); }
@@ -33,7 +35,7 @@ h1, h2, h3, h4 { font-family: var(--idy-heading); letter-spacing: -.03em; }
 .compact-header .preference-control { position: relative; }
 .compact-header .icon-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 7px; background: transparent; color: var(--idy-muted); cursor: pointer; }
 .compact-header .icon-button:hover, .compact-header .icon-button[aria-expanded="true"], .compact-header .idy-mobile > summary:hover, .compact-header .idy-mobile[open] > summary { color: var(--idy-ink); background: var(--idy-bg); }
-.compact-header .preference-panel, .compact-header .idy-mobile-panel { position: absolute; z-index: 20; top: calc(100% + 8px); right: 0; min-width: 180px; padding: 5px; border: 1px solid var(--idy-line); border-radius: 10px; background: var(--idy-surface); box-shadow: 0 8px 26px rgb(10 22 42 / .12); }
+.compact-header .preference-panel, .compact-header .idy-mobile-panel { position: absolute; z-index: 20; top: calc(100% + 8px); right: 0; min-width: 180px; padding: 5px; border: 1px solid var(--idy-line); border-radius: 10px; background: var(--idy-surface); }
 .compact-header .preference-option, .compact-header .idy-mobile-panel a { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 9px 10px; border: 0; border-radius: 6px; background: transparent; color: var(--idy-muted); font-family: var(--idy-font); font-size: 12px; font-weight: 400; line-height: 1.5; text-align: left; text-decoration: none; cursor: pointer; white-space: nowrap; }
 .compact-header .preference-option:hover, .compact-header .preference-option:focus-visible, .compact-header .idy-mobile-panel a:hover, .compact-header .idy-mobile-panel a:focus-visible { background: var(--idy-bg); color: var(--idy-ink); }
 .compact-header .preference-option[aria-checked="true"] { color: var(--idy-ink); font-weight: 700; }

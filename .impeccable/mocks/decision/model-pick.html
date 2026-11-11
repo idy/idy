@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>idy.dev — Open-source projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:#FFFFFF}
+body{font-family:"Archivo",sans-serif;color:#1A1A1A;font-size:14px;line-height:20px}
+a{color:#0B5CAD;text-decoration:none}
+.nar{font-family:"Archivo Narrow",sans-serif}
+.tab{font-variant-numeric:tabular-nums lining-nums}
+/* masthead */
+.mast{height:48px;background:#0B5CAD;color:#FFFFFF;display:flex;align-items:center;padding:0 48px;gap:40px}
+.mark{font-family:"Archivo Narrow",sans-serif;font-weight:700;font-size:22px;letter-spacing:0.01em;color:#FFFFFF}
+.mast nav{display:flex;gap:28px;flex:1}
+.mast nav a{color:#FFFFFF;font-family:"Archivo Narrow",sans-serif;font-weight:600;font-size:15px;letter-spacing:0.02em}
+.mast nav a.on{box-shadow:inset 0 -2px 0 #FFFFFF;padding-bottom:4px}
+.follow{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border:1px solid rgba(255,255,255,.7);border-radius:3px;color:#FFFFFF;font-family:"Archivo Narrow",sans-serif;font-weight:600;font-size:13px;letter-spacing:0.02em}
+.follow svg{width:14px;height:14px;fill:#FFFFFF}
+/* page head */
+main{padding:28px 48px 0}
+h1{font-size:32px;line-height:40px;font-weight:700;letter-spacing:-0.01em}
+.lede{margin-top:4px;font-size:16px;line-height:24px;color:#3D3D3D}
+/* selector bar */
+.bar{margin-top:20px;display:flex;align-items:stretch;border:1px solid #B9C6D3;border-radius:2px;height:44px}
+.search{display:flex;align-items:center;gap:8px;width:340px;padding:0 12px;border-right:1px solid #B9C6D3}
+.search svg{width:16px;height:16px;stroke:#4A4A4A;fill:none;stroke-width:2}
+.search input{border:0;outline:0;font:inherit;font-size:14px;color:#1A1A1A;width:100%;background:transparent}
+.search input::placeholder{color:#5E5E5E}
+.fam{display:flex;flex:1}
+.fam button{font-family:"Archivo Narrow",sans-serif;font-weight:600;font-size:14px;letter-spacing:0.02em;color:#1A1A1A;background:#FFFFFF;border:0;border-right:1px solid #DCE3EA;padding:0 18px;cursor:pointer}
+.fam button[aria-selected=true]{background:#E8EEF4;color:#0B5CAD;box-shadow:inset 0 -3px 0 #0B5CAD}
+.seg{display:flex;align-items:center;gap:0;padding:0 8px;border-left:1px solid #B9C6D3}
+.seg button{font-family:"Archivo Narrow",sans-serif;font-weight:600;font-size:13px;letter-spacing:0.02em;height:28px;padding:0 14px;border:1px solid #B9C6D3;background:#FFFFFF;color:#1A1A1A;cursor:pointer}
+.seg button:first-child{border-radius:2px 0 0 2px}
+.seg button:last-child{border-left:0;border-radius:0 2px 2px 0}
+.seg button[aria-pressed=true]{background:#0B5CAD;border-color:#0B5CAD;color:#FFFFFF}
+.meta{margin-top:10px;font-size:13px;line-height:20px;color:#4A4A4A}
+/* cards */
+.grid{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.c{border:1px solid #B9C6D3;border-top:2px solid #1A1A1A;padding:14px 20px 16px;display:flex;flex-direction:column;min-height:188px}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:8px;border-bottom:1px solid #DCE3EA}
+.top h3{font-size:18px;line-height:24px;font-weight:700;letter-spacing:-0.005em}
+.top span{font-family:"Archivo Narrow",sans-serif;font-weight:600;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#4A4A4A}
+.c p{margin-top:8px;color:#333333;min-height:40px}
+.lk{margin-top:6px;display:flex;gap:16px;font-family:"Archivo Narrow",sans-serif;font-weight:600;font-size:13px;letter-spacing:0.02em}
+table{margin-top:auto;width:100%;border-collapse:collapse;font-size:13px;line-height:18px}
+.lk+table{margin-top:12px}
+th,td{text-align:left;padding:4px 8px;border-top:1px solid #C7D2DD;border-bottom:1px solid #C7D2DD}
+th{background:#E8EEF4;font-family:"Archivo Narrow",sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;color:#1A1A1A}
+td.m,th.m{width:4px;padding:0}
+tr.rel td.m{background:#0B5CAD}
+td.s{width:86px;font-weight:500}
+td.v{font-weight:600;font-variant-numeric:tabular-nums lining-nums}
+td.d{width:150px;color:#3D3D3D;font-variant-numeric:tabular-nums lining-nums}
+td.none{color:#4A4A4A}
+.ex{display:inline-block;margin-left:6px;padding:0 4px;border:1px solid #8A9BAD;border-radius:2px;font-family:"Archivo Narrow",sans-serif;font-size:11px;line-height:14px;letter-spacing:0.04em;color:#3D3D3D}
+</style>
+</head>
+<body>
+<header class="mast">
+  <a class="mark" href="#">idy.dev</a>
+  <nav><a class="on" href="#">All projects</a><a href="#">Discord</a><a href="#">GitHub</a></nav>
+  <a class="follow" href="#"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.34.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>Follow</a>
+</header>
+<main>
+  <h1>Open-source projects</h1>
+  <p class="lede">Find a tool. Get the release. See what's next.</p>
+  <div class="bar" role="search">
+    <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" placeholder="Find a project…" aria-label="Find a project"></label>
+    <div class="fam" role="tablist" aria-label="Category">
+      <button role="tab" aria-selected="true">All</button><button role="tab" aria-selected="false">Devices</button><button role="tab" aria-selected="false">Desktop</button><button role="tab" aria-selected="false">Networking</button><button role="tab" aria-selected="false">Libraries &amp; design</button>
+    </div>
+    <div class="seg" aria-label="View"><button aria-pressed="true">Cards</button><button aria-pressed="false">Table</button></div>
+  </div>
+  <p class="meta tab">12 of 12 projects · GitHub snapshot · Nov 11, 2026, 20:33</p>
+  <section class="grid">
+    <article class="c"><div class="top"><h3>GizClaw</h3><span>Devices</span></div>
+      <p>An agent runtime and edge-server platform for connected devices, with a server, CLI, WebRTC transport, APIs, and SDKs.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Released</td><td class="v">v0.35.19</td><td class="d">Nov 11, 2026</td></tr></table></article>
+    <article class="c"><div class="top"><h3>GizMoth</h3><span>Desktop</span></div>
+      <p>A desktop app for pairing and managing GizOS devices and building and deploying Lua apps with an embedded coding agent.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Released</td><td class="v">v0.1.10</td><td class="d">Nov 11, 2026</td></tr></table></article>
+    <article class="c"><div class="top"><h3>GizOS</h3><span>Devices</span></div>
+      <p>A portable firmware and application platform for embedded devices, desktop, mobile, and WebAssembly.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Released</td><td class="v">v20261031-200733</td><td class="d">Nov 1, 2026</td></tr></table></article>
+    <article class="c"><div class="top"><h3>Nootify</h3><span>Desktop</span></div>
+      <p>Follow Claude Code, Codex, and OpenCode in Feishu, then send replies back to the existing sessions on your Mac.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Released</td><td class="v">v0.2.1</td><td class="d">Nov 10, 2026</td></tr></table></article>
+    <article class="c"><div class="top"><h3>CH348 macOS</h3><span>Devices</span></div>
+      <p>Native macOS serial ports for WCH CH348 eight-port USB-to-UART adapters, using DriverKit.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Prerelease</td><td class="v">v0.1.1-dev.13-pkg.1</td><td class="d">Nov 4, 2026</td></tr></table></article>
+    <article class="c"><div class="top"><h3>TailSplit</h3><span>Networking</span></div>
+      <p>Route traffic by domain and IP with sing-box, with proxies and Tailscale exits.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Released</td><td class="v">v0.9.3</td><td class="d">Nov 11, 2026</td></tr><tr class="rel"><td class="m"></td><td class="s">Releasing</td><td class="v">v0.9.4</td><td class="d">in progress<span class="ex">example</span></td></tr></table></article>
+    <article class="c"><div class="top"><h3>TailRelay</h3><span>Networking</span></div>
+      <p>Run a Tailscale exit node through a SOCKS5 proxy on Linux and macOS.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Released</td><td class="v">v0.1.2</td><td class="d">Nov 2, 2026</td></tr></table></article>
+    <article class="c"><div class="top"><h3>WGC</h3><span>Libraries &amp; design</span></div>
+      <p>A Go library for authenticated, encrypted messages using WireGuard sessions.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Released</td><td class="v">v0.2.0</td><td class="d">Nov 3, 2026</td></tr></table></article>
+    <article class="c"><div class="top"><h3>WGC NE</h3><span>Libraries &amp; design</span></div>
+      <p>A Flutter plugin and Apple Network Extension SDK built on WGC and sing-box.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Prerelease</td><td class="v">v0.1.0</td><td class="d">Nov 4, 2026</td></tr></table></article>
+    <article class="c"><div class="top"><h3>sing-box-flutter</h3><span>Libraries &amp; design</span></div>
+      <p>A Flutter plugin for native sing-box VPN on Android and iOS.</p>
+      <div class="lk"><a href="#">Project page</a><a href="#">Source</a></div>
+      <table><tr><th class="m"></th><th>Status</th><th>Version</th><th>Date</th></tr><tr><td class="m"></td><td class="s">Released</td><td class="v">v0.2.0</td><td class="d">Nov 9, 2026</td></tr></table></article>
+  </section>
+</main>
+</body>
+</html>

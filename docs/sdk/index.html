@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Typography, layouts, and reusable components for idy.dev project pages. npm, CDN, and self-hosted examples.">
+  <title>Site SDK — idy.dev</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script src="0.1.0/idy-site.min.js"></script>
+  <link rel="stylesheet" href="0.1.0/idy-site.css">
+  <link rel="stylesheet" href="catalogue.css">
+  <script src="catalogue.js" defer></script>
+</head>
+<body class="idy-site">
+  <a class="idy-skip-link" href="#main">Skip to content</a>
+  <header class="idy-header compact-header">
+    <div class="idy-header-inner">
+      <a class="idy-home" href="/">idy.dev</a>
+      <nav class="idy-nav" aria-label="Main navigation"><a href="#typeset">Typography</a><a href="#layout">Layout</a><a href="#elements">Elements</a><a href="#install">Use it</a></nav>
+      <details class="idy-mobile"><summary aria-label="Main navigation"><i class="ph ph-list" aria-hidden="true"></i></summary><nav class="idy-mobile-panel" aria-label="Main navigation"><a href="#typeset">Typography</a><a href="#layout">Layout</a><a href="#elements">Elements</a><a href="#install">Use it</a></nav></details>
+      <div class="header-actions">
+        <div class="idy-preferences">
+          <label><span data-i18n="language">Language</span><select data-idy-language><option value="auto" data-i18n="automatic">Auto</option><option value="en">English</option><option value="zh">中文</option></select></label>
+          <label><span data-i18n="theme">Theme</span><select data-idy-theme><option value="system" data-i18n="system">System</option><option value="light" data-i18n="light">Light</option><option value="dark" data-i18n="dark">Dark</option></select></label>
+        </div>
+        <a class="idy-action" href="https://github.com/idy/idy/tree/main/packages/site-sdk"><span class="idy-action-pill">Source</span></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="idy-container">
+    <section class="idy-hero">
+      <h1 class="idy-title" data-i18n="sdkTitle">A shared language for project pages.</h1>
+      <p class="idy-lead" data-i18n="sdkIntro">Typography, layouts, and page elements from the idy.dev sites. Use the same components with npm, a script tag, or local files.</p>
+      <div class="idy-cluster"><a class="idy-button" href="#install" data-i18n="sdkStart">Start with the SDK</a><a href="#typeset" data-i18n="sdkBrowse">Explore the components</a></div>
+      <p class="idy-caption">Version 0.1.0 · Framework-independent · Progressive enhancement</p>
+    </section>
+    <section id="typeset" class="idy-section">
+      <div class="catalogue-heading"><h2 class="idy-section-title">Typography</h2><p class="idy-caption">Montserrat / Monda / Lato. Chinese text uses system fallbacks.</p></div>
+      <div class="type-samples">
+        <div><code>.idy-title</code><p class="idy-title">Tools worth sharing.</p></div>
+        <div><code>.idy-section-title</code><p class="idy-section-title">Find the right project.</p></div>
+        <div><code>.idy-subheading</code><p class="idy-subheading">Connected devices &amp; networking</p></div>
+        <div><code>.idy-lead</code><p class="idy-lead">Explore the project, read its documentation, and choose a download for your platform.</p></div>
+        <div><code>.idy-prose</code><div class="idy-prose"><p>Long-form content has a readable measure and a clear rhythm. Headings, lists, and code remain ordinary semantic HTML.</p><p lang="zh">为项目页面提供一致的字体、布局和交互。中文使用系统字体，保留清晰的层级与阅读节奏。</p></div></div>
+        <div><code>.idy-caption</code><p class="idy-caption">Supporting notes describe limits without competing with the main action.</p></div>
+      </div>
+    </section>
+    <section id="layout" class="idy-section">
+      <h2 class="idy-section-title">Layout</h2>
+      <p class="idy-prose">Compose a page with a container, sections, stacks, wrapping action rows, and responsive columns. All spacing comes from shared tokens.</p>
+      <div class="idy-split layout-example">
+        <div class="idy-stack"><h3 class="idy-subheading">A heading and its context</h3><p class="idy-lead">Two columns become one on smaller screens.</p></div>
+        <div class="idy-stack"><p>Use <code>.idy-split</code> for related content, <code>.idy-stack</code> for vertical groups, and <code>.idy-cluster</code> for controls that wrap naturally.</p><div class="idy-cluster"><a class="idy-button" href="/">All projects</a><a class="idy-button idy-button--secondary" href="https://github.com/idy">GitHub</a></div></div>
+      </div>
+      <div class="idy-grid layout-grid"><div><strong>Container</strong><p>A shared page width and mobile gutter.</p></div><div><strong>Spacing</strong><p>Override <code>--idy-gap</code> for a local composition.</p></div><div><strong>Content</strong><p>Keep each project’s examples and explanations its own.</p></div></div>
+    </section>
+    <section id="elements" class="idy-section">
+      <h2 class="idy-section-title">Page elements</h2>
+      <div class="idy-stack element-samples">
+        <div><h3 class="idy-subheading">Actions</h3><div class="idy-cluster"><a class="idy-button" href="/">Explore projects</a><a class="idy-button idy-button--secondary" href="https://github.com/idy/idy">View source</a><button class="idy-button" disabled>Unavailable</button></div></div>
+        <div><h3 class="idy-subheading">Copyable commands</h3><div class="idy-code"><div class="idy-code-row"><code>brew tap idy/homebrew https://github.com/idy/homebrew</code><button class="idy-button idy-button--secondary" data-idy-copy hidden>Copy</button></div><p data-idy-copy-status role="status" aria-live="polite"></p></div></div>
+        <div><h3 class="idy-subheading">Project and release rows</h3><article class="idy-project-row"><h2>TailSplit</h2><p>Route traffic by domain and IP using sing-box, with support for proxies and Tailscale exits.</p><p class="idy-project-links"><a href="https://tailsplit.idy.dev/">Project page</a><a href="https://github.com/idy/tailsplit">Source</a></p><div class="idy-release"><p>See GitHub for the latest release.</p><a href="https://github.com/idy/tailsplit/releases">Browse releases</a></div></article></div>
+        <div class="idy-notice"><h3 class="idy-subheading">Keep release information honest.</h3><p>Use a real release URL as the fallback. Show platform-specific downloads only after the project’s release data confirms the asset exists.</p></div>
+        <div><h3 class="idy-subheading">Reading and disclosure</h3><details class="idy-faq"><summary>Does the SDK require a framework?</summary><p>No. The browser bundle enhances semantic HTML. The npm package also exports functions for pages built with a bundler.</p></details><details class="idy-faq"><summary>Do theme preferences sync between subdomains?</summary><p>No. Preferences are saved in local storage for the current origin. Sharing component code does not share browser storage.</p></details></div>
+        <div class="idy-table-scroll" tabindex="0" role="region" aria-label="Delivery options"><table class="idy-table"><caption>Choose how to load the same components</caption><thead><tr><th>Delivery</th><th>JavaScript</th><th>Styles</th></tr></thead><tbody><tr><td>npm</td><td>ES module exports</td><td>Import the CSS</td></tr><tr><td>CDN / local files</td><td>Classic script; auto-initializes</td><td>Link the CSS and retain its assets directory</td></tr></tbody></table></div>
+      </div>
+    </section>
+    <section id="install" class="idy-section">
+      <h2 class="idy-section-title">Use the SDK</h2>
+      <p class="idy-prose">This checkout contains version 0.1.0. npm and public CDN URLs become available after publication; use the local bundle or a packed tarball until then.</p>
+      <h3 class="idy-subheading">Script tag / self-hosted files</h3>
+      <div class="idy-code"><div class="idy-code-row"><pre><code>&lt;script src="/sdk/0.1.0/idy-site.min.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="/sdk/0.1.0/idy-site.css"&gt;
+&lt;body class="idy-site"&gt;…&lt;/body&gt;</code></pre><button class="idy-button idy-button--secondary" data-idy-copy hidden>Copy</button></div><p data-idy-copy-status role="status" aria-live="polite"></p></div>
+      <p class="idy-caption">Load the script in the head before styles to apply saved preferences before paint. Keep <code>assets/</code> alongside the CSS.</p>
+      <div class="idy-cluster"><a href="0.1.0/idy-site.min.js" download>Download browser JS</a><a href="0.1.0/idy-site.css" download>Download CSS</a><a href="https://github.com/idy/idy/tree/main/packages/site-sdk">Integration and migration guide</a></div>
+      <h3 class="idy-subheading install-heading">npm / ESM</h3>
+      <div class="idy-code"><div class="idy-code-row"><pre><code>import '@idy/site-sdk/style.css';
+import { initSite, createHeader, enhance } from '@idy/site-sdk';
+
+const site = initSite({ en: { heading: 'Projects' }, zh: { heading: '项目' } });
+const header = createHeader({ siteName: 'My project', siteHref: '/' });
+document.body.prepend(header);
+enhance(header);</code></pre><button class="idy-button idy-button--secondary" data-idy-copy hidden>Copy</button></div><p data-idy-copy-status role="status" aria-live="polite"></p></div>
+      <p class="idy-caption">Prefer authored HTML for core navigation so it remains available without JavaScript. Factories are useful for client-rendered pages.</p>
+    </section>
+  </main>
+  <footer class="idy-footer"><div class="idy-footer-inner"><div><a class="idy-home" href="/">idy.dev</a><p data-i18n="footerNote">Independent tools. Open source.</p></div><nav aria-label="Project links"><a href="/">All projects</a><a href="https://github.com/idy/idy">GitHub</a></nav></div></footer>
+</body>
+</html>
