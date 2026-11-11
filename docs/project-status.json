@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-11T21:20:53.705Z",
+  "generatedAt": "2026-11-11T21:34:35.581Z",
   "projects": {
     "GizClaw/gizclaw": {
       "repository": "GizClaw/gizclaw",
-      "checkedAt": "2026-11-11T21:20:51.452Z",
+      "checkedAt": "2026-11-11T21:34:33.957Z",
       "release": {
         "state": "published",
         "tagName": "v0.35.20",
@@ -113,7 +113,7 @@
     },
     "GizClaw/gizmoth": {
       "repository": "GizClaw/gizmoth",
-      "checkedAt": "2026-11-11T21:20:51.498Z",
+      "checkedAt": "2026-11-11T21:34:33.935Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.10",
@@ -186,7 +186,7 @@
     },
     "GizClaw/gizos": {
       "repository": "GizClaw/gizos",
-      "checkedAt": "2026-11-11T21:20:51.382Z",
+      "checkedAt": "2026-11-11T21:34:34.011Z",
       "release": {
         "state": "published",
         "tagName": "v20261031-200733",
@@ -265,7 +265,7 @@
     },
     "idy/nootify": {
       "repository": "idy/nootify",
-      "checkedAt": "2026-11-11T21:20:52.929Z",
+      "checkedAt": "2026-11-11T21:34:34.752Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.1",
@@ -326,7 +326,7 @@
     },
     "idy/ch348-macos": {
       "repository": "idy/ch348-macos",
-      "checkedAt": "2026-11-11T21:20:52.147Z",
+      "checkedAt": "2026-11-11T21:34:34.445Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.1-dev.13-pkg.1",
@@ -357,140 +357,134 @@
     },
     "idy/tailsplit": {
       "repository": "idy/tailsplit",
-      "checkedAt": "2026-11-11T21:20:52.582Z",
+      "checkedAt": "2026-11-11T21:34:34.993Z",
       "release": {
         "state": "published",
-        "tagName": "v0.9.5",
-        "url": "https://github.com/idy/tailsplit/releases/tag/v0.9.5",
+        "tagName": "v0.9.6",
+        "url": "https://github.com/idy/tailsplit/releases/tag/v0.9.6",
         "prerelease": false,
-        "publishedAt": "2026-11-11T14:16:57.000Z",
+        "publishedAt": "2026-11-11T21:31:20.000Z",
         "assets": [
           {
             "name": "release-manifest.json",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/release-manifest.json",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/release-manifest.json",
             "state": "uploaded",
             "size": 2748
           },
           {
             "name": "SHA256SUMS",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/SHA256SUMS",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/SHA256SUMS",
             "state": "uploaded",
             "size": 1714
           },
           {
-            "name": "TailSplit_0.9.5_darwin_amd64.dmg",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/TailSplit_0.9.5_darwin_amd64.dmg",
+            "name": "TailSplit_0.9.6_darwin_amd64.dmg",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_amd64.dmg",
             "state": "uploaded",
-            "size": 88681855
+            "size": 88975102
           },
           {
-            "name": "TailSplit_0.9.5_darwin_amd64.receipt.json",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/TailSplit_0.9.5_darwin_amd64.receipt.json",
+            "name": "TailSplit_0.9.6_darwin_amd64.receipt.json",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_amd64.receipt.json",
             "state": "uploaded",
             "size": 1061
           },
           {
-            "name": "tailsplit_0.9.5_darwin_amd64.tar.gz",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/tailsplit_0.9.5_darwin_amd64.tar.gz",
+            "name": "tailsplit_0.9.6_darwin_amd64.tar.gz",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_darwin_amd64.tar.gz",
             "state": "uploaded",
-            "size": 12063621
+            "size": 12068935
           },
           {
-            "name": "TailSplit_0.9.5_darwin_amd64.zip",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/TailSplit_0.9.5_darwin_amd64.zip",
+            "name": "TailSplit_0.9.6_darwin_amd64.zip",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_amd64.zip",
             "state": "uploaded",
-            "size": 83495893
+            "size": 83598522
           },
           {
-            "name": "TailSplit_0.9.5_darwin_arm64.dmg",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/TailSplit_0.9.5_darwin_arm64.dmg",
+            "name": "TailSplit_0.9.6_darwin_arm64.dmg",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_arm64.dmg",
             "state": "uploaded",
-            "size": 82580988
+            "size": 81774617
           },
           {
-            "name": "TailSplit_0.9.5_darwin_arm64.receipt.json",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/TailSplit_0.9.5_darwin_arm64.receipt.json",
+            "name": "TailSplit_0.9.6_darwin_arm64.receipt.json",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_arm64.receipt.json",
             "state": "uploaded",
             "size": 1061
           },
           {
-            "name": "tailsplit_0.9.5_darwin_arm64.tar.gz",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/tailsplit_0.9.5_darwin_arm64.tar.gz",
+            "name": "tailsplit_0.9.6_darwin_arm64.tar.gz",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_darwin_arm64.tar.gz",
             "state": "uploaded",
-            "size": 11190380
+            "size": 11195678
           },
           {
-            "name": "TailSplit_0.9.5_darwin_arm64.zip",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/TailSplit_0.9.5_darwin_arm64.zip",
+            "name": "TailSplit_0.9.6_darwin_arm64.zip",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_arm64.zip",
             "state": "uploaded",
-            "size": 76715089
+            "size": 76831120
           },
           {
-            "name": "tailsplit_0.9.5_linux_amd64.deb",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/tailsplit_0.9.5_linux_amd64.deb",
+            "name": "tailsplit_0.9.6_linux_amd64.deb",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_linux_amd64.deb",
             "state": "uploaded",
-            "size": 9573048
+            "size": 9574500
           },
           {
-            "name": "tailsplit_0.9.5_linux_amd64.tar.gz",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/tailsplit_0.9.5_linux_amd64.tar.gz",
+            "name": "tailsplit_0.9.6_linux_amd64.tar.gz",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_linux_amd64.tar.gz",
             "state": "uploaded",
-            "size": 12859560
+            "size": 12865283
           },
           {
-            "name": "tailsplit_0.9.5_linux_arm64.deb",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/tailsplit_0.9.5_linux_arm64.deb",
+            "name": "tailsplit_0.9.6_linux_arm64.deb",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_linux_arm64.deb",
             "state": "uploaded",
-            "size": 8187808
+            "size": 8189760
           },
           {
-            "name": "tailsplit_0.9.5_linux_arm64.tar.gz",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/tailsplit_0.9.5_linux_arm64.tar.gz",
+            "name": "tailsplit_0.9.6_linux_arm64.tar.gz",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_linux_arm64.tar.gz",
             "state": "uploaded",
-            "size": 11648373
+            "size": 11653961
           },
           {
-            "name": "tailsplit_0.9.5_windows_amd64.zip",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/tailsplit_0.9.5_windows_amd64.zip",
+            "name": "tailsplit_0.9.6_windows_amd64.zip",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_windows_amd64.zip",
             "state": "uploaded",
-            "size": 12723107
+            "size": 12728508
           },
           {
-            "name": "TailSplit_0.9.5_windows_amd64_setup.exe",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/TailSplit_0.9.5_windows_amd64_setup.exe",
+            "name": "TailSplit_0.9.6_windows_amd64_setup.exe",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_windows_amd64_setup.exe",
             "state": "uploaded",
-            "size": 238139581
+            "size": 238220116
           },
           {
-            "name": "tailsplit_0.9.5_windows_arm64.zip",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/tailsplit_0.9.5_windows_arm64.zip",
+            "name": "tailsplit_0.9.6_windows_arm64.zip",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_windows_arm64.zip",
             "state": "uploaded",
-            "size": 11262805
+            "size": 11268204
           },
           {
-            "name": "TailSplit_0.9.5_windows_arm64_setup.exe",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.5/TailSplit_0.9.5_windows_arm64_setup.exe",
+            "name": "TailSplit_0.9.6_windows_arm64_setup.exe",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_windows_arm64_setup.exe",
             "state": "uploaded",
-            "size": 239407367
+            "size": 239428136
           }
         ],
-        "zipball_url": "https://api.github.com/repos/idy/tailsplit/zipball/v0.9.5"
+        "zipball_url": "https://api.github.com/repos/idy/tailsplit/zipball/v0.9.6"
       },
       "releasing": {
-        "state": "active",
-        "versions": [
-          {
-            "version": "v0.9.6",
-            "url": "https://github.com/idy/tailsplit/actions/runs/43064163556",
-            "state": "running"
-          }
-        ]
+        "state": "none",
+        "versions": []
       },
       "errors": []
     },
     "idy/tailrelay": {
       "repository": "idy/tailrelay",
-      "checkedAt": "2026-11-11T21:20:53.191Z",
+      "checkedAt": "2026-11-11T21:34:35.151Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.2",
@@ -557,7 +551,7 @@
     },
     "idy/wgc": {
       "repository": "idy/wgc",
-      "checkedAt": "2026-11-11T21:20:52.736Z",
+      "checkedAt": "2026-11-11T21:34:34.913Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -575,7 +569,7 @@
     },
     "idy/wgc-ne": {
       "repository": "idy/wgc-ne",
-      "checkedAt": "2026-11-11T21:20:53.344Z",
+      "checkedAt": "2026-11-11T21:34:35.319Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.0",
@@ -606,7 +600,7 @@
     },
     "idy/sing-box-flutter": {
       "repository": "idy/sing-box-flutter",
-      "checkedAt": "2026-11-11T21:20:53.102Z",
+      "checkedAt": "2026-11-11T21:34:35.089Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -643,7 +637,7 @@
     },
     "idy/magpie-design-system": {
       "repository": "idy/magpie-design-system",
-      "checkedAt": "2026-11-11T21:20:53.292Z",
+      "checkedAt": "2026-11-11T21:34:35.196Z",
       "release": {
         "state": "published",
         "tagName": "v0.4.3",
@@ -661,7 +655,7 @@
     },
     "idy/homebrew": {
       "repository": "idy/homebrew",
-      "checkedAt": "2026-11-11T21:20:53.705Z",
+      "checkedAt": "2026-11-11T21:34:35.581Z",
       "release": {
         "state": "none",
         "tagName": null,
