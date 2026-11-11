@@ -313,7 +313,9 @@ function createSite(document) {
     const theme = themePreference === "system" ? media?.matches ? "dark" : "light" : themePreference;
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#142033" : "#f7f9fc");
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    const pageColor = themeColor?.getAttribute(`data-idy-theme-color-${theme}`)?.trim();
+    themeColor?.setAttribute("content", pageColor || (theme === "dark" ? "#142033" : "#f7f9fc"));
     syncPreferences(document);
     headers?.render();
   }

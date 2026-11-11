@@ -90,6 +90,40 @@ test("early initialization applies stored preferences synchronously and enhances
   assert.equal(document.querySelectorAll(".header-controls").length, 1);
 });
 
+test("page theme colors survive early initialization and explicit or system theme changes", t => {
+  const { document, window, media } = fixture(t);
+  const meta = document.querySelector('meta[name="theme-color"]');
+  meta.setAttribute("data-idy-theme-color-light", "#0b5cad");
+  meta.setAttribute("data-idy-theme-color-dark", "#0b3d73");
+  window.localStorage.setItem("idy-theme", "dark");
+  const site = initSite();
+  assert.equal(meta.content, "#0b3d73");
+  site.setTheme("light");
+  assert.equal(meta.content, "#0b5cad");
+  site.setTheme("system");
+  assert.equal(meta.content, "#0b5cad");
+  media.matches = true;
+  media.dispatchEvent(new window.Event("change"));
+  assert.equal(meta.content, "#0b3d73");
+  initSite();
+  assert.equal(meta.content, "#0b3d73");
+});
+
+test("missing page theme-color overrides retain SDK defaults and optional meta behavior", t => {
+  const { document } = fixture(t);
+  const meta = document.querySelector('meta[name="theme-color"]');
+  meta.setAttribute("data-idy-theme-color-light", "#ffffff");
+  const site = initSite();
+  assert.equal(meta.content, "#ffffff");
+  site.setTheme("dark");
+  assert.equal(meta.content, "#142033");
+  meta.setAttribute("data-idy-theme-color-light", "  ");
+  site.setTheme("light");
+  assert.equal(meta.content, "#f7f9fc");
+  meta.remove();
+  assert.doesNotThrow(() => site.setTheme("dark"));
+});
+
 test("late and dynamic enhancement is idempotent with globally unique accessible menu IDs", async t => {
   const { document, window, subscriptions } = fixture(t);
   await ready(document);

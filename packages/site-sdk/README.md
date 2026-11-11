@@ -160,6 +160,14 @@ Preferences use the existing `idy-theme` and `idy-language` local-storage keys. 
 
 ## Customization
 
+Sites can override the browser chrome color for each theme on the existing meta tag. The SDK applies these colors during early initialization, manual switching, and system-theme changes; missing overrides keep the SDK defaults.
+
+```html
+<meta name="theme-color" content="#0b5cad"
+  data-idy-theme-color-light="#0b5cad"
+  data-idy-theme-color-dark="#0b3d73">
+```
+
 Use the shared defaults first, then override semantic tokens in site CSS:
 
 ```css
