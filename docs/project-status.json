@@ -1,125 +1,119 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-11T20:08:22.454Z",
+  "generatedAt": "2026-11-11T21:04:14.866Z",
   "projects": {
     "GizClaw/gizclaw": {
       "repository": "GizClaw/gizclaw",
-      "checkedAt": "2026-11-11T20:08:20.620Z",
+      "checkedAt": "2026-11-11T21:04:12.817Z",
       "release": {
         "state": "published",
-        "tagName": "v0.35.19",
-        "url": "https://github.com/GizClaw/gizclaw/releases/tag/v0.35.19",
+        "tagName": "v0.35.20",
+        "url": "https://github.com/GizClaw/gizclaw/releases/tag/v0.35.20",
         "prerelease": false,
-        "publishedAt": "2026-11-11T09:02:57.000Z",
+        "publishedAt": "2026-11-11T20:16:56.000Z",
         "assets": [
           {
             "name": "container-image.json",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/container-image.json",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/container-image.json",
             "state": "uploaded",
             "size": 990
           },
           {
-            "name": "flutter-gizclaw-0.35.19.tar.gz",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/flutter-gizclaw-0.35.19.tar.gz",
+            "name": "flutter-gizclaw-0.35.20.tar.gz",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/flutter-gizclaw-0.35.20.tar.gz",
             "state": "uploaded",
-            "size": 235242
+            "size": 235217
           },
           {
-            "name": "flutter-gizclaw_control-0.35.19.tar.gz",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/flutter-gizclaw_control-0.35.19.tar.gz",
+            "name": "flutter-gizclaw_control-0.35.20.tar.gz",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/flutter-gizclaw_control-0.35.20.tar.gz",
             "state": "uploaded",
-            "size": 26100
+            "size": 26094
           },
           {
-            "name": "gizclaw-c-sdk-0.35.19.tar.gz",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/gizclaw-c-sdk-0.35.19.tar.gz",
+            "name": "gizclaw-c-sdk-0.35.20.tar.gz",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/gizclaw-c-sdk-0.35.20.tar.gz",
             "state": "uploaded",
-            "size": 249203
+            "size": 249163
           },
           {
-            "name": "gizclaw-c-sdk-0.35.19.tar.gz.sha256",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/gizclaw-c-sdk-0.35.19.tar.gz.sha256",
+            "name": "gizclaw-c-sdk-0.35.20.tar.gz.sha256",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/gizclaw-c-sdk-0.35.20.tar.gz.sha256",
             "state": "uploaded",
             "size": 95
           },
           {
-            "name": "gizclaw_0.35.19_amd64.deb",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/gizclaw_0.35.19_amd64.deb",
+            "name": "gizclaw_0.35.20_amd64.deb",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/gizclaw_0.35.20_amd64.deb",
             "state": "uploaded",
-            "size": 70290264
+            "size": 70296532
           },
           {
-            "name": "gizclaw_0.35.19_arm64.deb",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/gizclaw_0.35.19_arm64.deb",
+            "name": "gizclaw_0.35.20_arm64.deb",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/gizclaw_0.35.20_arm64.deb",
             "state": "uploaded",
-            "size": 62049648
+            "size": 62053852
           },
           {
-            "name": "npm-gizclaw-0.35.19.tgz",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/npm-gizclaw-0.35.19.tgz",
+            "name": "npm-gizclaw-0.35.20.tgz",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/npm-gizclaw-0.35.20.tgz",
             "state": "uploaded",
-            "size": 177874
+            "size": 177843
           },
           {
-            "name": "npm-gizclaw-control-0.35.19.tgz",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/npm-gizclaw-control-0.35.19.tgz",
+            "name": "npm-gizclaw-control-0.35.20.tgz",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/npm-gizclaw-control-0.35.20.tgz",
             "state": "uploaded",
-            "size": 26810
+            "size": 26815
           },
           {
             "name": "release-manifest.json",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/release-manifest.json",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/release-manifest.json",
             "state": "uploaded",
             "size": 4906
           },
           {
             "name": "SHA256SUMS",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/SHA256SUMS",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/SHA256SUMS",
             "state": "uploaded",
             "size": 1416
           },
           {
-            "name": "terraform-provider-gizclaw_0.35.19_darwin_amd64.zip",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/terraform-provider-gizclaw_0.35.19_darwin_amd64.zip",
+            "name": "terraform-provider-gizclaw_0.35.20_darwin_amd64.zip",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/terraform-provider-gizclaw_0.35.20_darwin_amd64.zip",
             "state": "uploaded",
             "size": 14305335
           },
           {
-            "name": "terraform-provider-gizclaw_0.35.19_darwin_arm64.zip",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/terraform-provider-gizclaw_0.35.19_darwin_arm64.zip",
+            "name": "terraform-provider-gizclaw_0.35.20_darwin_arm64.zip",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/terraform-provider-gizclaw_0.35.20_darwin_arm64.zip",
             "state": "uploaded",
             "size": 13278641
           },
           {
-            "name": "terraform-provider-gizclaw_0.35.19_linux_amd64.zip",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/terraform-provider-gizclaw_0.35.19_linux_amd64.zip",
+            "name": "terraform-provider-gizclaw_0.35.20_linux_amd64.zip",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/terraform-provider-gizclaw_0.35.20_linux_amd64.zip",
             "state": "uploaded",
-            "size": 13957196
+            "size": 13957195
           },
           {
-            "name": "terraform-provider-gizclaw_0.35.19_linux_arm64.zip",
-            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.19/terraform-provider-gizclaw_0.35.19_linux_arm64.zip",
+            "name": "terraform-provider-gizclaw_0.35.20_linux_arm64.zip",
+            "browser_download_url": "https://github.com/GizClaw/gizclaw/releases/download/v0.35.20/terraform-provider-gizclaw_0.35.20_linux_arm64.zip",
             "state": "uploaded",
-            "size": 12615118
+            "size": 12615117
           }
         ],
-        "zipball_url": "https://api.github.com/repos/GizClaw/gizclaw/zipball/v0.35.19"
+        "zipball_url": "https://api.github.com/repos/GizClaw/gizclaw/zipball/v0.35.20"
       },
       "releasing": {
-        "state": "active",
-        "versions": [
-          {
-            "version": "v0.35.20",
-            "url": "https://github.com/GizClaw/gizclaw/actions/runs/43093434790",
-            "state": "running"
-          }
-        ]
+        "state": "none",
+        "versions": []
       },
       "errors": []
     },
     "GizClaw/gizmoth": {
       "repository": "GizClaw/gizmoth",
-      "checkedAt": "2026-11-11T20:08:20.499Z",
+      "checkedAt": "2026-11-11T21:04:12.736Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.10",
@@ -185,14 +179,16 @@
         "zipball_url": "https://api.github.com/repos/GizClaw/gizmoth/zipball/v0.1.10"
       },
       "releasing": {
-        "state": "none",
+        "state": "unavailable",
         "versions": []
       },
-      "errors": []
+      "errors": [
+        "releasing: incomplete active release runs"
+      ]
     },
     "GizClaw/gizos": {
       "repository": "GizClaw/gizos",
-      "checkedAt": "2026-11-11T20:08:20.595Z",
+      "checkedAt": "2026-11-11T21:04:12.731Z",
       "release": {
         "state": "published",
         "tagName": "v20261031-200733",
@@ -271,7 +267,7 @@
     },
     "idy/nootify": {
       "repository": "idy/nootify",
-      "checkedAt": "2026-11-11T20:08:21.485Z",
+      "checkedAt": "2026-11-11T21:04:13.809Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.1",
@@ -324,7 +320,7 @@
           {
             "version": "v0.3.0",
             "url": "https://github.com/idy/nootify/actions/runs/43089337786",
-            "state": "queued"
+            "state": "running"
           }
         ]
       },
@@ -332,7 +328,7 @@
     },
     "idy/ch348-macos": {
       "repository": "idy/ch348-macos",
-      "checkedAt": "2026-11-11T20:08:21.141Z",
+      "checkedAt": "2026-11-11T21:04:13.779Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.1-dev.13-pkg.1",
@@ -363,7 +359,7 @@
     },
     "idy/tailsplit": {
       "repository": "idy/tailsplit",
-      "checkedAt": "2026-11-11T20:08:21.545Z",
+      "checkedAt": "2026-11-11T21:04:13.878Z",
       "release": {
         "state": "published",
         "tagName": "v0.9.5",
@@ -483,14 +479,20 @@
         "zipball_url": "https://api.github.com/repos/idy/tailsplit/zipball/v0.9.5"
       },
       "releasing": {
-        "state": "none",
-        "versions": []
+        "state": "active",
+        "versions": [
+          {
+            "version": "v0.9.6",
+            "url": "https://github.com/idy/tailsplit/actions/runs/43064163556",
+            "state": "waiting"
+          }
+        ]
       },
       "errors": []
     },
     "idy/tailrelay": {
       "repository": "idy/tailrelay",
-      "checkedAt": "2026-11-11T20:08:21.986Z",
+      "checkedAt": "2026-11-11T21:04:14.713Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.2",
@@ -557,7 +559,7 @@
     },
     "idy/wgc": {
       "repository": "idy/wgc",
-      "checkedAt": "2026-11-11T20:08:21.678Z",
+      "checkedAt": "2026-11-11T21:04:13.987Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -575,7 +577,7 @@
     },
     "idy/wgc-ne": {
       "repository": "idy/wgc-ne",
-      "checkedAt": "2026-11-11T20:08:22.116Z",
+      "checkedAt": "2026-11-11T21:04:14.466Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.0",
@@ -606,7 +608,7 @@
     },
     "idy/sing-box-flutter": {
       "repository": "idy/sing-box-flutter",
-      "checkedAt": "2026-11-11T20:08:21.881Z",
+      "checkedAt": "2026-11-11T21:04:14.227Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -643,7 +645,7 @@
     },
     "idy/magpie-design-system": {
       "repository": "idy/magpie-design-system",
-      "checkedAt": "2026-11-11T20:08:22.053Z",
+      "checkedAt": "2026-11-11T21:04:14.408Z",
       "release": {
         "state": "published",
         "tagName": "v0.4.3",
@@ -661,7 +663,7 @@
     },
     "idy/homebrew": {
       "repository": "idy/homebrew",
-      "checkedAt": "2026-11-11T20:08:22.454Z",
+      "checkedAt": "2026-11-11T21:04:14.866Z",
       "release": {
         "state": "none",
         "tagName": null,
