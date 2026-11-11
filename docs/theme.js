@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  // Shared preferences live in shared/idy.js; this file supplies the page content.
+  // Shared preferences live in the site SDK; this file supplies the page content.
   const site = window.IdySite;
   const notFound = document.documentElement.dataset.page === "not-found";
   const translations = {
@@ -113,123 +113,5 @@
     },
   };
 
-  const downloads = {
-    "GizClaw/gizclaw": [],
-    "GizClaw/gizmoth": [
-      { label: "downloadGizmothMacArm", pattern: /^GizMoth_.+_aarch64-apple-darwin\.dmg$/i },
-      { label: "downloadGizmothMacIntel", pattern: /^GizMoth_.+_x86_64-apple-darwin\.dmg$/i },
-      { label: "downloadGizmothWindows", pattern: /^GizMoth_.+_x86_64-pc-windows-msvc-setup\.exe$/i },
-    ],
-    "GizClaw/gizos": [],
-    "idy/nootify": [{ label: "downloadNootify", pattern: /^Nootify_.+_(?:aarch64|arm64)\.dmg$/i }],
-    "idy/ch348-macos": [{ label: "downloadCH348", pattern: /^CH348-.*-macos-.*\.pkg$/i }],
-    "idy/tailsplit": [
-      { label: "downloadTailSplitMac", pattern: /^TailSplit_.*_darwin_arm64\.dmg$/i },
-      { label: "downloadTailSplitWindows", pattern: /^TailSplit_.*_windows_amd64_setup\.exe$/i },
-    ],
-    "idy/tailrelay": [{ label: "downloadTailRelay", pattern: /^tailrelay_.*_linux_amd64\.tar\.gz$/i }],
-    "idy/wgc": [{ label: "downloadWGC", source: true }],
-    "idy/wgc-ne": [{ label: "downloadWGCNE", pattern: /^WGCCore-.*\.xcframework\.zip$/i }],
-    "idy/sing-box-flutter": [
-      { label: "downloadSingBoxAndroid", pattern: /^libbox-.+-android\.tar\.gz$/i },
-      { label: "downloadSingBoxApple", pattern: /^libbox-.+-apple\.tar\.gz$/i },
-    ],
-  };
-
-  const projects = Array.from(document.querySelectorAll("[data-repository]"), element => ({
-    element,
-    repository: element.dataset.repository,
-    fallback: element.querySelector("[data-release-link]").href,
-    release: null,
-    loading: true,
-  }));
-
-  function sourceArchive(release, repository) {
-    if (typeof release.zipball_url !== "string") return undefined;
-    try {
-      const url = new URL(release.zipball_url);
-      return url.origin === "https://api.github.com" && !url.username && !url.password &&
-        url.pathname.startsWith(`/repos/${repository}/zipball/`) ? release.zipball_url : undefined;
-    } catch {
-      return undefined;
-    }
-  }
-
-  function render(project) {
-    const { element, repository, release, loading, fallback } = project;
-    const status = element.querySelector("[data-release-status]");
-    const releaseLink = element.querySelector("[data-release-link]");
-    const list = element.querySelector("[data-downloads]");
-    const note = element.querySelector("[data-download-note]");
-
-    status.textContent = site.t(loading ? "loadingRelease" : release
-      ? (release.prerelease ? "previewRelease" : "stableRelease") : "releaseUnavailable");
-    releaseLink.href = release ? release.html_url : fallback;
-    releaseLink.textContent = release ? release.tag_name : site.t("releases");
-    list.replaceChildren();
-    list.hidden = true;
-    note.textContent = "";
-    note.hidden = true;
-    if (!release) return;
-
-    let missing = false;
-    for (const download of downloads[repository]) {
-      const url = download.source ? sourceArchive(release, repository)
-        : site.asset(release, download.pattern)?.browser_download_url;
-      if (!url) {
-        missing = true;
-        continue;
-      }
-      const item = document.createElement("li");
-      const link = document.createElement("a");
-      link.href = url;
-      link.textContent = site.t(download.label);
-      item.append(link);
-      list.append(item);
-    }
-    list.hidden = list.children.length === 0;
-    note.hidden = !missing;
-    if (missing) note.textContent = site.t("downloadsIncomplete");
-  }
-
-  document.addEventListener("idy:languagechange", () => projects.forEach(render));
   site.init(translations);
-
-  const copyStatus = document.querySelector("[data-homebrew-status]");
-  let copyStatusKey = "";
-  document.addEventListener("idy:languagechange", () => {
-    if (copyStatus && copyStatusKey) copyStatus.textContent = site.t(copyStatusKey);
-  });
-  for (const button of document.querySelectorAll("[data-homebrew-copy]")) {
-    const command = button.closest(".homebrew-command-row")?.querySelector("code");
-    if (!command || !copyStatus) continue;
-    button.hidden = false;
-    button.addEventListener("click", async () => {
-      try {
-        if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
-        await navigator.clipboard.writeText(command.textContent);
-        copyStatusKey = "homebrewCopied";
-      } catch {
-        copyStatusKey = "homebrewManual";
-        try {
-          const selection = window.getSelection();
-          if (selection) {
-            const range = document.createRange();
-            range.selectNodeContents(command);
-            selection.removeAllRanges();
-            selection.addRange(range);
-            copyStatusKey = "homebrewSelected";
-          }
-        } catch { /* The command remains selectable for manual copying. */ }
-      }
-      copyStatus.textContent = site.t(copyStatusKey);
-    });
-  }
-
-  for (const project of projects) {
-    site.loadRelease(project.repository)
-      .then(release => { project.release = release; })
-      .catch(() => { project.release = null; })
-      .finally(() => { project.loading = false; render(project); });
-  }
 })();

@@ -1,0 +1,72 @@
+name: Refresh project status
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: project-status-main
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: write
+      pages: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: main
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Test project status collector
+        run: node --test tests/project-status.test.mjs
+      - name: Collect public project status
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/sync-project-status.mjs
+      - name: Commit only the current snapshot
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/main:refs/remotes/origin/main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            printf '%s\n' 'main advanced during collection; skipping this snapshot.'
+            exit 0
+          fi
+          git add -- docs/project-status.json
+          if git diff --cached --quiet -- docs/project-status.json; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore: refresh project status' -m 'Co-Authored-By: Claude Code <noreply@anthropic.com>' -- docs/project-status.json
+          # A main-branch update after the fetch rejects this normal push. Never
+          # rebase or force-push a snapshot built from an older whole worktree.
+          git push origin HEAD:refs/heads/main
+          printf 'pushed=true\n' >> "$GITHUB_OUTPUT"
+      - name: Request the branch-based GitHub Pages build
+        if: steps.publish.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # GITHUB_TOKEN-authored commits do not trigger branch-based Pages.
+          # The repository uses legacy Pages from main:/docs. Request its build
+          # explicitly; do not silently claim publication if the request fails.
+          if ! gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent; then
+            printf '%s\n' '::error::Snapshot was pushed, but the Pages build request failed. Verify branch-based Pages and pages:write permission.'
+            exit 1
+          fi

@@ -24,7 +24,7 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
       - name: Test snapshot validation
-        run: node --test tests/*.test.mjs
+        run: node --test tests/pinned-projects.test.mjs tests/publish-snapshot.test.mjs tests/sync-guard.test.mjs
 
   refresh:
     needs: test

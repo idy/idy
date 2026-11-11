@@ -1,0 +1,24 @@
+:root {
+  --idy-space-1: .5rem;
+  --idy-space-2: 1rem;
+  --idy-space-3: 1.5rem;
+  --idy-space-4: 2rem;
+  --idy-space-5: 3rem;
+  --idy-space-6: 4.5rem;
+  --idy-page-width: 72.5rem;
+  --idy-page-gutter: 2rem;
+  --idy-measure: 70ch;
+  --idy-text-small: .875rem;
+  --idy-text-body: 1rem;
+  --idy-text-lead: clamp(1.0625rem, 1.6vw, 1.25rem);
+  --idy-text-title: clamp(2.375rem, 5.2vw, 4.25rem);
+  --idy-text-section: clamp(1.625rem, 3vw, 2.5rem);
+  --idy-text-subheading: clamp(1.125rem, 2vw, 1.4375rem);
+  --idy-leading-body: 1.7;
+  --idy-leading-heading: 1.15;
+  --idy-radius-control: .4375rem;
+  --idy-radius-surface: .75rem;
+  --idy-font-code: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --idy-control-height: 2.75rem;
+  --idy-section-space: clamp(2.5rem, 6vw, 5rem);
+}

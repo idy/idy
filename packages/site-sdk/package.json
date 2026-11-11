@@ -1,0 +1,28 @@
+{
+  "name": "@idy/site-sdk",
+  "version": "0.1.0",
+  "description": "Shared typography, layouts, components, and browser behavior for idy.dev project pages.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idy/idy.git",
+    "directory": "packages/site-sdk"
+  },
+  "main": "./dist/idy-site.js",
+  "module": "./dist/idy-site.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/idy-site.js", "default": "./dist/idy-site.js" },
+    "./style.css": "./dist/idy-site.css",
+    "./browser": "./dist/idy-site.min.js",
+    "./assets/*": "./dist/assets/*",
+    "./package.json": "./package.json"
+  },
+  "unpkg": "./dist/idy-site.min.js",
+  "jsdelivr": "./dist/idy-site.min.js",
+  "files": ["dist", "README.md", "THIRD_PARTY_NOTICES.md"],
+  "sideEffects": ["**/*.css", "./dist/idy-site.min.js"],
+  "publishConfig": { "access": "public" },
+  "scripts": { "prepack": "node ../../scripts/build-site-sdk.mjs" }
+}
