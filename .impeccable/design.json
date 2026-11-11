@@ -469,12 +469,12 @@
       {
         "name": "toolbar-wrap",
         "value": "900px",
-        "purpose": "Search takes its own row; family tabs scroll."
+        "purpose": "From 761px to 900px, search takes its own row and family tabs scroll; the phone layout overrides this below 761px."
       },
       {
         "name": "phone",
         "value": "760px",
-        "purpose": "One column, 16px gutters, phone ruled list in table view, 44px targets."
+        "purpose": "One column, 16px gutters, search and view switch on row 1, all wrapping family tabs on row 2; compact ruled table and 44px targets."
       }
     ]
   },
