@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-12T05:19:28.957Z",
+  "generatedAt": "2026-11-12T05:34:55.701Z",
   "projects": {
     "GizClaw/gizclaw": {
       "repository": "GizClaw/gizclaw",
-      "checkedAt": "2026-11-12T05:19:27.479Z",
+      "checkedAt": "2026-11-12T05:34:54.068Z",
       "release": {
         "state": "published",
         "tagName": "v0.35.20",
@@ -106,14 +106,20 @@
         "zipball_url": "https://api.github.com/repos/GizClaw/gizclaw/zipball/v0.35.20"
       },
       "releasing": {
-        "state": "none",
-        "versions": []
+        "state": "active",
+        "versions": [
+          {
+            "version": "v0.35.21",
+            "url": "https://github.com/GizClaw/gizclaw/actions/runs/43161535802",
+            "state": "running"
+          }
+        ]
       },
       "errors": []
     },
     "GizClaw/gizmoth": {
       "repository": "GizClaw/gizmoth",
-      "checkedAt": "2026-11-12T05:19:27.440Z",
+      "checkedAt": "2026-11-12T05:34:53.839Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.1",
@@ -186,7 +192,7 @@
     },
     "GizClaw/gizos": {
       "repository": "GizClaw/gizos",
-      "checkedAt": "2026-11-12T05:19:27.501Z",
+      "checkedAt": "2026-11-12T05:34:53.773Z",
       "release": {
         "state": "published",
         "tagName": "v20261031-200733",
@@ -265,7 +271,7 @@
     },
     "idy/nootify": {
       "repository": "idy/nootify",
-      "checkedAt": "2026-11-12T05:19:28.222Z",
+      "checkedAt": "2026-11-12T05:34:54.601Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.1",
@@ -320,7 +326,7 @@
     },
     "idy/ch348-macos": {
       "repository": "idy/ch348-macos",
-      "checkedAt": "2026-11-12T05:19:27.984Z",
+      "checkedAt": "2026-11-12T05:34:54.511Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.1-dev.13-pkg.1",
@@ -351,7 +357,7 @@
     },
     "idy/tailsplit": {
       "repository": "idy/tailsplit",
-      "checkedAt": "2026-11-12T05:19:28.184Z",
+      "checkedAt": "2026-11-12T05:34:55.001Z",
       "release": {
         "state": "published",
         "tagName": "v0.9.7",
@@ -478,7 +484,7 @@
     },
     "idy/tailrelay": {
       "repository": "idy/tailrelay",
-      "checkedAt": "2026-11-12T05:19:28.658Z",
+      "checkedAt": "2026-11-12T05:34:55.305Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.2",
@@ -545,7 +551,7 @@
     },
     "idy/wgc": {
       "repository": "idy/wgc",
-      "checkedAt": "2026-11-12T05:19:28.290Z",
+      "checkedAt": "2026-11-12T05:34:54.870Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -563,7 +569,7 @@
     },
     "idy/wgc-ne": {
       "repository": "idy/wgc-ne",
-      "checkedAt": "2026-11-12T05:19:28.681Z",
+      "checkedAt": "2026-11-12T05:34:55.352Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.0",
@@ -594,7 +600,7 @@
     },
     "idy/sing-box-flutter": {
       "repository": "idy/sing-box-flutter",
-      "checkedAt": "2026-11-12T05:19:28.419Z",
+      "checkedAt": "2026-11-12T05:34:55.142Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -631,7 +637,7 @@
     },
     "idy/magpie-design-system": {
       "repository": "idy/magpie-design-system",
-      "checkedAt": "2026-11-12T05:19:28.538Z",
+      "checkedAt": "2026-11-12T05:34:55.282Z",
       "release": {
         "state": "published",
         "tagName": "v0.4.3",
@@ -649,7 +655,7 @@
     },
     "idy/homebrew": {
       "repository": "idy/homebrew",
-      "checkedAt": "2026-11-12T05:19:28.957Z",
+      "checkedAt": "2026-11-12T05:34:55.701Z",
       "release": {
         "state": "none",
         "tagName": null,
