@@ -30,7 +30,7 @@ It is part of the same public repository as idy's GitHub profile and public pinn
 - macOS users can copy Homebrew commands for Nootify and TailSplit from the directory. Installation happens on the visitor's machine.
 - Discord links provide community discussion and feedback channels; the website itself does not host those conversations.
 - GitHub supplies release metadata and downloadable artifacts. Project repositories and their documentation remain the authorities for installation, compatibility, and usage.
-- Maintainers edit the static website in `docs/`. `REPOSITORY.md` describes local preview, GitHub Pages configuration, and snapshot maintenance.
+- Maintainers edit the static website in `docs/`. `REPOSITORY.md` describes local preview, GitHub Pages configuration, live release queries, and profile-pin snapshot maintenance.
 
 ## Capabilities and Constraints
 
@@ -42,7 +42,8 @@ It is part of the same public repository as idy's GitHub profile and public pinn
 - System, light, and dark theme preferences. Language and theme selections use local storage when available and remain usable for the current visit if storage is unavailable.
 - A cards-first repository directory with search, category filters, sorting, and a table alternative on every screen size; phones show the table as a compact list of names and versions.
 - Each project shows only its current Released version and active Releasing versions. General CI results, completed or failed workflows, branch names, and commit hashes are not part of the directory.
-- A dated public GitHub snapshot separates published versions from active release targets. Only confirmed target tags may be displayed as version numbers; unknown targets are labeled as unconfirmed. Unavailable or stale information must remain qualified.
+- The browser queries `api.github.com` directly and anonymously, with independent project results and a versioned `localStorage` response cache. Published-release lookups last one hour; active-release lookups last five minutes. Normal page loads reuse fresh cache entries. Manual refresh bypasses expiry while respecting GitHub's retry delay. Blocked or full storage falls back to memory for the current visit. There are no browser credentials, scheduled project-status collectors, committed status snapshots, or automatic polling.
+- Released shows GitHub's latest stable release, with a published prerelease fallback only when the latest-release endpoint returns HTTP 404. Releasing queries each project's configured primary release workflows directly for active releases; those source workflows remain in place. Only confirmed target tags may be displayed as version numbers; unknown targets are labeled as unconfirmed. Rate limits and API or network errors preserve usable cached observations with their original timestamps and clear cached/last-observed labels. Retry delays persist across page loads; unavailable fields without cached data remain qualified.
 - Validated release assets supply platform-specific download links. Failed lookups retain a link to GitHub Releases; unavailable assets must not become invented download links.
 - Homebrew command copying with success or failure feedback, plus selectable command text.
 - A dedicated not-found page with a route back to the homepage.
@@ -64,7 +65,7 @@ No new voice, aesthetic, or cross-project branding mandate was established durin
 - `docs/index.html`: the current project directory, descriptions, source and documentation destinations, community links, and Homebrew instructions.
 - `docs/theme.js`: English and Chinese project descriptions and shared page copy.
 - `docs/directory.js` and `docs/downloads.js`: filtering, view switching, Released/Releasing version presentation, and project-specific download matching.
-- `scripts/project-status.mjs` and `docs/project-status.json`: explicit release-workflow configuration and timestamped GitHub observations.
+- `docs/project-status.js`: repository and primary release-workflow configuration, response normalizers, and direct anonymous GitHub API queries.
 - `packages/site-sdk/src/runtime.js`: shared language and theme behavior, command-copy feedback, release lookup, and release-asset validation.
 - `packages/site-sdk/README.md`: SDK contracts, distribution formats, component usage, and migration boundaries.
 - `docs/sdk/index.html`: a working catalogue of typography, layout, and page elements.
