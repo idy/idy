@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-12T04:09:18.264Z",
+  "generatedAt": "2026-11-12T04:20:57.578Z",
   "projects": {
     "GizClaw/gizclaw": {
       "repository": "GizClaw/gizclaw",
-      "checkedAt": "2026-11-12T04:09:16.590Z",
+      "checkedAt": "2026-11-12T04:20:55.727Z",
       "release": {
         "state": "published",
         "tagName": "v0.35.20",
@@ -113,7 +113,7 @@
     },
     "GizClaw/gizmoth": {
       "repository": "GizClaw/gizmoth",
-      "checkedAt": "2026-11-12T04:09:16.600Z",
+      "checkedAt": "2026-11-12T04:20:55.841Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.10",
@@ -179,14 +179,20 @@
         "zipball_url": "https://api.github.com/repos/GizClaw/gizmoth/zipball/v0.1.10"
       },
       "releasing": {
-        "state": "none",
-        "versions": []
+        "state": "active",
+        "versions": [
+          {
+            "version": "v0.2.1",
+            "url": "https://github.com/GizClaw/gizmoth/actions/runs/43153483666",
+            "state": "queued"
+          }
+        ]
       },
       "errors": []
     },
     "GizClaw/gizos": {
       "repository": "GizClaw/gizos",
-      "checkedAt": "2026-11-12T04:09:16.792Z",
+      "checkedAt": "2026-11-12T04:20:55.646Z",
       "release": {
         "state": "published",
         "tagName": "v20261031-200733",
@@ -265,7 +271,7 @@
     },
     "idy/nootify": {
       "repository": "idy/nootify",
-      "checkedAt": "2026-11-12T04:09:17.348Z",
+      "checkedAt": "2026-11-12T04:20:56.440Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.1",
@@ -320,7 +326,7 @@
     },
     "idy/ch348-macos": {
       "repository": "idy/ch348-macos",
-      "checkedAt": "2026-11-12T04:09:17.344Z",
+      "checkedAt": "2026-11-12T04:20:56.334Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.1-dev.13-pkg.1",
@@ -351,7 +357,7 @@
     },
     "idy/tailsplit": {
       "repository": "idy/tailsplit",
-      "checkedAt": "2026-11-12T04:09:17.465Z",
+      "checkedAt": "2026-11-12T04:20:56.778Z",
       "release": {
         "state": "published",
         "tagName": "v0.9.6",
@@ -471,14 +477,20 @@
         "zipball_url": "https://api.github.com/repos/idy/tailsplit/zipball/v0.9.6"
       },
       "releasing": {
-        "state": "none",
-        "versions": []
+        "state": "active",
+        "versions": [
+          {
+            "version": "v0.9.7",
+            "url": "https://github.com/idy/tailsplit/actions/runs/43154168850",
+            "state": "running"
+          }
+        ]
       },
       "errors": []
     },
     "idy/tailrelay": {
       "repository": "idy/tailrelay",
-      "checkedAt": "2026-11-12T04:09:18.068Z",
+      "checkedAt": "2026-11-12T04:20:57.136Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.2",
@@ -545,7 +557,7 @@
     },
     "idy/wgc": {
       "repository": "idy/wgc",
-      "checkedAt": "2026-11-12T04:09:17.558Z",
+      "checkedAt": "2026-11-12T04:20:56.590Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -563,7 +575,7 @@
     },
     "idy/wgc-ne": {
       "repository": "idy/wgc-ne",
-      "checkedAt": "2026-11-12T04:09:17.959Z",
+      "checkedAt": "2026-11-12T04:20:57.177Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.0",
@@ -594,7 +606,7 @@
     },
     "idy/sing-box-flutter": {
       "repository": "idy/sing-box-flutter",
-      "checkedAt": "2026-11-12T04:09:17.706Z",
+      "checkedAt": "2026-11-12T04:20:56.934Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -631,7 +643,7 @@
     },
     "idy/magpie-design-system": {
       "repository": "idy/magpie-design-system",
-      "checkedAt": "2026-11-12T04:09:17.865Z",
+      "checkedAt": "2026-11-12T04:20:57.131Z",
       "release": {
         "state": "published",
         "tagName": "v0.4.3",
@@ -649,7 +661,7 @@
     },
     "idy/homebrew": {
       "repository": "idy/homebrew",
-      "checkedAt": "2026-11-12T04:09:18.264Z",
+      "checkedAt": "2026-11-12T04:20:57.578Z",
       "release": {
         "state": "none",
         "tagName": null,
