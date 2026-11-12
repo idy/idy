@@ -404,7 +404,8 @@ export function startDirectory(
       release(row, record);
     }
     const results = [...records.values()];
-    const errors = results.some((record) => record.errors.length > 0);
+    const errors = results.some((record) => [record.release, record.releasing]
+      .some(({ state }) => state === "unavailable"));
     const rateLimited = results.some((record) => limited(record, "release") || limited(record, "releasing"));
     const usable = results.some((record) => [record.release, record.releasing]
       .some(({ state }) => state !== "unavailable" && state !== "unconfigured"));

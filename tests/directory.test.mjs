@@ -83,6 +83,25 @@ test("a project failure does not hide another project's release", async (t) => {
   assert.equal(row.querySelector("[data-release-status]").textContent, "Version unavailable");
   assert.equal(document.querySelector('[data-repository="GizClaw/gizclaw"] [data-release-link]').textContent, "v0.2.1");
   assert.match(document.querySelector("#release-check-time").textContent, /^Some GitHub requests failed/);
+  assert.equal(document.querySelector("#release-check-time").classList.contains("has-status-error"), true);
+});
+
+test("download validation warnings do not misreport successful requests as failures", async (t) => {
+  for (const warning of [
+    { zipball_url: null },
+    { zipball_url: "https://other.example/source.zip" },
+    { assets: [null] },
+    { assets: [{ name: "Nootify_0.2.1_arm64.dmg", state: "uploaded", size: 123,
+      browser_download_url: "https://other.example/Nootify_0.2.1_arm64.dmg" }] },
+  ]) {
+    const { row, document } = await setup(t, { release: ok(release(nootify, warning)) });
+    const status = document.querySelector("#release-check-time");
+    assert.equal(row.querySelector("[data-release-link]").textContent, "v0.2.1");
+    assert.match(status.textContent, /^Checked GitHub/);
+    assert.equal(status.classList.contains("has-status-error"), false);
+    assert.equal(row.querySelector("[data-download-note]").hidden, false);
+    assert.equal(row.querySelector('[data-downloads] a[href^="https://other.example"]'), null);
+  }
 });
 
 test("offline errors are unavailable rather than a claimed empty release", async (t) => {
