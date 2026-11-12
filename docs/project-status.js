@@ -171,7 +171,7 @@ export function projectEndpoints(project) {
 }
 
 function responseError(response) {
-  if (response?.error) return ["timeout", "network", "invalid-json", "too-large", "request-limit"].includes(response.error) ? response.error : "request failed";
+  if (response?.error) return ["timeout", "network", "invalid-json", "rate-limit"].includes(response.error) ? response.error : "request failed";
   return Number.isInteger(response?.status) ? `HTTP ${response.status}` : "request failed";
 }
 
@@ -218,11 +218,51 @@ export function normalizeProject(project, responses, checkedAt) {
   return result;
 }
 
-export function createSnapshot(projects, generatedAt) {
-  return { schemaVersion: 2, generatedAt: iso(generatedAt), projects: Object.fromEntries(projects.map((project) => [project.repository, project])) };
+// Public requests originate in the visitor's browser. No token or saved status
+// is used; every load/refresh reads GitHub again.
+export function githubRequest({ fetcher = globalThis.fetch, signal } = {}) {
+  return async (endpoint) => {
+    const timeout = AbortSignal.timeout(10000);
+    const requestSignal = signal ? AbortSignal.any([signal, timeout]) : timeout;
+    try {
+      const response = await fetcher(`https://api.github.com${endpoint}`, {
+        credentials: "omit",
+        redirect: "error",
+        cache: "no-cache",
+        headers: { Accept: "application/vnd.github+json" },
+        signal: requestSignal,
+      });
+      if (response.status !== 200) {
+        const limited = response.status === 429 ||
+          (response.status === 403 && response.headers?.get("x-ratelimit-remaining") === "0");
+        return { status: response.status, ...(limited ? { error: "rate-limit" } : {}) };
+      }
+      try { return { status: 200, data: await response.json() }; }
+      catch { return { status: 200, error: timeout.aborted ? "timeout" : "invalid-json" }; }
+    } catch {
+      return { status: null, error: timeout.aborted ? "timeout" : "network" };
+    }
+  };
 }
 
-export function hasUsableData(snapshot) {
-  return Object.values(snapshot.projects).some((project) => [project.release, project.releasing]
-    .some(({ state }) => state !== "unavailable" && state !== "unconfigured"));
+export async function fetchProject(project, {
+  request = githubRequest(), now = () => new Date().toISOString(),
+} = {}) {
+  const endpoints = projectEndpoints(project);
+  const read = async (endpoint) => {
+    try { return await request(endpoint); }
+    catch { return { status: null, error: "network" }; }
+  };
+  const [release, active] = await Promise.all([
+    (async () => {
+      const response = await read(endpoints.release);
+      if (response.status === 404 && !response.error) {
+        return { release: response, fallback: await read(endpoints.fallback) };
+      }
+      return { release: response };
+    })(),
+    Promise.all(Object.entries(endpoints.releasing ?? {}).map(async ([status, endpoint]) =>
+      [status, await read(endpoint)])),
+  ]);
+  return normalizeProject(project, { ...release, ...Object.fromEntries(active) }, now());
 }

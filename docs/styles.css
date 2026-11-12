@@ -353,7 +353,7 @@ body.datasheet {
 .directory-meta p {
   margin: 0;
 }
-.snapshot-meta {
+.status-meta {
   display: flex;
   align-items: baseline;
   gap: 12px;
@@ -373,7 +373,7 @@ body.datasheet {
   opacity: 0.6;
   cursor: progress;
 }
-.is-stale {
+.has-status-error {
   color: var(--ds-ink);
   font-weight: 600;
 }
@@ -1007,7 +1007,7 @@ body.datasheet {
     flex-direction: column;
     gap: 0;
   }
-  .snapshot-meta {
+  .status-meta {
     flex-wrap: wrap;
     gap: 0 12px;
   }

@@ -1,4 +1,5 @@
 import { downloads } from "./downloads.js";
+import { PROJECTS, fetchProject, githubRequest } from "./project-status.js";
 
 const text = {
   en: {
@@ -26,21 +27,21 @@ const text = {
     tableView: "Table",
     projectColumn: "Project",
     publishedLabel: "Released",
-    refreshSnapshot: "Reload snapshot",
-    refreshing: "Reloading…",
-    snapshotLoading: "Loading GitHub snapshot…",
-    snapshotUnavailable:
-      "GitHub snapshot unavailable. Open each repository to check its status.",
-    snapshotTime: "GitHub snapshot · {time}",
-    snapshotStale: "Older snapshot · {time}",
-    snapshotFailed: "Reload failed · showing {time}",
+    refreshStatus: "Refresh releases",
+    refreshing: "Refreshing…",
+    releasesLoading: "Reading GitHub releases · {loaded}/{total}",
+    releasesUnavailable: "GitHub unavailable. Open each repository to check its releases.",
+    releasesTime: "Checked GitHub · {time}",
+    releasesPartial: "Some GitHub requests failed · {time}",
+    releasesLimited: "GitHub request limit reached. Try again later or open the repository.",
+    statusLimited: "GitHub request limit reached",
     projectsCount: "{shown} of {total} projects",
     emptyHeading: "No matching projects",
     emptyText: "Try another name or category.",
     clearFilters: "Clear filters",
     statusExplanation: "About release versions",
     statusExplanationText:
-      "Released is the latest published version. Releasing lists only versions with an active release, including queued or waiting releases. A version is shown only when its target tag is confirmed; otherwise it is marked “Version not confirmed”. Completed and failed builds are not shown. Snapshots update on a 15-minute schedule and may be delayed.",
+      "Released is the latest published version. Releasing lists only versions with an active release, including queued or waiting releases. A version is shown only when its target tag is confirmed; otherwise it is marked “Version not confirmed”. Completed and failed builds are not shown. Release information is read directly from GitHub when you open this page or refresh.",
     statusLoading: "Loading…",
     statusUnavailable: "Unavailable",
     previewPublished: "Prerelease",
@@ -67,8 +68,6 @@ const text = {
     releaseInProgress: "Releasing",
     releaseQueued: "Queued",
     releaseWaiting: "Waiting",
-    historicalRelease: "Last observed",
-    staleReleasing: "Awaiting fresh data",
   },
   zh: {
     directoryLabel: "项目目录",
@@ -95,20 +94,21 @@ const text = {
     tableView: "表格",
     projectColumn: "项目",
     publishedLabel: "Released",
-    refreshSnapshot: "重新载入快照",
-    refreshing: "载入中…",
-    snapshotLoading: "正在载入 GitHub 状态快照…",
-    snapshotUnavailable: "GitHub 状态快照暂不可用，请前往对应仓库查看。",
-    snapshotTime: "GitHub 快照 · {time}",
-    snapshotStale: "较早的快照 · {time}",
-    snapshotFailed: "刷新失败 · 显示 {time} 的快照",
+    refreshStatus: "刷新发布信息",
+    refreshing: "刷新中…",
+    releasesLoading: "正在读取 GitHub 发布信息 · {loaded}/{total}",
+    releasesUnavailable: "GitHub 暂不可用，请前往对应仓库查看发布信息。",
+    releasesTime: "已查询 GitHub · {time}",
+    releasesPartial: "部分 GitHub 请求失败 · {time}",
+    releasesLimited: "已达到 GitHub 请求上限，请稍后重试或前往仓库查看。",
+    statusLimited: "已达到 GitHub 请求上限",
     projectsCount: "显示 {shown} / {total} 个项目",
     emptyHeading: "没有匹配的项目",
     emptyText: "试试其他关键词或分类。",
     clearFilters: "清除筛选",
     statusExplanation: "关于版本信息",
     statusExplanationText:
-      "Released 显示最新已发布版本，Releasing 仅列出正在发布、排队或等待中的版本。只有能确认目标标签时才显示版本号，否则标注“版本待确认”。已完成和失败的构建不会展示。快照计划每 15 分钟更新，可能有延迟。",
+      "Released 显示最新已发布版本，Releasing 仅列出正在发布、排队或等待中的版本。只有能确认目标标签时才显示版本号，否则标注“版本待确认”。已完成和失败的构建不会展示。打开页面或点击刷新时，直接从 GitHub 读取发布信息。",
     statusLoading: "载入中…",
     statusUnavailable: "暂不可用",
     previewPublished: "预发布",
@@ -135,21 +135,10 @@ const text = {
     releaseInProgress: "发布中",
     releaseQueued: "排队中",
     releaseWaiting: "等待中",
-    historicalRelease: "上次观测",
-    staleReleasing: "状态待更新",
   },
 };
 
 const ACTIVE = new Set(["running", "queued", "waiting"]);
-export const STALE_AFTER = 30 * 60 * 1000;
-
-export function isStale(checkedAt, now = Date.now()) {
-  const time = Date.parse(checkedAt);
-  return (
-    !Number.isFinite(time) || time > now + 60000 || now - time > STALE_AFTER
-  );
-}
-
 export function githubLink(value, repository, kind = "any") {
   if (typeof value !== "string") return null;
   try {
@@ -213,10 +202,15 @@ export function startDirectory(
     filters();
   };
   const refresh = directory.querySelector("#refresh-status");
-  const metadata = directory.querySelector("#snapshot-time");
-  let snapshot = null;
+  const metadata = directory.querySelector("#release-check-time");
+  const projects = rows.map((row) => PROJECTS.find((project) => project.repository === row.dataset.repository));
+  const records = new Map();
   let loading = false;
-  let failed = false;
+  let checkedAt = null;
+  let controller;
+  let disposed = false;
+  const limited = (record, kind) => record?.errors.some((error) => error === `${kind}: rate-limit`);
+  const unavailable = (record, kind) => t(limited(record, kind) ? "statusLimited" : "statusUnavailable");
   const t = (key, replacements = {}) =>
     Object.entries(replacements).reduce(
       (value, [name, replacement]) =>
@@ -251,7 +245,6 @@ export function startDirectory(
     const list = cell.querySelector("[data-releasing-list]");
     const empty = cell.querySelector("[data-releasing-empty]");
     const data = record?.releasing;
-    const stale = record && isStale(record.checkedAt, now());
     list.replaceChildren();
     const versions =
       data?.state === "active" && Array.isArray(data.versions)
@@ -271,15 +264,13 @@ export function startDirectory(
           : t("unknownVersion");
       const state = document.createElement("span");
       state.className = "releasing-note";
-      state.textContent = stale
-        ? t("historicalRelease")
-        : t(
-            entry.state === "queued"
-              ? "releaseQueued"
-              : entry.state === "waiting"
-                ? "releaseWaiting"
-                : "releaseInProgress",
-          );
+      state.textContent = t(
+        entry.state === "queued"
+          ? "releaseQueued"
+          : entry.state === "waiting"
+            ? "releaseWaiting"
+            : "releaseInProgress",
+      );
       item.append(link, state);
       list.append(item);
     }
@@ -288,16 +279,11 @@ export function startDirectory(
     if (data?.state === "unconfigured") {
       empty.textContent = "—";
       empty.title = t("untrackedReleasing");
-    } else if (stale) {
-      empty.textContent = t("staleReleasing");
-      empty.title = "";
     } else if (data?.state === "none") {
       empty.textContent = "—";
       empty.title = t("noReleasing");
     } else {
-      empty.textContent = t(
-        snapshot || failed ? "statusUnavailable" : "statusLoading",
-      );
+      empty.textContent = record ? unavailable(record, "releasing") : t("statusLoading");
       empty.title = "";
     }
     empty.setAttribute("aria-label", empty.title || empty.textContent);
@@ -331,8 +317,8 @@ export function startDirectory(
         : ""
       : data?.state === "none"
         ? t("noRelease")
-        : snapshot || failed
-          ? t("unavailableRelease")
+        : record
+          ? t(limited(record, "release") ? "statusLimited" : "unavailableRelease")
           : t("statusLoading");
     // Cards name a prerelease in the Status column; the table keeps the inline label.
     const statusCell = row.querySelector(".version-cell > .cell-label");
@@ -413,61 +399,51 @@ export function startDirectory(
   function render() {
     search.placeholder = t("searchPlaceholder");
     for (const row of rows) {
-      const record = snapshot?.projects[row.dataset.repository];
+      const record = records.get(row.dataset.repository);
       releasing(row, record);
       release(row, record);
     }
-    const timestamp = snapshot ? date(snapshot.generatedAt) : "";
-    metadata.textContent = snapshot
-      ? t(
-          failed
-            ? "snapshotFailed"
-            : isStale(snapshot.generatedAt, now())
-              ? "snapshotStale"
-              : "snapshotTime",
-          { time: timestamp },
-        )
-      : t(failed ? "snapshotUnavailable" : "snapshotLoading");
-    metadata.classList.toggle(
-      "is-stale",
-      Boolean(failed || (snapshot && isStale(snapshot.generatedAt, now()))),
-    );
+    const results = [...records.values()];
+    const errors = results.some((record) => record.errors.length > 0);
+    const rateLimited = results.some((record) => limited(record, "release") || limited(record, "releasing"));
+    const usable = results.some((record) => [record.release, record.releasing]
+      .some(({ state }) => state !== "unavailable" && state !== "unconfigured"));
+    metadata.textContent = loading
+      ? t("releasesLoading", { loaded: records.size, total: projects.length })
+      : t(rateLimited ? "releasesLimited" : !usable ? "releasesUnavailable" : errors ? "releasesPartial" : "releasesTime",
+        { time: date(checkedAt) });
+    metadata.classList.toggle("has-status-error", errors);
     refresh.disabled = loading;
-    refresh.textContent = t(loading ? "refreshing" : "refreshSnapshot");
+    refresh.textContent = t(loading ? "refreshing" : "refreshStatus");
     refresh.setAttribute("aria-busy", String(loading));
     filters();
   }
 
   async function load() {
-    if (loading) return;
+    if (loading || disposed) return;
     loading = true;
+    records.clear();
+    controller = new AbortController();
+    const request = githubRequest({ fetcher, signal: controller.signal });
     render();
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000);
+    let cursor = 0;
+    async function worker() {
+      while (cursor < projects.length && !disposed) {
+        const project = projects[cursor++];
+        const record = await fetchProject(project, {
+          request, now: () => new Date(now()).toISOString(),
+        });
+        if (disposed) return;
+        records.set(project.repository, record);
+        render();
+      }
+    }
     try {
-      const response = await fetcher("project-status.json", {
-        cache: "no-cache",
-        credentials: "omit",
-        signal: controller.signal,
-      });
-      if (!response.ok) throw new Error(`Snapshot: ${response.status}`);
-      const value = await response.json();
-      if (
-        value?.schemaVersion !== 2 ||
-        !Number.isFinite(Date.parse(value.generatedAt)) ||
-        !value.projects ||
-        typeof value.projects !== "object" ||
-        Array.isArray(value.projects)
-      )
-        throw new Error("Invalid status snapshot");
-      snapshot = value;
-      failed = false;
-    } catch {
-      failed = true;
+      await Promise.all(Array.from({ length: Math.min(3, projects.length) }, worker));
     } finally {
-      clearTimeout(timeout);
+      checkedAt = new Date(now()).toISOString();
       loading = false;
-      render();
+      if (!disposed) render();
     }
   }
 
@@ -502,14 +478,12 @@ export function startDirectory(
   document.addEventListener("idy:languagechange", onLanguage);
   render();
   const ready = load();
-  const freshnessTimer = setInterval(() => {
-    if (!document.hidden) render();
-  }, 60000);
   return {
     ready,
     reload: load,
     dispose() {
-      clearInterval(freshnessTimer);
+      disposed = true;
+      controller?.abort();
       document.removeEventListener("idy:languagechange", onLanguage);
     },
   };

@@ -238,8 +238,8 @@
         </form>
         <div class="directory-meta">
           <p id="project-count" role="status" aria-live="polite">12 projects</p>
-          <div class="snapshot-meta">
-            <p id="snapshot-time" role="status" aria-live="polite">
+          <div class="status-meta">
+            <p id="release-check-time" role="status" aria-live="polite">
               Open GitHub for current release information.
             </p>
             <button
@@ -247,9 +247,9 @@
               class="text-button"
               id="refresh-status"
               hidden=""
-              data-i18n="refreshSnapshot"
+              data-i18n="refreshStatus"
             >
-              Reload snapshot
+              Refresh releases
             </button>
           </div>
         </div>
@@ -1424,8 +1424,8 @@
             versions with an active release, including queued or waiting
             releases. A version is shown only when its target tag is confirmed;
             otherwise it is marked “Version not confirmed”. Completed and failed
-            builds are not shown. Snapshots update on a 15-minute schedule and
-            may be delayed.
+            builds are not shown. Release information is read directly from GitHub
+            when you open this page or refresh.
           </p>
         </details>
       </section>
