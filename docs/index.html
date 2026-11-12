@@ -1424,8 +1424,9 @@
             versions with an active release, including queued or waiting
             releases. A version is shown only when its target tag is confirmed;
             otherwise it is marked “Version not confirmed”. Completed and failed
-            builds are not shown. Release information is read directly from GitHub
-            when you open this page or refresh.
+            builds are not shown. The browser caches Released data for one hour and
+            Releasing data for five minutes. Refresh requests current data unless
+            GitHub has imposed a retry delay.
           </p>
         </details>
       </section>

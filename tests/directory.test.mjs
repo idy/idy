@@ -4,18 +4,19 @@ import { readFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
 import { startDirectory, githubLink } from "../docs/directory.js";
 import { asset } from "../packages/site-sdk/src/runtime.js";
-import { api, nootify, now, ok, release, run, runs } from "./helpers/github.mjs";
+import { api, memoryStorage, nootify, now, ok, release, run, runs } from "./helpers/github.mjs";
 
 const html = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
-async function setup(t, overrides = { in_progress: ok(runs(run())) }, fetcher, wait = true) {
+async function setup(t, overrides = { in_progress: ok(runs(run())) }, fetcher, wait = true, options = {}) {
   const dom = new JSDOM(html, { url: "https://idy.dev/" });
+  if (options.storage) Object.defineProperty(dom.window, "localStorage", { value: options.storage });
   let dictionaries;
   const site = {
     language: "en", asset,
     t: (key) => dictionaries?.[site.language]?.[key] ?? dictionaries?.en?.[key] ?? { releases: "Releases" }[key] ?? key,
     init(value) { dictionaries = value; },
   };
-  const controller = startDirectory(dom.window.document, site, fetcher ?? api(overrides), () => Date.parse(now));
+  const controller = startDirectory(dom.window.document, site, fetcher ?? api(overrides), options.now ?? (() => Date.parse(now)));
   t.after(() => { controller.dispose(); dom.window.close(); });
   if (wait) await controller.ready;
   return { dom, document: dom.window.document, site, controller,
@@ -33,6 +34,53 @@ test("cards and table render direct GitHub releases without CI fields", async (t
   assert.equal(calls.length, 30);
   assert.ok(calls.every((url) => url.startsWith("https://api.github.com/repos/")));
   assert.match(document.querySelector("#release-check-time").textContent, /^Checked GitHub/);
+});
+
+test("page reloads reuse localStorage while the refresh button fetches new versions", async (t) => {
+  const storage = memoryStorage();
+  let calls = 0;
+  let updated = false;
+  const fetcher = api((project, kind) => project === nootify && kind === "release"
+    ? ok(release(nootify, { tag_name: updated ? "v0.3.0" : "v0.2.1" })) : undefined, () => calls++);
+  await setup(t, {}, fetcher, true, { storage });
+  assert.equal(calls, 30);
+  updated = true;
+  const page = await setup(t, {}, fetcher, true, { storage });
+  assert.equal(calls, 30, "a new page must read stored responses without any GitHub requests");
+  assert.equal(page.row.querySelector("[data-release-link]").textContent, "v0.2.1");
+  assert.match(page.document.querySelector("#release-check-time").textContent, /^Local cache · checked/);
+  page.site.language = "zh";
+  page.document.dispatchEvent(new page.dom.window.CustomEvent("idy:languagechange"));
+  assert.match(page.document.querySelector("#release-check-time").textContent, /^本地缓存 · 上次查询/);
+  await page.controller.reload();
+  assert.equal(calls, 60);
+  assert.equal(page.row.querySelector("[data-release-link]").textContent, "v0.3.0");
+});
+
+test("rate-limited refreshes keep cached versions and persist the retry pause across pages", async (t) => {
+  const storage = memoryStorage();
+  let limited = false;
+  let calls = 0;
+  const reset = Date.parse(now) + 3600000;
+  const normal = api({ in_progress: ok(runs(run())) });
+  const fetcher = async (...args) => {
+    calls++;
+    return limited ? new Response("{}", { status: 403, headers: {
+      "x-ratelimit-remaining": "0", "x-ratelimit-reset": String(reset / 1000),
+    } }) : normal(...args);
+  };
+  const first = await setup(t, {}, fetcher, true, { storage });
+  limited = true;
+  await first.controller.reload();
+  assert.equal(first.row.querySelector("[data-release-link]").textContent, "v0.2.1");
+  assert.equal(first.row.querySelector(".releasing-note").textContent, "Last observed: Releasing");
+  assert.match(first.document.querySelector("#release-check-time").textContent, /request limit reached · cached data from/);
+  const before = calls;
+  const reloaded = await setup(t, {}, fetcher, true, { storage });
+  await reloaded.controller.reload();
+  assert.equal(calls, before, "neither page reload nor forced refresh may make requests during cooldown");
+  assert.equal(reloaded.row.querySelector("[data-release-link]").textContent, "v0.2.1");
+  assert.match(reloaded.document.querySelector("#release-check-time").textContent, /retry after/);
 });
 
 test("no active release shows a dash; untracked projects keep a distinct explanation", async (t) => {
@@ -138,18 +186,19 @@ test("manual refresh reads newer releases directly and clears finished releasing
   assert.equal(requests, 60);
 });
 
-test("failed refresh removes old active data instead of presenting it as current", async (t) => {
+test("failed refresh preserves versions and labels active data as a cached observation", async (t) => {
   let offline = false;
   const publicApi = api({ in_progress: ok(runs(run())) });
-  const { row, controller } = await setup(t, {}, async (...args) => {
+  const { row, controller, document } = await setup(t, {}, async (...args) => {
     if (offline) throw new Error("offline");
     return publicApi(...args);
   });
   offline = true;
   await controller.reload();
-  assert.equal(row.querySelector(".releasing-version"), null);
-  assert.equal(row.querySelector("[data-release-link]").textContent, "Releases");
-  assert.equal(row.querySelector("[data-release-status]").textContent, "Version unavailable");
+  assert.equal(row.querySelector(".releasing-version").textContent, "v0.2.2");
+  assert.equal(row.querySelector(".releasing-note").textContent, "Last observed: Releasing");
+  assert.equal(row.querySelector("[data-release-link]").textContent, "v0.2.1");
+  assert.match(document.querySelector("#release-check-time").textContent, /^Refresh failed · cached data from/);
 });
 
 test("rate limits explain the failure and keep GitHub fallback links", async (t) => {

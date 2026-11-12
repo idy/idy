@@ -1,5 +1,5 @@
 import { downloads } from "./downloads.js";
-import { PROJECTS, fetchProject, githubRequest } from "./project-status.js";
+import { PROJECTS, createGithubCache, fetchProject, githubRequest } from "./project-status.js";
 
 const text = {
   en: {
@@ -32,6 +32,12 @@ const text = {
     releasesLoading: "Reading GitHub releases · {loaded}/{total}",
     releasesUnavailable: "GitHub unavailable. Open each repository to check its releases.",
     releasesTime: "Checked GitHub · {time}",
+    releasesCached: "Local cache · checked {time}",
+    releasesCachedFailure: "Refresh failed · cached data from {time}",
+    releasesLimitedCached: "GitHub request limit reached · cached data from {time} · retry after {retry}",
+    releasesRetry: "GitHub request limit reached · retry after {retry}",
+    cachedStatus: "Last observed: {status}",
+    cachedNoReleasing: "No release was in progress when last checked",
     releasesPartial: "Some GitHub requests failed · {time}",
     releasesLimited: "GitHub request limit reached. Try again later or open the repository.",
     statusLimited: "GitHub request limit reached",
@@ -41,7 +47,7 @@ const text = {
     clearFilters: "Clear filters",
     statusExplanation: "About release versions",
     statusExplanationText:
-      "Released is the latest published version. Releasing lists only versions with an active release, including queued or waiting releases. A version is shown only when its target tag is confirmed; otherwise it is marked “Version not confirmed”. Completed and failed builds are not shown. Release information is read directly from GitHub when you open this page or refresh.",
+      "Released is the latest published version. Releasing lists only versions with an active release, including queued or waiting releases. A version is shown only when its target tag is confirmed; otherwise it is marked “Version not confirmed”. Completed and failed builds are not shown. The browser caches Released data for one hour and Releasing data for five minutes. Refresh requests current data unless GitHub has imposed a retry delay.",
     statusLoading: "Loading…",
     statusUnavailable: "Unavailable",
     previewPublished: "Prerelease",
@@ -99,6 +105,12 @@ const text = {
     releasesLoading: "正在读取 GitHub 发布信息 · {loaded}/{total}",
     releasesUnavailable: "GitHub 暂不可用，请前往对应仓库查看发布信息。",
     releasesTime: "已查询 GitHub · {time}",
+    releasesCached: "本地缓存 · 上次查询 {time}",
+    releasesCachedFailure: "刷新失败 · 显示 {time} 的缓存",
+    releasesLimitedCached: "已达到 GitHub 请求上限 · 显示 {time} 的缓存 · {retry} 后可重试",
+    releasesRetry: "已达到 GitHub 请求上限 · {retry} 后可重试",
+    cachedStatus: "上次查询：{status}",
+    cachedNoReleasing: "上次查询时暂无发布中版本",
     releasesPartial: "部分 GitHub 请求失败 · {time}",
     releasesLimited: "已达到 GitHub 请求上限，请稍后重试或前往仓库查看。",
     statusLimited: "已达到 GitHub 请求上限",
@@ -108,7 +120,7 @@ const text = {
     clearFilters: "清除筛选",
     statusExplanation: "关于版本信息",
     statusExplanationText:
-      "Released 显示最新已发布版本，Releasing 仅列出正在发布、排队或等待中的版本。只有能确认目标标签时才显示版本号，否则标注“版本待确认”。已完成和失败的构建不会展示。打开页面或点击刷新时，直接从 GitHub 读取发布信息。",
+      "Released 显示最新已发布版本，Releasing 仅列出正在发布、排队或等待中的版本。只有能确认目标标签时才显示版本号，否则标注“版本待确认”。已完成和失败的构建不会展示。已发布版本缓存 1 小时，发布中状态缓存 5 分钟，页面刷新优先复用缓存。点击“刷新发布信息”可主动更新；GitHub 限流期间暂停请求。",
     statusLoading: "载入中…",
     statusUnavailable: "暂不可用",
     previewPublished: "预发布",
@@ -205,8 +217,11 @@ export function startDirectory(
   const metadata = directory.querySelector("#release-check-time");
   const projects = rows.map((row) => PROJECTS.find((project) => project.repository === row.dataset.repository));
   const records = new Map();
+  let storage;
+  try { storage = document.defaultView?.localStorage; } catch { /* Cache in memory when storage is blocked. */ }
+  const responseCache = createGithubCache({ storage, now });
   let loading = false;
-  let checkedAt = null;
+  let loaded = 0;
   let controller;
   let disposed = false;
   const limited = (record, kind) => record?.errors.some((error) => error === `${kind}: rate-limit`);
@@ -271,6 +286,9 @@ export function startDirectory(
             ? "releaseWaiting"
             : "releaseInProgress",
       );
+      if (record?.staleFields?.includes("releasing")) {
+        state.textContent = t("cachedStatus", { status: state.textContent });
+      }
       item.append(link, state);
       list.append(item);
     }
@@ -281,7 +299,7 @@ export function startDirectory(
       empty.title = t("untrackedReleasing");
     } else if (data?.state === "none") {
       empty.textContent = "—";
-      empty.title = t("noReleasing");
+      empty.title = t(record?.staleFields?.includes("releasing") ? "cachedNoReleasing" : "noReleasing");
     } else {
       empty.textContent = record ? unavailable(record, "releasing") : t("statusLoading");
       empty.title = "";
@@ -406,26 +424,35 @@ export function startDirectory(
     const results = [...records.values()];
     const errors = results.some((record) => [record.release, record.releasing]
       .some(({ state }) => state === "unavailable"));
-    const rateLimited = results.some((record) => limited(record, "release") || limited(record, "releasing"));
+    const retryAt = Math.max(0, ...results.map((record) => record.retryAt || 0));
+    const rateLimited = retryAt > now() || results.some((record) => limited(record, "release") || limited(record, "releasing"));
     const usable = results.some((record) => [record.release, record.releasing]
       .some(({ state }) => state !== "unavailable" && state !== "unconfigured"));
-    metadata.textContent = loading
-      ? t("releasesLoading", { loaded: records.size, total: projects.length })
-      : t(rateLimited ? "releasesLimited" : !usable ? "releasesUnavailable" : errors ? "releasesPartial" : "releasesTime",
-        { time: date(checkedAt) });
-    metadata.classList.toggle("has-status-error", errors);
+    const cached = results.some((record) => record.cached);
+    const stale = results.some((record) => record.staleFields?.length);
+    const checkedAt = results.length ? new Date(Math.min(...results.map((record) => Date.parse(record.checkedAt)))).toISOString() : null;
+    let message = cached ? "releasesCached" : "releasesTime";
+    if (errors) message = "releasesPartial";
+    if (stale) message = "releasesCachedFailure";
+    if (!usable) message = "releasesUnavailable";
+    if (rateLimited) message = usable && cached ? "releasesLimitedCached" : "releasesRetry";
+    if (loading) message = "releasesLoading";
+    metadata.textContent = t(message, {
+      loaded, total: projects.length, time: date(checkedAt), retry: date(new Date(retryAt).toISOString()),
+    });
+    metadata.classList.toggle("has-status-error", errors || stale || rateLimited);
     refresh.disabled = loading;
     refresh.textContent = t(loading ? "refreshing" : "refreshStatus");
     refresh.setAttribute("aria-busy", String(loading));
     filters();
   }
 
-  async function load() {
+  async function load(force = false) {
     if (loading || disposed) return;
     loading = true;
-    records.clear();
+    loaded = 0;
     controller = new AbortController();
-    const request = githubRequest({ fetcher, signal: controller.signal });
+    const request = responseCache.wrap(githubRequest({ fetcher, signal: controller.signal, now }), { force });
     render();
     let cursor = 0;
     async function worker() {
@@ -436,13 +463,13 @@ export function startDirectory(
         });
         if (disposed) return;
         records.set(project.repository, record);
+        loaded++;
         render();
       }
     }
     try {
       await Promise.all(Array.from({ length: Math.min(3, projects.length) }, worker));
     } finally {
-      checkedAt = new Date(now()).toISOString();
       loading = false;
       if (!disposed) render();
     }
@@ -475,13 +502,13 @@ export function startDirectory(
     selectCategory("all");
     search.focus();
   });
-  refresh.addEventListener("click", load);
+  refresh.addEventListener("click", () => load(true));
   document.addEventListener("idy:languagechange", onLanguage);
   render();
   const ready = load();
   return {
     ready,
-    reload: load,
+    reload: () => load(true),
     dispose() {
       disposed = true;
       controller?.abort();

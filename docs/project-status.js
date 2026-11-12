@@ -218,9 +218,8 @@ export function normalizeProject(project, responses, checkedAt) {
   return result;
 }
 
-// Public requests originate in the visitor's browser. No token or saved status
-// is used; every load/refresh reads GitHub again.
-export function githubRequest({ fetcher = globalThis.fetch, signal } = {}) {
+// Public requests originate in the visitor's browser and never send a token.
+export function githubRequest({ fetcher = globalThis.fetch, signal, now = Date.now } = {}) {
   return async (endpoint) => {
     const timeout = AbortSignal.timeout(10000);
     const requestSignal = signal ? AbortSignal.any([signal, timeout]) : timeout;
@@ -233,15 +232,112 @@ export function githubRequest({ fetcher = globalThis.fetch, signal } = {}) {
         signal: requestSignal,
       });
       if (response.status !== 200) {
-        const limited = response.status === 429 ||
-          (response.status === 403 && response.headers?.get("x-ratelimit-remaining") === "0");
-        return { status: response.status, ...(limited ? { error: "rate-limit" } : {}) };
+        const retryAfter = response.headers?.get("retry-after");
+        const limited = response.status === 429 || (response.status === 403 &&
+          (response.headers?.get("x-ratelimit-remaining") === "0" || retryAfter != null));
+        if (limited) {
+          const delay = retryAfter == null ? NaN : /^\d+$/.test(retryAfter)
+            ? now() + Number(retryAfter) * 1000 : Date.parse(retryAfter);
+          const reset = Number(response.headers?.get("x-ratelimit-reset")) * 1000;
+          const retryTimes = [delay, reset].filter((time) => Number.isFinite(time) && time > now());
+          return { status: response.status, error: "rate-limit",
+            retryAt: retryTimes.length ? Math.max(...retryTimes) : now() + 60000 };
+        }
+        return { status: response.status };
       }
       try { return { status: 200, data: await response.json() }; }
       catch { return { status: 200, error: timeout.aborted ? "timeout" : "invalid-json" }; }
     } catch {
       return { status: null, error: timeout.aborted ? "timeout" : "network" };
     }
+  };
+}
+
+const CACHE_PREFIX = "idy.github-releases.v1:";
+const COOLDOWN_KEY = `${CACHE_PREFIX}retry-at`;
+export const RELEASE_CACHE_TTL = 60 * 60 * 1000;
+export const RELEASING_CACHE_TTL = 5 * 60 * 1000;
+
+function cacheable(endpoint, response) {
+  const project = PROJECTS.find((item) => endpoint.startsWith(`/repos/${item.repository}/`));
+  if (!project || !isObject(response) || response.error) return false;
+  const endpoints = projectEndpoints(project);
+  if (response.status === 404) return endpoint === endpoints.release;
+  if (response.status !== 200) return false;
+  try {
+    if (endpoint === endpoints.release || endpoint === endpoints.fallback) {
+      normalizeRelease(response.data, project, [], { fallback: endpoint === endpoints.fallback });
+    } else if (Object.values(endpoints.releasing ?? {}).includes(endpoint)) {
+      normalizeReleasing([response.data, { total_count: 0, workflow_runs: [] }, { total_count: 0, workflow_runs: [] }], project);
+    } else return false;
+    return true;
+  } catch { return false; }
+}
+
+export function createGithubCache({ storage, now = Date.now } = {}) {
+  const memory = new Map();
+  let retryAt = 0;
+  const read = (endpoint) => {
+    const key = CACHE_PREFIX + endpoint;
+    let entry = memory.get(key);
+    try {
+      const saved = JSON.parse(storage?.getItem(key) ?? "null");
+      if (saved && (!entry || saved.checkedAt >= entry.checkedAt)) entry = saved;
+    } catch { /* Corrupt or unavailable storage must not break releases. */ }
+    if (!entry || entry.version !== 1 || !Number.isFinite(entry.checkedAt) ||
+      entry.checkedAt < 0 || entry.checkedAt > now() + 60000 || !cacheable(endpoint, entry.response)) return null;
+    memory.set(key, entry);
+    return entry;
+  };
+  const until = () => {
+    try {
+      const saved = Number(storage?.getItem(COOLDOWN_KEY));
+      if (Number.isFinite(saved) && saved <= now() + 24 * 60 * 60 * 1000) retryAt = Math.max(retryAt, saved);
+    } catch { /* The in-memory cooldown still applies. */ }
+    return retryAt > now() ? retryAt : 0;
+  };
+  const cachedResponse = (entry, extra = {}) => ({
+    ...entry.response, checkedAt: entry.checkedAt, cached: true, ...extra,
+  });
+  return {
+    wrap(request, { force = false } = {}) {
+      return async (endpoint) => {
+        const entry = read(endpoint);
+        const blockedUntil = until();
+        const ttl = endpoint.includes("/actions/") ? RELEASING_CACHE_TTL : RELEASE_CACHE_TTL;
+        if (entry && !force && now() - entry.checkedAt < ttl) {
+          return cachedResponse(entry, { retryAt: blockedUntil });
+        }
+        let response;
+        if (blockedUntil) response = { status: 429, error: "rate-limit", retryAt: blockedUntil };
+        else {
+          try { response = await request(endpoint); }
+          catch { response = { status: null, error: "network" }; }
+        }
+        if (response.error === "rate-limit") {
+          retryAt = Math.min(now() + 24 * 60 * 60 * 1000,
+            Math.max(until(), response.retryAt || now() + 60000));
+          try { storage?.setItem(COOLDOWN_KEY, String(retryAt)); } catch { /* Keep the in-memory cooldown. */ }
+        }
+        if (cacheable(endpoint, response)) {
+          const next = { version: 1, checkedAt: now(), response: { status: response.status, data: response.data } };
+          memory.set(CACHE_PREFIX + endpoint, next);
+          try { storage?.setItem(CACHE_PREFIX + endpoint, JSON.stringify(next)); } catch { /* Quota or storage denial: cache for this visit. */ }
+          return { ...response, checkedAt: next.checkedAt };
+        }
+        // Permission/not-found responses do not revive saved repository data.
+        const recoverable = response.error || response.status >= 500 || response.status === 200;
+        if (entry && recoverable) return cachedResponse(entry, {
+          stale: true, refreshError: response.error || (response.status === 200 ? "invalid-json" : `HTTP ${response.status}`),
+          retryAt: until(),
+        });
+        if (entry && !recoverable) {
+          memory.delete(CACHE_PREFIX + endpoint);
+          try { storage?.removeItem(CACHE_PREFIX + endpoint); } catch { /* Storage may be blocked. */ }
+        }
+        return { ...response, retryAt: until() };
+      };
+    },
   };
 }
 
@@ -264,5 +360,23 @@ export async function fetchProject(project, {
     Promise.all(Object.entries(endpoints.releasing ?? {}).map(async ([status, endpoint]) =>
       [status, await read(endpoint)])),
   ]);
-  return normalizeProject(project, { ...release, ...Object.fromEntries(active) }, now());
+  const result = normalizeProject(project, { ...release, ...Object.fromEntries(active) }, now());
+  result.cached = false;
+  result.staleFields = [];
+  result.retryAt = 0;
+  const times = [];
+  for (const [kind, replies] of Object.entries({
+    release: [release.fallback ?? release.release], releasing: active.map(([, response]) => response),
+  })) {
+    result.cached ||= replies.some((response) => response.cached);
+    if (replies.some((response) => response.stale)) result.staleFields.push(kind);
+    for (const response of replies) {
+      if (Number.isFinite(response.checkedAt)) times.push(response.checkedAt);
+      if (response.refreshError) result.errors.push(`${kind}: ${response.refreshError}`);
+      result.retryAt = Math.max(result.retryAt, response.retryAt || 0);
+    }
+  }
+  if (times.length) result.checkedAt = new Date(Math.min(...times)).toISOString();
+  result.errors = [...new Set(result.errors)];
+  return result;
 }

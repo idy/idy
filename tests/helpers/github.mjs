@@ -2,6 +2,14 @@ import { PROJECTS, projectEndpoints } from "../../docs/project-status.js";
 
 export const nootify = PROJECTS.find((project) => project.repository === "idy/nootify");
 export const now = "2026-11-12T08:00:00.000Z";
+export function memoryStorage() {
+  const data = new Map();
+  return { data,
+    getItem: (key) => data.get(key) ?? null,
+    setItem: (key, value) => data.set(key, String(value)),
+    removeItem: (key) => data.delete(key),
+  };
+}
 export const ok = (data) => ({ status: 200, data });
 export const runs = (...workflow_runs) => ({ total_count: workflow_runs.length, workflow_runs });
 export const run = (project = nootify, overrides = {}) => ({
