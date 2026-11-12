@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-12T04:34:49.864Z",
+  "generatedAt": "2026-11-12T04:49:12.333Z",
   "projects": {
     "GizClaw/gizclaw": {
       "repository": "GizClaw/gizclaw",
-      "checkedAt": "2026-11-12T04:34:48.090Z",
+      "checkedAt": "2026-11-12T04:49:10.861Z",
       "release": {
         "state": "published",
         "tagName": "v0.35.20",
@@ -113,70 +113,70 @@
     },
     "GizClaw/gizmoth": {
       "repository": "GizClaw/gizmoth",
-      "checkedAt": "2026-11-12T04:34:48.050Z",
+      "checkedAt": "2026-11-12T04:49:10.813Z",
       "release": {
         "state": "published",
-        "tagName": "v0.1.10",
-        "url": "https://github.com/GizClaw/gizmoth/releases/tag/v0.1.10",
+        "tagName": "v0.2.1",
+        "url": "https://github.com/GizClaw/gizmoth/releases/tag/v0.2.1",
         "prerelease": false,
-        "publishedAt": "2026-11-11T11:18:41.000Z",
+        "publishedAt": "2026-11-12T04:38:51.000Z",
         "assets": [
           {
-            "name": "GizMoth_0.1.10_aarch64-apple-darwin.app.tar.gz",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/GizMoth_0.1.10_aarch64-apple-darwin.app.tar.gz",
+            "name": "GizMoth_0.2.1_aarch64-apple-darwin.app.tar.gz",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/GizMoth_0.2.1_aarch64-apple-darwin.app.tar.gz",
             "state": "uploaded",
-            "size": 11863216
+            "size": 12370734
           },
           {
-            "name": "GizMoth_0.1.10_aarch64-apple-darwin.app.tar.gz.sig",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/GizMoth_0.1.10_aarch64-apple-darwin.app.tar.gz.sig",
+            "name": "GizMoth_0.2.1_aarch64-apple-darwin.app.tar.gz.sig",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/GizMoth_0.2.1_aarch64-apple-darwin.app.tar.gz.sig",
             "state": "uploaded",
             "size": 424
           },
           {
-            "name": "GizMoth_0.1.10_aarch64-apple-darwin.dmg",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/GizMoth_0.1.10_aarch64-apple-darwin.dmg",
+            "name": "GizMoth_0.2.1_aarch64-apple-darwin.dmg",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/GizMoth_0.2.1_aarch64-apple-darwin.dmg",
             "state": "uploaded",
-            "size": 11591359
+            "size": 12074456
           },
           {
-            "name": "GizMoth_0.1.10_x86_64-apple-darwin.app.tar.gz",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/GizMoth_0.1.10_x86_64-apple-darwin.app.tar.gz",
+            "name": "GizMoth_0.2.1_x86_64-apple-darwin.app.tar.gz",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/GizMoth_0.2.1_x86_64-apple-darwin.app.tar.gz",
             "state": "uploaded",
-            "size": 12425740
+            "size": 13000175
           },
           {
-            "name": "GizMoth_0.1.10_x86_64-apple-darwin.app.tar.gz.sig",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/GizMoth_0.1.10_x86_64-apple-darwin.app.tar.gz.sig",
+            "name": "GizMoth_0.2.1_x86_64-apple-darwin.app.tar.gz.sig",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/GizMoth_0.2.1_x86_64-apple-darwin.app.tar.gz.sig",
             "state": "uploaded",
             "size": 424
           },
           {
-            "name": "GizMoth_0.1.10_x86_64-apple-darwin.dmg",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/GizMoth_0.1.10_x86_64-apple-darwin.dmg",
+            "name": "GizMoth_0.2.1_x86_64-apple-darwin.dmg",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/GizMoth_0.2.1_x86_64-apple-darwin.dmg",
             "state": "uploaded",
-            "size": 12251860
+            "size": 12819090
           },
           {
-            "name": "GizMoth_0.1.10_x86_64-pc-windows-msvc-setup.exe",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/GizMoth_0.1.10_x86_64-pc-windows-msvc-setup.exe",
+            "name": "GizMoth_0.2.1_x86_64-pc-windows-msvc-setup.exe",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/GizMoth_0.2.1_x86_64-pc-windows-msvc-setup.exe",
             "state": "uploaded",
-            "size": 8972658
+            "size": 9371760
           },
           {
-            "name": "GizMoth_0.1.10_x86_64-pc-windows-msvc-setup.exe.sig",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/GizMoth_0.1.10_x86_64-pc-windows-msvc-setup.exe.sig",
+            "name": "GizMoth_0.2.1_x86_64-pc-windows-msvc-setup.exe.sig",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/GizMoth_0.2.1_x86_64-pc-windows-msvc-setup.exe.sig",
             "state": "uploaded",
-            "size": 440
+            "size": 436
           },
           {
             "name": "latest.json",
-            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.1.10/latest.json",
+            "browser_download_url": "https://github.com/GizClaw/gizmoth/releases/download/v0.2.1/latest.json",
             "state": "uploaded",
-            "size": 1937
+            "size": 1925
           }
         ],
-        "zipball_url": "https://api.github.com/repos/GizClaw/gizmoth/zipball/v0.1.10"
+        "zipball_url": "https://api.github.com/repos/GizClaw/gizmoth/zipball/v0.2.1"
       },
       "releasing": {
         "state": "none",
@@ -186,7 +186,7 @@
     },
     "GizClaw/gizos": {
       "repository": "GizClaw/gizos",
-      "checkedAt": "2026-11-12T04:34:48.130Z",
+      "checkedAt": "2026-11-12T04:49:10.871Z",
       "release": {
         "state": "published",
         "tagName": "v20261031-200733",
@@ -265,7 +265,7 @@
     },
     "idy/nootify": {
       "repository": "idy/nootify",
-      "checkedAt": "2026-11-12T04:34:48.831Z",
+      "checkedAt": "2026-11-12T04:49:11.521Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.1",
@@ -320,7 +320,7 @@
     },
     "idy/ch348-macos": {
       "repository": "idy/ch348-macos",
-      "checkedAt": "2026-11-12T04:34:48.611Z",
+      "checkedAt": "2026-11-12T04:49:11.342Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.1-dev.13-pkg.1",
@@ -351,140 +351,134 @@
     },
     "idy/tailsplit": {
       "repository": "idy/tailsplit",
-      "checkedAt": "2026-11-12T04:34:49.055Z",
+      "checkedAt": "2026-11-12T04:49:11.611Z",
       "release": {
         "state": "published",
-        "tagName": "v0.9.6",
-        "url": "https://github.com/idy/tailsplit/releases/tag/v0.9.6",
+        "tagName": "v0.9.7",
+        "url": "https://github.com/idy/tailsplit/releases/tag/v0.9.7",
         "prerelease": false,
-        "publishedAt": "2026-11-11T21:31:20.000Z",
+        "publishedAt": "2026-11-12T04:44:14.000Z",
         "assets": [
           {
             "name": "release-manifest.json",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/release-manifest.json",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/release-manifest.json",
             "state": "uploaded",
             "size": 2748
           },
           {
             "name": "SHA256SUMS",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/SHA256SUMS",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/SHA256SUMS",
             "state": "uploaded",
             "size": 1714
           },
           {
-            "name": "TailSplit_0.9.6_darwin_amd64.dmg",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_amd64.dmg",
+            "name": "TailSplit_0.9.7_darwin_amd64.dmg",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/TailSplit_0.9.7_darwin_amd64.dmg",
             "state": "uploaded",
-            "size": 88975102
+            "size": 88791015
           },
           {
-            "name": "TailSplit_0.9.6_darwin_amd64.receipt.json",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_amd64.receipt.json",
+            "name": "TailSplit_0.9.7_darwin_amd64.receipt.json",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/TailSplit_0.9.7_darwin_amd64.receipt.json",
             "state": "uploaded",
             "size": 1061
           },
           {
-            "name": "tailsplit_0.9.6_darwin_amd64.tar.gz",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_darwin_amd64.tar.gz",
+            "name": "tailsplit_0.9.7_darwin_amd64.tar.gz",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/tailsplit_0.9.7_darwin_amd64.tar.gz",
             "state": "uploaded",
-            "size": 12068935
+            "size": 12068942
           },
           {
-            "name": "TailSplit_0.9.6_darwin_amd64.zip",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_amd64.zip",
+            "name": "TailSplit_0.9.7_darwin_amd64.zip",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/TailSplit_0.9.7_darwin_amd64.zip",
             "state": "uploaded",
-            "size": 83598522
+            "size": 83600183
           },
           {
-            "name": "TailSplit_0.9.6_darwin_arm64.dmg",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_arm64.dmg",
+            "name": "TailSplit_0.9.7_darwin_arm64.dmg",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/TailSplit_0.9.7_darwin_arm64.dmg",
             "state": "uploaded",
-            "size": 81774617
+            "size": 81683559
           },
           {
-            "name": "TailSplit_0.9.6_darwin_arm64.receipt.json",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_arm64.receipt.json",
+            "name": "TailSplit_0.9.7_darwin_arm64.receipt.json",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/TailSplit_0.9.7_darwin_arm64.receipt.json",
             "state": "uploaded",
             "size": 1061
           },
           {
-            "name": "tailsplit_0.9.6_darwin_arm64.tar.gz",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_darwin_arm64.tar.gz",
+            "name": "tailsplit_0.9.7_darwin_arm64.tar.gz",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/tailsplit_0.9.7_darwin_arm64.tar.gz",
             "state": "uploaded",
-            "size": 11195678
+            "size": 11195675
           },
           {
-            "name": "TailSplit_0.9.6_darwin_arm64.zip",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_darwin_arm64.zip",
+            "name": "TailSplit_0.9.7_darwin_arm64.zip",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/TailSplit_0.9.7_darwin_arm64.zip",
             "state": "uploaded",
-            "size": 76831120
+            "size": 76834119
           },
           {
-            "name": "tailsplit_0.9.6_linux_amd64.deb",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_linux_amd64.deb",
+            "name": "tailsplit_0.9.7_linux_amd64.deb",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/tailsplit_0.9.7_linux_amd64.deb",
             "state": "uploaded",
-            "size": 9574500
+            "size": 9574848
           },
           {
-            "name": "tailsplit_0.9.6_linux_amd64.tar.gz",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_linux_amd64.tar.gz",
+            "name": "tailsplit_0.9.7_linux_amd64.tar.gz",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/tailsplit_0.9.7_linux_amd64.tar.gz",
             "state": "uploaded",
-            "size": 12865283
+            "size": 12865268
           },
           {
-            "name": "tailsplit_0.9.6_linux_arm64.deb",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_linux_arm64.deb",
+            "name": "tailsplit_0.9.7_linux_arm64.deb",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/tailsplit_0.9.7_linux_arm64.deb",
             "state": "uploaded",
-            "size": 8189760
+            "size": 8189832
           },
           {
-            "name": "tailsplit_0.9.6_linux_arm64.tar.gz",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_linux_arm64.tar.gz",
+            "name": "tailsplit_0.9.7_linux_arm64.tar.gz",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/tailsplit_0.9.7_linux_arm64.tar.gz",
             "state": "uploaded",
-            "size": 11653961
+            "size": 11653953
           },
           {
-            "name": "tailsplit_0.9.6_windows_amd64.zip",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_windows_amd64.zip",
+            "name": "tailsplit_0.9.7_windows_amd64.zip",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/tailsplit_0.9.7_windows_amd64.zip",
             "state": "uploaded",
-            "size": 12728508
+            "size": 12728504
           },
           {
-            "name": "TailSplit_0.9.6_windows_amd64_setup.exe",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_windows_amd64_setup.exe",
+            "name": "TailSplit_0.9.7_windows_amd64_setup.exe",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/TailSplit_0.9.7_windows_amd64_setup.exe",
             "state": "uploaded",
-            "size": 238220116
+            "size": 238226843
           },
           {
-            "name": "tailsplit_0.9.6_windows_arm64.zip",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/tailsplit_0.9.6_windows_arm64.zip",
+            "name": "tailsplit_0.9.7_windows_arm64.zip",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/tailsplit_0.9.7_windows_arm64.zip",
             "state": "uploaded",
-            "size": 11268204
+            "size": 11268201
           },
           {
-            "name": "TailSplit_0.9.6_windows_arm64_setup.exe",
-            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.6/TailSplit_0.9.6_windows_arm64_setup.exe",
+            "name": "TailSplit_0.9.7_windows_arm64_setup.exe",
+            "browser_download_url": "https://github.com/idy/tailsplit/releases/download/v0.9.7/TailSplit_0.9.7_windows_arm64_setup.exe",
             "state": "uploaded",
-            "size": 239428136
+            "size": 239429609
           }
         ],
-        "zipball_url": "https://api.github.com/repos/idy/tailsplit/zipball/v0.9.6"
+        "zipball_url": "https://api.github.com/repos/idy/tailsplit/zipball/v0.9.7"
       },
       "releasing": {
-        "state": "active",
-        "versions": [
-          {
-            "version": "v0.9.7",
-            "url": "https://github.com/idy/tailsplit/actions/runs/43154168850",
-            "state": "running"
-          }
-        ]
+        "state": "none",
+        "versions": []
       },
       "errors": []
     },
     "idy/tailrelay": {
       "repository": "idy/tailrelay",
-      "checkedAt": "2026-11-12T04:34:49.414Z",
+      "checkedAt": "2026-11-12T04:49:11.972Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.2",
@@ -551,7 +545,7 @@
     },
     "idy/wgc": {
       "repository": "idy/wgc",
-      "checkedAt": "2026-11-12T04:34:49.007Z",
+      "checkedAt": "2026-11-12T04:49:11.620Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -569,7 +563,7 @@
     },
     "idy/wgc-ne": {
       "repository": "idy/wgc-ne",
-      "checkedAt": "2026-11-12T04:34:49.522Z",
+      "checkedAt": "2026-11-12T04:49:12.072Z",
       "release": {
         "state": "published",
         "tagName": "v0.1.0",
@@ -600,7 +594,7 @@
     },
     "idy/sing-box-flutter": {
       "repository": "idy/sing-box-flutter",
-      "checkedAt": "2026-11-12T04:34:49.253Z",
+      "checkedAt": "2026-11-12T04:49:11.718Z",
       "release": {
         "state": "published",
         "tagName": "v0.2.0",
@@ -637,7 +631,7 @@
     },
     "idy/magpie-design-system": {
       "repository": "idy/magpie-design-system",
-      "checkedAt": "2026-11-12T04:34:49.441Z",
+      "checkedAt": "2026-11-12T04:49:11.922Z",
       "release": {
         "state": "published",
         "tagName": "v0.4.3",
@@ -655,7 +649,7 @@
     },
     "idy/homebrew": {
       "repository": "idy/homebrew",
-      "checkedAt": "2026-11-12T04:34:49.864Z",
+      "checkedAt": "2026-11-12T04:49:12.333Z",
       "release": {
         "state": "none",
         "tagName": null,
