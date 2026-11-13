@@ -105,20 +105,6 @@
       }
     },
     {
-      "repository": "idy/wgc-ne",
-      "file": "wgc-ne.svg",
-      "sourcePath": "site/favicon.svg",
-      "sourceRevision": "9af618e82ca9ec40de67c108b136077a3a40321a",
-      "sourceUrl": "https://github.com/idy/wgc-ne/blob/9af618e82ca9ec40de67c108b136077a3a40321a/site/favicon.svg",
-      "sha256": "d4d7d8c4ce849a837c8d6ca1d324ec195442758940799f464f470ce646431022",
-      "copiedWithoutModification": true,
-      "license": {
-        "projectLicense": "GPL-3.0",
-        "upstreamPath": "LICENSE",
-        "localFile": "licenses/wgc-ne.txt"
-      }
-    },
-    {
       "repository": "idy/sing-box-flutter",
       "file": "sing-box-flutter.svg",
       "sourcePath": "site/favicon.svg",

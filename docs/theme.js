@@ -9,7 +9,7 @@
       pageTitle: notFound ? "Page not found — idy.dev" : "Open-source projects — idy.dev",
       pageDescription: notFound
         ? "This page could not be found. Explore the open-source projects at idy.dev."
-        : "Open-source projects by idy: GizClaw, GizMoth, GizOS, yesman, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, WGC NE, sing-box-flutter, Magpie Design System, and the Homebrew tap. Explore the projects and their latest releases.",
+        : "Open-source projects by idy: GizClaw, GizMoth, GizOS, yesman, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, sing-box-flutter, Magpie Design System, and the Homebrew tap. Explore the projects and their latest releases.",
       heading: "Open-source projects",
       followLabel: "Follow idy on GitHub (opens in a new tab)",
       intro: "Open-source projects for connected devices, macOS, and networking.",
@@ -26,7 +26,6 @@
       tailsplitDescription: "Route traffic by domain and IP with sing-box. Desktop apps and command-line tools use YAML rules for direct connections, proxies, and Tailscale exits.",
       tailrelayDescription: "Runs a Tailscale exit node through a specified SOCKS5 proxy. Each instance keeps its own device identity and configuration, so several exits can share one machine. Supports Linux and macOS.",
       wgcDescription: "A Go library for authenticated, encrypted messages using WireGuard sessions. Authorize peers by public key, bring your own transport, and exchange arbitrary application payloads.",
-      wgcNeDescription: "A Flutter plugin and Apple Network Extension SDK built on WGC and sing-box. Use standard UDP or compile your own transport into the native core; each app keeps its own signed tunnel extension.",
       singBoxFlutterDescription: "A Flutter plugin for native sing-box VPN on Android and iOS, with Tailscale-enabled native builds using Tailscale Go. Control the VPN and receive connection events from Dart.",
       magpieDescription: "Buildless CSS tokens, components, and an app shell for desktop panels and web apps, with light and dark themes.",
       componentCatalogue: "Component catalogue",
@@ -59,7 +58,6 @@
       downloadTailSplitWindows: "Windows x64 (.exe)",
       downloadTailRelay: "Linux x64 (.tar.gz)",
       downloadWGC: "Source code (.zip)",
-      downloadWGCNE: "Apple SDK (.xcframework.zip)",
       downloadsIncomplete: "Some download links are unavailable for this release. Check its release page for available files.",
       notFoundHeading: "Page not found",
       notFoundDescription: "Check the address, or return to the homepage to explore the projects.",
@@ -69,7 +67,7 @@
       pageTitle: notFound ? "页面未找到 — idy.dev" : "开源项目 — idy.dev",
       pageDescription: notFound
         ? "未找到此页面。欢迎浏览 idy.dev 的开源项目。"
-        : "idy 的开源项目：GizClaw、GizMoth、GizOS、yesman、Nootify、CH348 macOS、TailSplit、TailRelay、WGC、WGC NE、sing-box-flutter、Magpie Design System 和 Homebrew tap。了解各项目，获取最新版本和下载链接。",
+        : "idy 的开源项目：GizClaw、GizMoth、GizOS、yesman、Nootify、CH348 macOS、TailSplit、TailRelay、WGC、sing-box-flutter、Magpie Design System 和 Homebrew tap。了解各项目，获取最新版本和下载链接。",
       heading: "开源项目",
       followLabel: "follow — 在 GitHub 关注 idy（在新标签页打开）",
       intro: "面向联网设备、macOS 和网络应用的开源项目。",
@@ -86,7 +84,6 @@
       tailsplitDescription: "基于 sing-box，按域名和 IP 分流流量。提供桌面应用和命令行工具，通过 YAML 规则配置直连、代理和 Tailscale 出口。",
       tailrelayDescription: "通过指定的 SOCKS5 代理运行 Tailscale 出口节点。每个实例使用独立的设备身份和配置，可在一台机器上运行多个出口。支持 Linux 和 macOS。",
       wgcDescription: "使用 WireGuard 会话传输经过认证和加密消息的 Go 库。通过公钥授权对端，自选传输方式，交换任意应用数据。",
-      wgcNeDescription: "基于 WGC 和 sing-box 的 Flutter 插件与 Apple Network Extension SDK。可使用标准 UDP，也可将自定义传输编译进原生核心；每个应用使用独立签名的隧道扩展。",
       singBoxFlutterDescription: "在 Android 和 iOS 上运行原生 sing-box VPN 的 Flutter 插件，使用 Tailscale Go 构建支持 Tailscale 的原生核心。通过 Dart 控制 VPN 并接收连接状态事件。",
       magpieDescription: "无需构建的 CSS 变量、组件和应用布局，适用于桌面面板与 Web 应用，支持浅色和深色主题。",
       componentCatalogue: "组件演示",
@@ -119,7 +116,6 @@
       downloadTailSplitWindows: "Windows x64（.exe）",
       downloadTailRelay: "Linux x64（.tar.gz）",
       downloadWGC: "源代码（.zip）",
-      downloadWGCNE: "Apple SDK（.xcframework.zip）",
       downloadsIncomplete: "此版本的部分下载链接暂不可用，请前往发布页面查看可用文件。",
       notFoundHeading: "页面未找到",
       notFoundDescription: "请检查地址，或返回首页浏览项目。",

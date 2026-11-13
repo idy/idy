@@ -31,7 +31,7 @@ test("cards and table render direct GitHub releases without CI fields", async (t
   assert.equal(row.querySelector(".releasing-note").textContent, "Releasing");
   assert.equal(document.querySelector(".workflow-cell"), null);
   assert.deepEqual([...document.querySelectorAll("thead th")].map((e) => e.textContent.trim()), ["Project", "Released", "Releasing"]);
-  assert.equal(calls.length, 34);
+  assert.equal(calls.length, 33);
   assert.ok(calls.every((url) => url.startsWith("https://api.github.com/repos/")));
   assert.match(document.querySelector("#release-check-time").textContent, /^Checked GitHub/);
 });
@@ -43,17 +43,17 @@ test("page reloads reuse localStorage while the refresh button fetches new versi
   const fetcher = api((project, kind) => project === nootify && kind === "release"
     ? ok(release(nootify, { tag_name: updated ? "v0.3.0" : "v0.2.1" })) : undefined, () => calls++);
   await setup(t, {}, fetcher, true, { storage });
-  assert.equal(calls, 34);
+  assert.equal(calls, 33);
   updated = true;
   const page = await setup(t, {}, fetcher, true, { storage });
-  assert.equal(calls, 34, "a new page must read stored responses without any GitHub requests");
+  assert.equal(calls, 33, "a new page must read stored responses without any GitHub requests");
   assert.equal(page.row.querySelector("[data-release-link]").textContent, "v0.2.1");
   assert.match(page.document.querySelector("#release-check-time").textContent, /^Local cache · checked/);
   page.site.language = "zh";
   page.document.dispatchEvent(new page.dom.window.CustomEvent("idy:languagechange"));
   assert.match(page.document.querySelector("#release-check-time").textContent, /^本地缓存 · 上次查询/);
   await page.controller.reload();
-  assert.equal(calls, 68);
+  assert.equal(calls, 66);
   assert.equal(page.row.querySelector("[data-release-link]").textContent, "v0.3.0");
 });
 
@@ -157,7 +157,7 @@ test("offline errors are unavailable rather than a claimed empty release", async
   assert.equal(row.querySelector("[data-releasing-empty]").textContent, "Unavailable");
   assert.equal(row.querySelector("[data-release-status]").textContent, "Version unavailable");
   assert.match(document.querySelector("#release-check-time").textContent, /^GitHub unavailable/);
-  assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 13);
+  assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 12);
 });
 
 test("manual refresh reads newer releases directly and clears finished releasing versions", async (t) => {
@@ -183,7 +183,7 @@ test("manual refresh reads newer releases directly and clears finished releasing
   });
   assert.equal(row.querySelector("[data-release-link]").textContent, "v0.2.2");
   assert.equal(row.querySelector(".releasing-version"), null);
-  assert.equal(requests, 68);
+  assert.equal(requests, 66);
 });
 
 test("failed refresh preserves versions and labels active data as a cached observation", async (t) => {
@@ -245,14 +245,14 @@ test("search, categories, table view and clear preserve the same project rows", 
   const search = document.querySelector("#project-search");
   search.value = "sing box";
   search.dispatchEvent(new dom.window.Event("input"));
-  assert.deepEqual([...document.querySelectorAll("tr.project:not([hidden])")].map((row) => row.dataset.repository), ["idy/tailsplit", "idy/wgc-ne", "idy/sing-box-flutter"]);
+  assert.deepEqual([...document.querySelectorAll("tr.project:not([hidden])")].map((row) => row.dataset.repository), ["idy/tailsplit", "idy/sing-box-flutter"]);
   document.querySelector('button[data-view="table"]').click();
   assert.equal(document.querySelector(".directory").dataset.view, "table");
   search.value = "no-such-project";
   search.dispatchEvent(new dom.window.Event("input"));
   assert.equal(document.querySelector(".empty-state").hidden, false);
   document.querySelector("#clear-filters").click();
-  assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 13);
+  assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 12);
   document.querySelector('button[data-category="devices"]').click();
   assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 4);
   assert.equal(document.querySelector("tbody tr").dataset.repository, "GizClaw/gizclaw");

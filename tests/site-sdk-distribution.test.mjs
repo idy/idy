@@ -64,8 +64,8 @@ test('all site pages resolve local scripts and styles, including nested 404 asse
 test('directory stays usable without JavaScript and retains real release destinations', async () => {
   const page = new JSDOM(await readFile(join(root, 'docs/index.html'), 'utf8'));
   const document = page.window.document;
-  assert.equal(document.querySelectorAll('tr.project').length, 13);
-  assert.equal(document.querySelectorAll('.project[data-repository]').length, 13);
+  assert.equal(document.querySelectorAll('tr.project').length, 12);
+  assert.equal(document.querySelectorAll('.project[data-repository]').length, 12);
   for (const project of document.querySelectorAll('.project[data-repository]')) {
     assert.equal(project.querySelector('[data-release-link]').getAttribute('href'), `https://github.com/${project.dataset.repository}/releases`);
   }

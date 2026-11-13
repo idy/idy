@@ -49,9 +49,6 @@ export const downloads = {
     },
   ],
   "idy/wgc": [{ label: "downloadWGC", source: true }],
-  "idy/wgc-ne": [
-    { label: "downloadWGCNE", pattern: /^WGCCore-.*\.xcframework\.zip$/i },
-  ],
   "idy/sing-box-flutter": [
     {
       label: "downloadSingBoxAndroid",

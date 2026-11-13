@@ -13,7 +13,6 @@ export const PROJECTS = Object.freeze([
   ["idy/tailsplit", true, true],
   ["idy/tailrelay", true, true],
   ["idy/wgc", false],
-  ["idy/wgc-ne", false],
   ["idy/sing-box-flutter", false],
   ["idy/magpie-design-system", false],
   ["idy/homebrew", false],

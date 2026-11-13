@@ -11,7 +11,6 @@ I build open-source tools for connected devices, macOS, and networking. Explore 
 - **[TailSplit](https://tailsplit.idy.dev/)** — Route traffic by domain and IP using sing-box, with support for proxies and Tailscale exits. [Source](https://github.com/idy/tailsplit)
 - **[TailRelay](https://tailrelay.idy.dev/)** — Run Tailscale exit nodes through a SOCKS5 proxy on Linux and macOS. [Source](https://github.com/idy/tailrelay)
 - **[WGC](https://wgc.idy.dev/)** — A Go library for authenticated, encrypted messages using WireGuard sessions. [Source](https://github.com/idy/wgc)
-- **[WGC NE](https://wgc-ne.idy.dev/)** — A Flutter plugin and Apple Network Extension SDK built on WGC and sing-box. [Source](https://github.com/idy/wgc-ne)
 - **[sing-box-flutter](https://sing-box-flutter.idy.dev/)** — A Flutter plugin for native sing-box VPN on Android and iOS, with Tailscale-enabled native builds using Tailscale Go. [Source](https://github.com/idy/sing-box-flutter)
 - **[Homebrew tap](https://github.com/idy/homebrew)** — Install Nootify and TailSplit on macOS. [Installation guide](https://github.com/idy/homebrew#install)
 
