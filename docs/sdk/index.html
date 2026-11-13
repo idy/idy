@@ -7,8 +7,8 @@
   <meta name="description" content="Typography, layouts, and reusable components for idy.dev project pages. npm, CDN, and self-hosted examples.">
   <title>Site SDK — idy.dev</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <script src="0.1.0/idy-site.min.js"></script>
-  <link rel="stylesheet" href="0.1.0/idy-site.css">
+  <script src="0.2.0/idy-site.min.js"></script>
+  <link rel="stylesheet" href="0.2.0/idy-site.css">
   <link rel="stylesheet" href="catalogue.css">
   <script src="catalogue.js" defer></script>
 </head>
@@ -31,12 +31,12 @@
   <main id="main" class="idy-container">
     <section class="idy-hero">
       <h1 class="idy-title" data-i18n="sdkTitle">A shared language for project pages.</h1>
-      <p class="idy-lead" data-i18n="sdkIntro">Typography, layouts, and page elements from the idy.dev sites. Use the same components with npm, a script tag, or local files.</p>
+      <p class="idy-lead" data-i18n="sdkIntro">The Component Datasheet design for every idy.dev project site: Archivo, blue mastheads, fine rules, and 2px corners. Use it with npm, a script tag, or local files.</p>
       <div class="idy-cluster"><a class="idy-button" href="#install" data-i18n="sdkStart">Start with the SDK</a><a href="#typeset" data-i18n="sdkBrowse">Explore the components</a></div>
-      <p class="idy-caption">Version 0.1.0 · Framework-independent · Progressive enhancement</p>
+      <p class="idy-caption">Version 0.2.0 · Framework-independent · Progressive enhancement</p>
     </section>
     <section id="typeset" class="idy-section">
-      <div class="catalogue-heading"><h2 class="idy-section-title">Typography</h2><p class="idy-caption">Montserrat / Monda / Lato. Chinese text uses system fallbacks.</p></div>
+      <div class="catalogue-heading"><h2 class="idy-section-title">Typography</h2><p class="idy-caption">Archivo: normal width for reading, 75% width for labels. Chinese text uses system fallbacks.</p></div>
       <div class="type-samples">
         <div><code>.idy-title</code><p class="idy-title">Tools worth sharing.</p></div>
         <div><code>.idy-section-title</code><p class="idy-section-title">Find the right project.</p></div>
@@ -44,6 +44,7 @@
         <div><code>.idy-lead</code><p class="idy-lead">Explore the project, read its documentation, and choose a download for your platform.</p></div>
         <div><code>.idy-prose</code><div class="idy-prose"><p>Long-form content has a readable measure and a clear rhythm. Headings, lists, and code remain ordinary semantic HTML.</p><p lang="zh">为项目页面提供一致的字体、布局和交互。中文使用系统字体，保留清晰的层级与阅读节奏。</p></div></div>
         <div><code>.idy-caption</code><p class="idy-caption">Supporting notes describe limits without competing with the main action.</p></div>
+        <div><code>.idy-label / .idy-numeric</code><p><span class="idy-label">Version · Platform · Published</span><br><span class="idy-numeric">0.2.0 · 2026-11-13</span></p></div>
       </div>
     </section>
     <section id="layout" class="idy-section">
@@ -68,13 +69,14 @@
     </section>
     <section id="install" class="idy-section">
       <h2 class="idy-section-title">Use the SDK</h2>
-      <p class="idy-prose">This checkout contains version 0.1.0. npm and public CDN URLs become available after publication; use the local bundle or a packed tarball until then.</p>
+      <p class="idy-prose">This checkout contains version 0.2.0. npm and public CDN URLs become available after publication; use the local bundle or a packed tarball until then.</p>
+      <p class="idy-prose">Copy the complete distribution to <code>shared/sdk/</code>, including <code>assets/</code>, then use relative links from your page.</p>
       <h3 class="idy-subheading">Script tag / self-hosted files</h3>
-      <div class="idy-code"><div class="idy-code-row"><pre><code>&lt;script src="/sdk/0.1.0/idy-site.min.js"&gt;&lt;/script&gt;
-&lt;link rel="stylesheet" href="/sdk/0.1.0/idy-site.css"&gt;
+      <div class="idy-code"><div class="idy-code-row"><pre><code>&lt;script src="shared/sdk/idy-site.min.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="shared/sdk/idy-site.css"&gt;
 &lt;body class="idy-site"&gt;…&lt;/body&gt;</code></pre><button class="idy-button idy-button--secondary" data-idy-copy hidden>Copy</button></div><p data-idy-copy-status role="status" aria-live="polite"></p></div>
       <p class="idy-caption">Load the script in the head before styles to apply saved preferences before paint. Keep <code>assets/</code> alongside the CSS.</p>
-      <div class="idy-cluster"><a href="0.1.0/idy-site.min.js" download>Download browser JS</a><a href="0.1.0/idy-site.css" download>Download CSS</a><a href="https://github.com/idy/idy/tree/main/packages/site-sdk">Integration and migration guide</a></div>
+      <div class="idy-cluster"><a href="0.2.0/idy-site.min.js" download>Download browser JS</a><a href="0.2.0/idy-site.css" download>Download CSS</a><a href="https://github.com/idy/idy/tree/main/packages/site-sdk">Integration and migration guide</a></div>
       <h3 class="idy-subheading install-heading">npm / ESM</h3>
       <div class="idy-code"><div class="idy-code-row"><pre><code>import '@idy/site-sdk/style.css';
 import { initSite, createHeader, enhance } from '@idy/site-sdk';

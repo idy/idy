@@ -5,6 +5,7 @@ I build open-source tools for connected devices, macOS, and networking. Explore 
 - **[GizClaw](https://gizclaw.github.io/gizclaw/)** — An agent runtime and edge-server platform for connected devices, with a server, CLI, WebRTC transport, APIs, and SDKs. [Source](https://github.com/GizClaw/gizclaw)
 - **[GizMoth](https://github.com/GizClaw/gizmoth)** — A desktop app for pairing and managing GizOS devices and building and deploying Lua apps with an embedded coding agent.
 - **[GizOS](https://github.com/GizClaw/gizos)** — A portable firmware and application platform for embedded devices, desktop, mobile, and WebAssembly.
+- **[yesman](https://yesman.idy.dev/)** — An early-prototype Go/MyGo tray app: one workspace per project, pi lead and worker agents, a shared repository pool, and shared notes. macOS has been run; Linux and Windows builds are available. [Source](https://github.com/idy/yesman) · [Downloads](https://github.com/idy/yesman/releases/latest)
 - **[Nootify](https://nootify.idy.dev/)** — Follow Claude Code, Codex, and OpenCode sessions in Feishu and reply to them on your Mac. [Source](https://github.com/idy/nootify)
 - **[CH348 macOS](https://ch343-macos.idy.dev/)** — Native macOS serial ports for WCH CH348 eight-port USB-to-UART adapters, using DriverKit. [Source](https://github.com/idy/ch348-macos)
 - **[TailSplit](https://tailsplit.idy.dev/)** — Route traffic by domain and IP using sing-box, with support for proxies and Tailscale exits. [Source](https://github.com/idy/tailsplit)

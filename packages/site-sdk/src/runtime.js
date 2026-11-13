@@ -75,7 +75,7 @@ function createSite(document) {
     root.style.colorScheme = theme;
     const themeColor = document.querySelector('meta[name="theme-color"]');
     const pageColor = themeColor?.getAttribute(`data-idy-theme-color-${theme}`)?.trim();
-    themeColor?.setAttribute("content", pageColor || (theme === "dark" ? "#142033" : "#f7f9fc"));
+    themeColor?.setAttribute("content", pageColor || (theme === "dark" ? "#0b3d73" : "#0b5cad"));
     syncPreferences(document);
     headers?.render();
   }

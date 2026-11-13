@@ -7,6 +7,7 @@ export const PROJECTS = Object.freeze([
   ["GizClaw/gizclaw", true, true, ["monitor-v"]],
   ["GizClaw/gizmoth", true, true],
   ["GizClaw/gizos", true, false, ["gizloader-"]],
+  ["idy/yesman", true, true],
   ["idy/nootify", true, true],
   ["idy/ch348-macos", false],
   ["idy/tailsplit", true, true],

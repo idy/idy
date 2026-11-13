@@ -52,13 +52,13 @@ It is part of the same public repository as idy's GitHub profile and public pinn
 
 - Preserve project names, repository ownership, destination URLs, platform distinctions, and documented limitations unless updated against authoritative project information.
 - `pinned-projects.json` is a separate public snapshot sourced from GitHub profile pins. The current website does not render it; the hand-authored directory must not be described as automatically synchronized from profile pins.
-- The shared website SDK serves `*.idy.dev` project pages through npm, browser/CDN scripts, or downloaded local files. Its scope includes typography, layout, page elements, and common interactions. Preserve project-specific content and functionality during adoption; Magpie's desktop application design system remains separate.
+- The shared website SDK serves `*.idy.dev` project pages through npm, browser/CDN scripts, or complete locally vendored files. Version 0.2.0 makes the homepage's Component Datasheet design the shared default: Archivo, the light/dark datasheet palette, blue masthead, ruled components, and 2px corners. Preserve project-specific content, layouts, and functionality during adoption; Magpie's desktop application design system remains separate.
 
 ## Brand Commitments
 
 Use `idy.dev` for the website and preserve the proper names of individual projects. Existing public copy describes the work as “Independent tools. Open source.” and emphasizes concrete capabilities.
 
-No new voice, aesthetic, or cross-project branding mandate was established during initialization.
+The shared Component Datasheet identity applies to all `*.idy.dev` websites. yesman remains lowercase and is described as an early prototype: a Go/MyGo tray app with pi agents, one workspace per project, a shared repository pool, workers, and shared notes. Its README is the authority for current platform limitations.
 
 ## Evidence on Hand
 

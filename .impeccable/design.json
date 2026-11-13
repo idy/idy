@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-11T15:12:14+00:00",
+  "generatedAt": "2026-11-13T05:38:21.126845+00:00",
   "title": "Design System: idy.dev",
   "extensions": {
-    "scope": "Homepage (docs/index.html, docs/styles.css, docs/directory.js) and the 404 page. The shared site SDK and other *.idy.dev pages keep their incumbent identity.",
+    "scope": "idy.dev and every *.idy.dev project website through @idy/site-sdk 0.2.0. Shared identity and shell; project content and compositions remain local. Magpie and Peetty demos retain product-style specimens; Magpie desktop remains separate.",
     "colorMeta": {
       "datasheet-blue": {
         "role": "primary",
@@ -21,7 +21,7 @@
           "#aeccf2",
           "#e1f0ff"
         ],
-        "cssVar": "--ds-blue"
+        "cssVar": "--idy-accent"
       },
       "masthead-blue": {
         "role": "primary",
@@ -39,7 +39,7 @@
           "#aeccf2",
           "#e1f0ff"
         ],
-        "cssVar": "--ds-masthead"
+        "cssVar": "--idy-masthead"
       },
       "on-blue": {
         "role": "primary",
@@ -57,7 +57,7 @@
           "#c9c9c9",
           "#eeeeee"
         ],
-        "cssVar": "--ds-on-blue"
+        "cssVar": "--idy-on-blue"
       },
       "sheet": {
         "role": "neutral",
@@ -75,7 +75,7 @@
           "#c9c9c9",
           "#eeeeee"
         ],
-        "cssVar": "--ds-sheet"
+        "cssVar": "--idy-bg"
       },
       "ink": {
         "role": "neutral",
@@ -93,7 +93,7 @@
           "#c9c9c9",
           "#eeeeee"
         ],
-        "cssVar": "--ds-ink"
+        "cssVar": "--idy-ink"
       },
       "body-ink": {
         "role": "neutral",
@@ -111,7 +111,7 @@
           "#c9c9c9",
           "#eeeeee"
         ],
-        "cssVar": "--ds-body"
+        "cssVar": "--idy-body"
       },
       "muted-ink": {
         "role": "neutral",
@@ -129,7 +129,7 @@
           "#c9c9c9",
           "#eeeeee"
         ],
-        "cssVar": "--ds-muted"
+        "cssVar": "--idy-muted"
       },
       "ruled-line": {
         "role": "neutral",
@@ -147,7 +147,7 @@
           "#c4cacf",
           "#eceff1"
         ],
-        "cssVar": "--ds-line"
+        "cssVar": "--idy-line"
       },
       "hairline-rule": {
         "role": "neutral",
@@ -165,7 +165,7 @@
           "#c6c9cc",
           "#edeff0"
         ],
-        "cssVar": "--ds-rule"
+        "cssVar": "--idy-hairline"
       },
       "spec-fill": {
         "role": "neutral",
@@ -183,7 +183,7 @@
           "#c7c9cc",
           "#edeef0"
         ],
-        "cssVar": "--ds-spec"
+        "cssVar": "--idy-spec-fill"
       },
       "datasheet-blue-dark": {
         "role": "primary",
@@ -201,7 +201,7 @@
           "#b8cbe3",
           "#e6effb"
         ],
-        "cssVar": "--ds-blue"
+        "cssVar": "--idy-accent"
       },
       "masthead-blue-dark": {
         "role": "primary",
@@ -219,7 +219,7 @@
           "#b6cbe7",
           "#e5f0fd"
         ],
-        "cssVar": "--ds-masthead"
+        "cssVar": "--idy-masthead"
       },
       "sheet-dark": {
         "role": "neutral",
@@ -237,7 +237,7 @@
           "#c4cad0",
           "#eceff2"
         ],
-        "cssVar": "--ds-sheet"
+        "cssVar": "--idy-bg"
       },
       "ink-dark": {
         "role": "neutral",
@@ -255,7 +255,7 @@
           "#c7c9cc",
           "#edeef0"
         ],
-        "cssVar": "--ds-ink"
+        "cssVar": "--idy-ink"
       },
       "body-ink-dark": {
         "role": "neutral",
@@ -273,7 +273,7 @@
           "#c5cace",
           "#edeff1"
         ],
-        "cssVar": "--ds-body"
+        "cssVar": "--idy-body"
       },
       "muted-ink-dark": {
         "role": "neutral",
@@ -291,7 +291,7 @@
           "#c4cad0",
           "#eceff2"
         ],
-        "cssVar": "--ds-muted"
+        "cssVar": "--idy-muted"
       },
       "ruled-line-dark": {
         "role": "neutral",
@@ -309,7 +309,7 @@
           "#c1cad5",
           "#eaeff4"
         ],
-        "cssVar": "--ds-line"
+        "cssVar": "--idy-line"
       },
       "hairline-rule-dark": {
         "role": "neutral",
@@ -327,7 +327,7 @@
           "#c2cad3",
           "#ebeff3"
         ],
-        "cssVar": "--ds-rule"
+        "cssVar": "--idy-hairline"
       },
       "spec-fill-dark": {
         "role": "neutral",
@@ -345,7 +345,7 @@
           "#c3cad3",
           "#ebeff3"
         ],
-        "cssVar": "--ds-spec"
+        "cssVar": "--idy-spec-fill"
       }
     },
     "typographyMeta": {
@@ -400,6 +400,22 @@
       "meta": {
         "displayName": "Meta",
         "purpose": "Project count and snapshot time; tabular lining figures."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Shared SDK section headings; surface line-heights may vary."
+      },
+      "subheading": {
+        "displayName": "Subheading",
+        "purpose": "Shared SDK subheadings."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Commands and source text only."
+      },
+      "button-label": {
+        "displayName": "Button Label",
+        "purpose": "Shared outlined button labels, 75% width."
       }
     },
     "fontFaces": [
@@ -453,7 +469,10 @@
       "gutter": "48px",
       "gutterPhone": "16px",
       "mastheadMinHeight": "52px",
-      "grid": "3 columns (>1200px), 2 (761-1200px), 1 (<=760px); subgrid rows align revision tables"
+      "grid": "3 columns (>1200px), 2 (761-1200px), 1 (<=760px); subgrid rows align revision tables",
+      "scope": "Shared page width and gutters; grid and toolbar breakpoints below describe the homepage only. Other project compositions remain local.",
+      "measure": "70ch",
+      "sectionSpace": "clamp(2rem, 4vw, 3rem)"
     },
     "breakpoints": [
       {
@@ -476,7 +495,12 @@
         "value": "760px",
         "purpose": "One column, 16px gutters, search and view switch on row 1, all wrapping family tabs on row 2; compact ruled table and 44px targets."
       }
-    ]
+    ],
+    "icons": {
+      "interface": "New website icons use inline SVG strokes; SDK FAQ chevrons use CSS borders.",
+      "identity": "Keep confirmed original project artwork, dimensions, provenance, and licenses; use empty alt beside an accessible project name. No placeholders.",
+      "notCanonized": "Legacy Phosphor header icon-font compatibility is pre-existing glyph-icon drift, retained without making it a rule for new components."
+    }
   },
   "components": [
     {
@@ -485,7 +509,7 @@
       "refersTo": "masthead",
       "description": "Solid blue band with narrow wordmark, navigation, and outline follow pill.",
       "html": "<header class=\"ds-masthead\"><a class=\"ds-wordmark\" href=\"#\">idy.dev</a><nav class=\"ds-nav\"><a href=\"#\">All projects</a><a href=\"#\">Discord</a><a href=\"#\">GitHub</a></nav><a class=\"ds-follow\" href=\"#\">follow</a></header>",
-      "css": ".ds-masthead{display:flex;align-items:center;gap:40px;min-height:52px;padding:0 24px;background:var(--ds-masthead, #0b5cad);color:var(--ds-on-blue, #ffffff);font-family:var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-wordmark{color:var(--ds-on-blue, #ffffff);font:700 22px/44px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.01em;text-decoration:none} .ds-nav{display:flex;gap:28px} .ds-nav a{color:var(--ds-on-blue, #ffffff);font:600 15px/1.4 var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;opacity:.86;text-decoration:none} .ds-nav a:hover,.ds-nav a:focus-visible{opacity:1;text-decoration:underline} .ds-follow{margin-left:auto;display:inline-flex;align-items:center;min-height:30px;padding:0 10px;border:1px solid rgb(255 255 255 / .72);border-radius:2px;color:var(--ds-on-blue, #ffffff);font:600 13px/18px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;text-decoration:none} .ds-follow:hover{background:rgb(255 255 255 / .14)} .ds-masthead :focus-visible{outline:2px solid var(--ds-on-blue, #ffffff);outline-offset:2px}"
+      "css": ".ds-masthead{display:flex;align-items:center;gap:40px;min-height:52px;padding:0 24px;background:var(--idy-masthead, #0b5cad);color:var(--idy-on-blue, #ffffff);font-family:var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-wordmark{color:var(--idy-on-blue, #ffffff);font:700 22px/44px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.01em;text-decoration:none} .ds-nav{display:flex;gap:28px} .ds-nav a{color:var(--idy-on-blue, #ffffff);font:600 15px/1.4 var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;opacity:.86;text-decoration:none} .ds-nav a:hover,.ds-nav a:focus-visible{opacity:1;text-decoration:underline} .ds-follow{margin-left:auto;display:inline-flex;align-items:center;min-height:30px;padding:0 10px;border:1px solid rgb(255 255 255 / .72);border-radius:2px;color:var(--idy-on-blue, #ffffff);font:600 13px/18px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;text-decoration:none} .ds-follow:hover{background:rgb(255 255 255 / .14)} .ds-masthead :focus-visible{outline:2px solid var(--idy-on-blue, #ffffff);outline-offset:2px}"
     },
     {
       "name": "Selector Bar",
@@ -493,7 +517,7 @@
       "refersTo": "selector-bar",
       "description": "One ruled bar: search | family tabs | Cards/Table switch.",
       "html": "<form class=\"ds-bar\" onsubmit=\"return false\"><label class=\"ds-search\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"m16 16 5 5\"/></svg><input type=\"search\" placeholder=\"Find a project…\" aria-label=\"Search projects\"></label><div class=\"ds-tabs\" role=\"group\" aria-label=\"Project family\"><button type=\"button\" aria-pressed=\"true\">All</button><button type=\"button\" aria-pressed=\"false\">Devices</button><button type=\"button\" aria-pressed=\"false\">Desktop</button><button type=\"button\" aria-pressed=\"false\">Networking</button></div><div class=\"ds-switch\" role=\"group\" aria-label=\"Project view\"><button type=\"button\" aria-pressed=\"true\"><svg viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"5\" height=\"5\" rx=\"1\"/><rect x=\"12\" y=\"3\" width=\"5\" height=\"5\" rx=\"1\"/><rect x=\"3\" y=\"12\" width=\"5\" height=\"5\" rx=\"1\"/><rect x=\"12\" y=\"12\" width=\"5\" height=\"5\" rx=\"1\"/></svg><span>Cards</span></button><button type=\"button\" aria-pressed=\"false\"><svg viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><rect x=\"2.5\" y=\"3.5\" width=\"15\" height=\"13\" rx=\"1\"/><path d=\"M2.5 8h15M2.5 12h15M9 3.5v13\"/></svg><span>Table</span></button></div></form>",
-      "css": ".ds-bar{display:flex;align-items:stretch;min-height:46px;border:1px solid var(--ds-line, #b9c6d3);border-radius:2px;background:var(--ds-sheet, #ffffff);font-family:var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-search{position:relative;display:flex;flex:0 1 280px;align-items:center;border-right:1px solid var(--ds-line, #b9c6d3)} .ds-search svg{position:absolute;left:14px;width:16px;height:16px;color:var(--ds-muted, #4a4a4a);pointer-events:none} .ds-search input{width:100%;min-height:44px;padding:0 14px 0 38px;border:0;background:transparent;color:var(--ds-ink, #1a1a1a);font:400 14px/1.4 var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-search input::placeholder{color:var(--ds-muted, #4a4a4a);opacity:1} .ds-search input:focus-visible{outline:2px solid var(--ds-blue, #0b5cad);outline-offset:-2px} .ds-tabs{display:flex;flex:1 1 auto;min-width:0} .ds-tabs button{min-height:44px;padding:0 18px;border:0;border-right:1px solid var(--ds-rule, #dce3ea);background:transparent;color:var(--ds-ink, #1a1a1a);font:600 14px/1.2 var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;white-space:nowrap;cursor:pointer} .ds-tabs button:hover{background:var(--ds-spec, #e8eef4)} .ds-tabs button[aria-pressed=\"true\"]{background:var(--ds-spec, #e8eef4);color:var(--ds-blue, #0b5cad);box-shadow:inset 0 -3px 0 var(--ds-blue, #0b5cad)} .ds-tabs button:focus-visible{outline:2px solid var(--ds-blue, #0b5cad);outline-offset:-2px} .ds-switch{display:flex;flex:none;align-items:center;margin-left:auto;padding:0 8px;border-left:1px solid var(--ds-line, #b9c6d3)} .ds-switch button{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border:1px solid var(--ds-line, #b9c6d3);background:var(--ds-sheet, #ffffff);color:var(--ds-ink, #1a1a1a);font:600 13px/1 var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;cursor:pointer} .ds-switch button:first-child{border-radius:2px 0 0 2px} .ds-switch button+button{border-left:0;border-radius:0 2px 2px 0} .ds-switch svg{width:15px;height:15px} .ds-switch button[aria-pressed=\"true\"]{border-color:var(--ds-masthead, #0b5cad);background:var(--ds-masthead, #0b5cad);color:var(--ds-on-blue, #ffffff)} .ds-switch button:not([aria-pressed=\"true\"]):hover{background:var(--ds-spec, #e8eef4)} .ds-switch button:focus-visible{outline:2px solid var(--ds-blue, #0b5cad);outline-offset:2px}"
+      "css": ".ds-bar{display:flex;align-items:stretch;min-height:46px;border:1px solid var(--idy-line, #b9c6d3);border-radius:2px;background:var(--idy-bg, #ffffff);font-family:var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-search{position:relative;display:flex;flex:0 1 280px;align-items:center;border-right:1px solid var(--idy-line, #b9c6d3)} .ds-search svg{position:absolute;left:14px;width:16px;height:16px;color:var(--idy-muted, #4a4a4a);pointer-events:none} .ds-search input{width:100%;min-height:44px;padding:0 14px 0 38px;border:0;background:transparent;color:var(--idy-ink, #1a1a1a);font:400 14px/1.4 var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-search input::placeholder{color:var(--idy-muted, #4a4a4a);opacity:1} .ds-search input:focus-visible{outline:2px solid var(--idy-accent, #0b5cad);outline-offset:-2px} .ds-tabs{display:flex;flex:1 1 auto;min-width:0} .ds-tabs button{min-height:44px;padding:0 18px;border:0;border-right:1px solid var(--idy-hairline, #dce3ea);background:transparent;color:var(--idy-ink, #1a1a1a);font:600 14px/1.2 var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;white-space:nowrap;cursor:pointer} .ds-tabs button:hover{background:var(--idy-spec-fill, #e8eef4)} .ds-tabs button[aria-pressed=\"true\"]{background:var(--idy-spec-fill, #e8eef4);color:var(--idy-accent, #0b5cad);box-shadow:inset 0 -3px 0 var(--idy-accent, #0b5cad)} .ds-tabs button:focus-visible{outline:2px solid var(--idy-accent, #0b5cad);outline-offset:-2px} .ds-switch{display:flex;flex:none;align-items:center;margin-left:auto;padding:0 8px;border-left:1px solid var(--idy-line, #b9c6d3)} .ds-switch button{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border:1px solid var(--idy-line, #b9c6d3);background:var(--idy-bg, #ffffff);color:var(--idy-ink, #1a1a1a);font:600 13px/1 var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;cursor:pointer} .ds-switch button:first-child{border-radius:2px 0 0 2px} .ds-switch button+button{border-left:0;border-radius:0 2px 2px 0} .ds-switch svg{width:15px;height:15px} .ds-switch button[aria-pressed=\"true\"]{border-color:var(--idy-masthead, #0b5cad);background:var(--idy-masthead, #0b5cad);color:var(--idy-on-blue, #ffffff)} .ds-switch button:not([aria-pressed=\"true\"]):hover{background:var(--idy-spec-fill, #e8eef4)} .ds-switch button:focus-visible{outline:2px solid var(--idy-accent, #0b5cad);outline-offset:2px}"
     },
     {
       "name": "Part with Revision Table",
@@ -501,7 +525,7 @@
       "refersTo": "part",
       "description": "Signature datasheet block: ink top rule, name and family, function line, links, Downloads disclosure, and a ruled revision table with an active Releasing marker.",
       "html": "<article class=\"ds-part\"><div class=\"ds-part-head\"><h2><a href=\"#\">TailSplit</a></h2><span class=\"ds-family\">Networking</span></div><p class=\"ds-desc\">Split-tunnel routing for Tailscale on macOS.</p><p class=\"ds-links\"><a href=\"#\">Project page</a><a href=\"#\">Source</a></p><details class=\"ds-dl\"><summary><svg class=\"ds-chev\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"m7.5 5 5 5-5 5\"/></svg><span>Downloads</span></summary><ul><li><a href=\"#\">macOS (Apple silicon)</a></li></ul></details><div class=\"ds-rev\"><div class=\"ds-rev-head\"><span>Status</span><span>Version</span><span>Date</span></div><span class=\"ds-mark\"></span><span class=\"ds-status\">Released</span><span class=\"ds-ver\"><a href=\"#\">v1.4.2</a></span><span class=\"ds-date\">2026-10-28</span><span class=\"ds-mark is-active\"></span><span class=\"ds-status is-active\">Releasing</span><span class=\"ds-ver ds-releasing\"><b>v1.5.0</b><em>Building</em></span></div></article>",
-      "css": ".ds-part{max-width:380px;padding-bottom:16px;border:1px solid var(--ds-line, #b9c6d3);border-top:2px solid var(--ds-ink, #1a1a1a);border-radius:2px;background:var(--ds-sheet, #ffffff);color:var(--ds-body, #333333);font:400 15px/1.5 var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-part-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:14px 20px 0;padding-bottom:8px;border-bottom:1px solid var(--ds-rule, #dce3ea)} .ds-part h2{margin:0;font:700 18px/24px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);letter-spacing:-.005em} .ds-part h2 a{color:var(--ds-ink, #1a1a1a);text-decoration:none} .ds-part h2 a:hover{color:var(--ds-blue, #0b5cad);text-decoration:underline} .ds-family{color:var(--ds-muted, #4a4a4a);font:600 12px/16px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase} .ds-desc{margin:8px 20px 0;font-size:14px;line-height:20px;text-wrap:pretty} .ds-links{display:flex;flex-wrap:wrap;gap:0 16px;margin:8px 20px 0;font:600 13.5px/20px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em} .ds-part a{color:var(--ds-blue, #0b5cad);text-decoration-thickness:1px;text-underline-offset:3px} .ds-part a:focus-visible{outline:2px solid var(--ds-blue, #0b5cad);outline-offset:2px} .ds-dl{margin:2px 20px 14px} .ds-dl summary{display:inline-flex;align-items:center;gap:4px;list-style:none;color:var(--ds-blue, #0b5cad);font:600 13px/20px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;cursor:pointer} .ds-dl summary::-webkit-details-marker{display:none} .ds-chev{width:14px;height:14px} .ds-dl[open] .ds-chev{transform:rotate(90deg)} .ds-dl ul{margin:4px 0 0;padding:0;list-style:none;font-size:13px} .ds-rev{display:grid;grid-template-columns:4px 6.5rem minmax(0,1fr) auto;margin:0 20px;font-size:13px;line-height:18px;font-variant-numeric:tabular-nums lining-nums} .ds-rev-head{display:grid;grid-column:1/-1;grid-template-columns:subgrid;border-block:1px solid var(--ds-line, #b9c6d3);background:var(--ds-spec, #e8eef4);color:var(--ds-ink, #1a1a1a);font-size:12px;font-weight:700;font-stretch:75%;letter-spacing:.04em} .ds-rev-head span{padding:4px 8px} .ds-rev-head span:first-child{grid-column:2} .ds-rev-head span:last-child{text-align:right} .ds-rev>span:not(.ds-rev-head){padding:6px 8px;border-bottom:1px solid var(--ds-rule, #dce3ea)} .ds-rev>.ds-mark{padding:0} .ds-mark.is-active{background:var(--ds-blue, #0b5cad)} .ds-status{color:var(--ds-ink, #1a1a1a);font-weight:500;font-stretch:75%;letter-spacing:.01em} .ds-status.is-active{color:var(--ds-blue, #0b5cad);font-weight:700} .ds-ver a{font-weight:600} .ds-date{color:var(--ds-muted, #4a4a4a);text-align:right;white-space:nowrap} .ds-releasing{grid-column:3/-1;display:flex;justify-content:space-between;gap:12px} .ds-releasing em{color:var(--ds-muted, #4a4a4a);font-style:normal}"
+      "css": ".ds-part{max-width:380px;padding-bottom:16px;border:1px solid var(--idy-line, #b9c6d3);border-top:2px solid var(--idy-ink, #1a1a1a);border-radius:2px;background:var(--idy-bg, #ffffff);color:var(--idy-body, #333333);font:400 15px/1.5 var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-part-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:14px 20px 0;padding-bottom:8px;border-bottom:1px solid var(--idy-hairline, #dce3ea)} .ds-part h2{margin:0;font:700 18px/24px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);letter-spacing:-.005em} .ds-part h2 a{color:var(--idy-ink, #1a1a1a);text-decoration:none} .ds-part h2 a:hover{color:var(--idy-accent, #0b5cad);text-decoration:underline} .ds-family{color:var(--idy-muted, #4a4a4a);font:600 12px/16px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase} .ds-desc{margin:8px 20px 0;font-size:14px;line-height:20px;text-wrap:pretty} .ds-links{display:flex;flex-wrap:wrap;gap:0 16px;margin:8px 20px 0;font:600 13.5px/20px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em} .ds-part a{color:var(--idy-accent, #0b5cad);text-decoration-thickness:1px;text-underline-offset:3px} .ds-part a:focus-visible{outline:2px solid var(--idy-accent, #0b5cad);outline-offset:2px} .ds-dl{margin:2px 20px 14px} .ds-dl summary{display:inline-flex;align-items:center;gap:4px;list-style:none;color:var(--idy-accent, #0b5cad);font:600 13px/20px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.02em;cursor:pointer} .ds-dl summary::-webkit-details-marker{display:none} .ds-chev{width:14px;height:14px} .ds-dl[open] .ds-chev{transform:rotate(90deg)} .ds-dl ul{margin:4px 0 0;padding:0;list-style:none;font-size:13px} .ds-rev{display:grid;grid-template-columns:4px 6.5rem minmax(0,1fr) auto;margin:0 20px;font-size:13px;line-height:18px;font-variant-numeric:tabular-nums lining-nums} .ds-rev-head{display:grid;grid-column:1/-1;grid-template-columns:subgrid;border-block:1px solid var(--idy-line, #b9c6d3);background:var(--idy-spec-fill, #e8eef4);color:var(--idy-ink, #1a1a1a);font-size:12px;font-weight:700;font-stretch:75%;letter-spacing:.04em} .ds-rev-head span{padding:4px 8px} .ds-rev-head span:first-child{grid-column:2} .ds-rev-head span:last-child{text-align:right} .ds-rev>span:not(.ds-rev-head){padding:6px 8px;border-bottom:1px solid var(--idy-hairline, #dce3ea)} .ds-rev>.ds-mark{padding:0} .ds-mark.is-active{background:var(--idy-accent, #0b5cad)} .ds-status{color:var(--idy-ink, #1a1a1a);font-weight:500;font-stretch:75%;letter-spacing:.01em} .ds-status.is-active{color:var(--idy-accent, #0b5cad);font-weight:700} .ds-ver a{font-weight:600} .ds-date{color:var(--idy-muted, #4a4a4a);text-align:right;white-space:nowrap} .ds-releasing{grid-column:3/-1;display:flex;justify-content:space-between;gap:12px} .ds-releasing em{color:var(--idy-muted, #4a4a4a);font-style:normal}"
     },
     {
       "name": "Selector Table",
@@ -509,7 +533,7 @@
       "refersTo": "selector-table-head",
       "description": "Desktop table view: framed product-selector table with ink top rule, spec-fill heads, and a 4px inset blue marker on an active Releasing cell.",
       "html": "<table class=\"ds-table\"><thead><tr><th>Project</th><th>Released</th><th>Releasing</th></tr></thead><tbody><tr><td><a class=\"ds-tname\" href=\"#\">Nootify</a><br>Notification relay for agent sessions.</td><td><a href=\"#\">v2.1.0</a><br><span class=\"ds-tdate\">2026-11-02</span></td><td class=\"ds-active\"><b>v2.2.0</b> Building</td></tr><tr><td><a class=\"ds-tname\" href=\"#\">GizClaw</a><br>Agent runtime for connected devices.</td><td><a href=\"#\">v0.9.3</a><br><span class=\"ds-tdate\">2026-09-14</span></td><td>—</td></tr></tbody></table>",
-      "css": ".ds-table{width:100%;border:1px solid var(--ds-line, #b9c6d3);border-top:2px solid var(--ds-ink, #1a1a1a);border-radius:2px;border-collapse:separate;border-spacing:0;background:var(--ds-sheet, #ffffff);color:var(--ds-body, #333333);font:400 14px/20px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-variant-numeric:tabular-nums lining-nums;text-align:left} .ds-table th{padding:8px 16px;border-bottom:1px solid var(--ds-line, #b9c6d3);background:var(--ds-spec, #e8eef4);color:var(--ds-ink, #1a1a1a);font:700 13px/18px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.04em} .ds-table td{padding:14px 16px;border-bottom:1px solid var(--ds-rule, #dce3ea);vertical-align:top} .ds-table tr:last-child td{border-bottom:0} .ds-table tbody tr:hover td{background:var(--ds-spec, #e8eef4)} .ds-table a{color:var(--ds-blue, #0b5cad);font-weight:600} .ds-tname{font:700 18px/24px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-table a.ds-tname{color:var(--ds-ink, #1a1a1a);text-decoration:none} .ds-tdate{color:var(--ds-muted, #4a4a4a);font-size:13px} .ds-active{box-shadow:inset 4px 0 0 var(--ds-blue, #0b5cad)}"
+      "css": ".ds-table{width:100%;border:1px solid var(--idy-line, #b9c6d3);border-top:2px solid var(--idy-ink, #1a1a1a);border-radius:2px;border-collapse:separate;border-spacing:0;background:var(--idy-bg, #ffffff);color:var(--idy-body, #333333);font:400 14px/20px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-variant-numeric:tabular-nums lining-nums;text-align:left} .ds-table th{padding:8px 16px;border-bottom:1px solid var(--idy-line, #b9c6d3);background:var(--idy-spec-fill, #e8eef4);color:var(--idy-ink, #1a1a1a);font:700 13px/18px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.04em} .ds-table td{padding:14px 16px;border-bottom:1px solid var(--idy-hairline, #dce3ea);vertical-align:top} .ds-table tr:last-child td{border-bottom:0} .ds-table tbody tr:hover td{background:var(--idy-spec-fill, #e8eef4)} .ds-table a{color:var(--idy-accent, #0b5cad);font-weight:600} .ds-tname{font:700 18px/24px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-table a.ds-tname{color:var(--idy-ink, #1a1a1a);text-decoration:none} .ds-tdate{color:var(--idy-muted, #4a4a4a);font-size:13px} .ds-active{box-shadow:inset 4px 0 0 var(--idy-accent, #0b5cad)}"
     },
     {
       "name": "Phone Ruled List",
@@ -517,7 +541,7 @@
       "refersTo": "selector-table-head",
       "description": "Table view at 760px and below: Project | Released, with an active release as a full-width marked line.",
       "html": "<div class=\"ds-list\"><div class=\"ds-lhead\"><span>Project</span><span>Released</span></div><div class=\"ds-lrow\"><a class=\"ds-lname\" href=\"#\">Nootify</a><a href=\"#\">v2.1.0</a><span class=\"ds-lrel\"><b>v2.2.0</b> Building</span></div><div class=\"ds-lrow\"><a class=\"ds-lname\" href=\"#\">GizClaw</a><a href=\"#\">v0.9.3</a></div></div>",
-      "css": ".ds-list{max-width:360px;border:1px solid var(--ds-line, #b9c6d3);border-top:2px solid var(--ds-ink, #1a1a1a);border-radius:2px;background:var(--ds-sheet, #ffffff);font:400 13px/18px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-variant-numeric:tabular-nums lining-nums} .ds-lhead{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:6px 12px;border-bottom:1px solid var(--ds-line, #b9c6d3);background:var(--ds-spec, #e8eef4);color:var(--ds-ink, #1a1a1a);font:700 12px/16px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.04em} .ds-lrow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 12px;padding:8px 12px;border-bottom:1px solid var(--ds-rule, #dce3ea)} .ds-lrow:last-child{border-bottom:0} .ds-lrow a{display:inline-flex;align-items:center;min-height:44px;color:var(--ds-blue, #0b5cad);font-weight:600} .ds-lrow a.ds-lname{color:var(--ds-ink, #1a1a1a);font:700 16px/24px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);text-decoration:none} .ds-lrel{grid-column:1/-1;padding-left:8px;box-shadow:inset 3px 0 0 var(--ds-blue, #0b5cad);color:var(--ds-muted, #4a4a4a)} .ds-lrel b{color:var(--ds-ink, #1a1a1a)}"
+      "css": ".ds-list{max-width:360px;border:1px solid var(--idy-line, #b9c6d3);border-top:2px solid var(--idy-ink, #1a1a1a);border-radius:2px;background:var(--idy-bg, #ffffff);font:400 13px/18px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-variant-numeric:tabular-nums lining-nums} .ds-lhead{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:6px 12px;border-bottom:1px solid var(--idy-line, #b9c6d3);background:var(--idy-spec-fill, #e8eef4);color:var(--idy-ink, #1a1a1a);font:700 12px/16px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.04em} .ds-lrow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 12px;padding:8px 12px;border-bottom:1px solid var(--idy-hairline, #dce3ea)} .ds-lrow:last-child{border-bottom:0} .ds-lrow a{display:inline-flex;align-items:center;min-height:44px;color:var(--idy-accent, #0b5cad);font-weight:600} .ds-lrow a.ds-lname{color:var(--idy-ink, #1a1a1a);font:700 16px/24px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);text-decoration:none} .ds-lrel{grid-column:1/-1;padding-left:8px;box-shadow:inset 3px 0 0 var(--idy-accent, #0b5cad);color:var(--idy-muted, #4a4a4a)} .ds-lrel b{color:var(--idy-ink, #1a1a1a)}"
     },
     {
       "name": "Homebrew Panel",
@@ -525,7 +549,7 @@
       "refersTo": "part",
       "description": "Part-style disclosure with bold title, narrow caption, drawn chevron, and spec-fill command wells.",
       "html": "<details class=\"ds-brew\" open><summary><span>Install with Homebrew</span><span class=\"ds-cap\">Nootify · TailSplit</span><svg class=\"ds-bchev\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"m5 7.5 5 5 5-5\"/></svg></summary><div class=\"ds-brew-body\"><div class=\"ds-cmd\"><code>brew install idy/tap/nootify</code><button type=\"button\">Copy</button></div></div></details>",
-      "css": ".ds-brew{max-width:560px;border:1px solid var(--ds-line, #b9c6d3);border-top:2px solid var(--ds-ink, #1a1a1a);border-radius:2px;background:var(--ds-sheet, #ffffff);font-family:var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-brew>summary{display:flex;align-items:center;gap:12px;min-height:48px;padding:0 20px;color:var(--ds-ink, #1a1a1a);font:700 16px/1.3 var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);list-style:none;cursor:pointer} .ds-brew>summary::-webkit-details-marker{display:none} .ds-cap{margin-left:auto;color:var(--ds-muted, #4a4a4a);font:600 12px/1 var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase} .ds-bchev{width:18px;height:18px} .ds-brew[open] .ds-bchev{transform:rotate(180deg)} .ds-brew-body{padding:16px 20px 20px;border-top:1px solid var(--ds-rule, #dce3ea)} .ds-cmd{display:flex;align-items:center;gap:0 12px;padding:4px 4px 4px 12px;border:1px solid var(--ds-line, #b9c6d3);border-radius:2px;background:var(--ds-spec, #e8eef4)} .ds-cmd code{flex:1;color:var(--ds-ink, #1a1a1a);font-size:13px} .ds-cmd button{min-width:44px;min-height:40px;padding:4px 10px;border:0;border-radius:2px;background:transparent;color:var(--ds-blue, #0b5cad);font:600 13px/1.4 var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);cursor:pointer} .ds-cmd button:hover{background:var(--ds-sheet, #ffffff)} .ds-cmd button:focus-visible{outline:2px solid var(--ds-blue, #0b5cad);outline-offset:2px}"
+      "css": ".ds-brew{max-width:560px;border:1px solid var(--idy-line, #b9c6d3);border-top:2px solid var(--idy-ink, #1a1a1a);border-radius:2px;background:var(--idy-bg, #ffffff);font-family:var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif)} .ds-brew>summary{display:flex;align-items:center;gap:12px;min-height:48px;padding:0 20px;color:var(--idy-ink, #1a1a1a);font:700 16px/1.3 var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);list-style:none;cursor:pointer} .ds-brew>summary::-webkit-details-marker{display:none} .ds-cap{margin-left:auto;color:var(--idy-muted, #4a4a4a);font:600 12px/1 var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase} .ds-bchev{width:18px;height:18px} .ds-brew[open] .ds-bchev{transform:rotate(180deg)} .ds-brew-body{padding:16px 20px 20px;border-top:1px solid var(--idy-hairline, #dce3ea)} .ds-cmd{display:flex;align-items:center;gap:0 12px;padding:4px 4px 4px 12px;border:1px solid var(--idy-line, #b9c6d3);border-radius:2px;background:var(--idy-spec-fill, #e8eef4)} .ds-cmd code{flex:1;color:var(--idy-ink, #1a1a1a);font-size:13px} .ds-cmd button{min-width:44px;min-height:40px;padding:4px 10px;border:0;border-radius:2px;background:transparent;color:var(--idy-accent, #0b5cad);font:600 13px/1.4 var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);cursor:pointer} .ds-cmd button:hover{background:var(--idy-bg, #ffffff)} .ds-cmd button:focus-visible{outline:2px solid var(--idy-accent, #0b5cad);outline-offset:2px}"
     },
     {
       "name": "Text Button",
@@ -533,15 +557,31 @@
       "refersTo": "downloads-disclosure",
       "description": "Boxless underlined blue action used for Reload snapshot.",
       "html": "<p class=\"ds-meta\">12 projects · Snapshot 11 Nov 2026, 09:40 <button type=\"button\" class=\"ds-textbtn\">Reload snapshot</button></p>",
-      "css": ".ds-meta{color:var(--ds-muted, #4a4a4a);font:400 13px/20px var(--ds-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-variant-numeric:tabular-nums lining-nums} .ds-textbtn{min-height:32px;padding:0;border:0;background:transparent;color:var(--ds-blue, #0b5cad);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer} .ds-textbtn:disabled{opacity:.6;cursor:progress} .ds-textbtn:focus-visible{outline:2px solid var(--ds-blue, #0b5cad);outline-offset:2px}"
+      "css": ".ds-meta{color:var(--idy-muted, #4a4a4a);font:400 13px/20px var(--idy-font, \"Archivo\", \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif);font-variant-numeric:tabular-nums lining-nums} .ds-textbtn{min-height:32px;padding:0;border:0;background:transparent;color:var(--idy-accent, #0b5cad);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer} .ds-textbtn:disabled{opacity:.6;cursor:progress} .ds-textbtn:focus-visible{outline:2px solid var(--idy-accent, #0b5cad);outline-offset:2px}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Shared SDK outlined control with Spec Fill hover and visible focus.",
+      "html": "<button type=\"button\" class=\"ds-sdk-primary\">Get yesman</button>",
+      "css": ".ds-sdk-primary{display:inline-flex;align-items:center;justify-content:center;gap:var(--idy-space-1, .5rem);min-height:var(--idy-control-height, 2.75rem);max-width:100%;padding:.625rem 1.125rem;border:1px solid var(--idy-accent, #0b5cad);border-radius:var(--idy-radius-control, 2px);background:var(--idy-surface, #ffffff);color:var(--idy-accent, #0b5cad);font:600 .875rem/1.5 var(--idy-font, Archivo, sans-serif);font-stretch:75%;letter-spacing:.02em;text-align:center;cursor:pointer} .ds-sdk-primary:hover{background:var(--idy-spec-fill, #e8eef4);} .ds-sdk-primary:focus-visible{outline:2px solid var(--idy-accent, #0b5cad);outline-offset:2px} .ds-sdk-primary:active{opacity:.8} .ds-sdk-primary:disabled{opacity:.55;cursor:not-allowed}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Shared SDK outlined control with Spec Fill hover and visible focus.",
+      "html": "<button type=\"button\" class=\"ds-sdk-secondary\">Get yesman</button>",
+      "css": ".ds-sdk-secondary{display:inline-flex;align-items:center;justify-content:center;gap:var(--idy-space-1, .5rem);min-height:var(--idy-control-height, 2.75rem);max-width:100%;padding:.625rem 1.125rem;border:1px solid var(--idy-line, #b9c6d3);border-radius:var(--idy-radius-control, 2px);background:var(--idy-surface, #ffffff);color:var(--idy-ink, #1a1a1a);font:600 .875rem/1.5 var(--idy-font, Archivo, sans-serif);font-stretch:75%;letter-spacing:.02em;text-align:center;cursor:pointer} .ds-sdk-secondary:hover{background:var(--idy-spec-fill, #e8eef4);border-color:var(--idy-accent, #0b5cad);} .ds-sdk-secondary:focus-visible{outline:2px solid var(--idy-accent, #0b5cad);outline-offset:2px} .ds-sdk-secondary:active{opacity:.8} .ds-sdk-secondary:disabled{opacity:.55;cursor:not-allowed}"
     }
   ],
   "narrative": {
     "northStar": "Component Datasheet",
-    "overview": "The idy.dev homepage documents every project the way an electronics catalogue documents a part: a name, a family designator, one line of function, and a revision table. A solid datasheet-blue masthead sits over a white sheet (deep navy in dark mode); everything below it is ruled, not raised. Parts sit in a dense, even grid so a visitor can scan names, narrow by family, compare revisions, and leave for the project, source, release, or download.\n\nThe world is built from one variable family, Archivo, used at two widths: normal width for reading and 75% width for anything that labels. Structure comes from lines (2px ink at the top of every part, 1px blue-grey rules within), pale spec-table fill for heads and selected states, and 2px corners. The blue is reserved for links, the pressed state, focus, and active releases, so a blue marker in a revision table reads as a signal and not decoration. The design rejects rounded developer-portfolio card grids with badges.\n\nScope: this system governs the homepage (`docs/index.html`, `docs/styles.css`, `docs/directory.js`) and the 404 page, which shares its stylesheet. The shared site SDK in `packages/site-sdk` and other `*.idy.dev` pages keep their own identity. The homepage maps the SDK shell's `--idy-*` variables onto `--ds-*` for this page only; SDK defaults are not tokens of this system.",
+    "overview": "The shared website identity presents projects with the clarity of a component datasheet. On the idy.dev homepage, every project is documented the way an electronics catalogue documents a part: a name, a family designator, one line of function, and a revision table. A solid datasheet-blue masthead sits over a white sheet (deep navy in dark mode); everything below it is ruled, not raised. Parts sit in a dense, even grid so a visitor can scan names, narrow by family, compare revisions, and leave for the project, source, release, or download.\n\nThe world is built from one variable family, Archivo, used at two widths: normal width for reading and 75% width for anything that labels. Structure comes from lines (2px ink at the top of every part, 1px blue-grey rules within), pale spec-table fill for heads and selected states, and 2px corners. The blue is reserved for links, the pressed state, focus, and active releases, so a blue marker in a revision table reads as a signal and not decoration. The design rejects rounded developer-portfolio card grids with badges.\n\nScope: this system governs `idy.dev` and every `*.idy.dev` project website through `@idy/site-sdk` 0.2.0. Canonical identity and shell rules live in `docs/shared/`; SDK typography, layout, and elements live in `packages/site-sdk/src/styles/`. Shared semantic `--idy-*` tokens own the palette, Archivo typography, masthead, rules, and 2px corners. The homepage aliases these to `--ds-*` for its directory-specific selectors; the project grid and revision presentation stay local. Consumers retain their content, information architecture, and project-specific behavior. Magpie and Peetty website demos retain their product-style specimens inside the shared website shell; these specimens do not redefine the website identity. Magpie's desktop application design system remains separate.",
     "keyCharacteristics": [
       "One blue masthead and white or deep navy sheet, with no other color fields.",
-      "Archivo only: normal width for reading, 75% width for labels, tabs, and table heads.",
+      "Archivo for interface text: normal width for reading, 75% width for labels, tabs, and table heads; monospace for code.",
       "Tabular lining figures for every version, date, and count.",
       "Every part opens with a 2px ink top rule; 1px ruled lines do the rest; 2px corners; no shadows.",
       "The revision table is the signature component, with a blue marker cell on active Releasing rows."
@@ -595,17 +635,17 @@
       "**Do** keep blue fields to the masthead and the pressed view switch; use Datasheet Blue for links, focus, the active tab, and active Releasing markers only.",
       "**Do** align revision tables across a grid row with subgrid tracks.",
       "**Do** use Masthead Blue, not Datasheet Blue, wherever white text sits on blue in dark mode (#8db8ee fails contrast against white).",
-      "**Do** use one drawn SVG chevron for every disclosure and hide native markers.",
+      "**Do** hide native disclosure markers when supplying a drawn chevron: SVG on the homepage, CSS borders in the SDK FAQ.",
       "**Do** keep tap targets at a minimum of 44px on phones."
     ],
     "donts": [
       "**Don't** use drop shadows, hover lifts, or tonal surface steps. Draw a rule or use Spec Fill instead.",
       "**Don't** round corners beyond 2px or turn parts into pill-shaped badges.",
-      "**Don't** add a second typeface. Archivo carries display, body, and labels.",
+      "**Don't** add a second interface typeface. Archivo carries display, body, and labels; the SDK monospace stack is reserved for code and commands.",
       "**Don't** use the blue marker cell for anything but an active, in-progress release.",
       "**Don't** show idle Releasing rows on cards.",
-      "**Don't** apply these `--ds-*` tokens, the 84rem page, or the parts grid as defaults for the shared site SDK or other `*.idy.dev` pages.",
-      "**Don't** add icon-font glyphs to new components. Icons are inline SVG strokes."
+      "**Don't** copy the homepage's directory-specific parts grid into every project page. Use the shared SDK's Component Datasheet defaults and compose layouts around each project's real content.",
+      "**Don't** add icon-font glyphs, emoji, or text characters as interface icons in new website components. Use inline SVG strokes; preserve confirmed project artwork as identity assets. Legacy Phosphor header compatibility is not a precedent for new components."
     ]
   }
 }

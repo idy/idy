@@ -28,11 +28,13 @@ Impeccable's project default is code-first in `.impeccable/config.json`. Its liv
 
 [`packages/site-sdk/README.md`](packages/site-sdk/README.md) documents `@idy/site-sdk`: typography, layout primitives, page elements, header/footer factories, themes, translations, copying, and release helpers. It includes npm, CDN, self-hosting, and migration examples.
 
-Canonical runtime and component sources live in `packages/site-sdk/src/`. The existing identity styles and licensed fonts in `docs/shared/` are bundled into the package. `scripts/build-site-sdk.mjs` produces npm distribution files and matching versioned GitHub Pages assets under `docs/sdk/<version>/`; rebuild after changing either source area. Keep old published version directories intact and bump the package version before changing a published release.
+Canonical runtime and component sources live in `packages/site-sdk/src/`. The Component Datasheet identity styles in `docs/shared/`, Archivo and its OFL in `docs/fonts/`, and the compatible header icon font are bundled into the package. `scripts/build-site-sdk.mjs` produces npm distribution files and matching versioned GitHub Pages assets under `docs/sdk/<version>/`; rebuild after changing either source area. Keep old published version directories intact and bump the package version before changing a published release.
 
-The current site consumes `docs/sdk/0.1.0/`. Other project repositories have not been migrated. No npm publication or website deployment is performed by building locally.
+The current site and component catalogue consume `docs/sdk/0.2.0/`, whose default Component Datasheet design is shared across `*.idy.dev`. Consumers vendor the complete SDK distribution into `shared/sdk/`, retaining `assets/` and using relative script and stylesheet links. Historical `0.1.0` assets remain intact. No npm publication or website deployment is performed by building locally.
 
 ## Project directory and repository status
+
+The homepage includes lowercase [yesman](https://yesman.idy.dev/), an early-prototype Go/MyGo tray app with pi lead/workers, project workspaces, a shared repository pool, and shared notes. Its primary `release.yml` is tracked alongside validated downloads from GitHub Releases; the project README remains the source for platform limitations.
 
 The homepage defaults to project cards, with a table comparison view on desktop and a single card column on mobile. Search, category filters, and sorting use the same semantic rows. Full descriptions, project links, release downloads, and Homebrew commands remain available through native disclosures.
 
@@ -41,6 +43,12 @@ The homepage defaults to project cards, with a table comparison view on desktop 
 The directory displays only **Released** and **Releasing** versions. Released uses GitHub's latest stable release; only when the latest-release endpoint returns HTTP 404 does it query published releases for a prerelease fallback. Releasing queries the configured primary release workflows in each source repository directly for running, queued, and waiting releases, independently of completed runs. Those source release workflows remain in place. Only confirmed version-tag pushes supply a target version; manually dispatched or otherwise unproven targets display “Version not confirmed.” Concurrent active versions may appear together. Completed, failed, cancelled, and draft-only completed builds never populate Releasing, and general CI status is not displayed.
 
 Anonymous requests share GitHub's rate limits for the visitor's network. Rate-limit cooldowns use `Retry-After` or `X-RateLimit-Reset`, persist across page loads, and also block forced refreshes until retry is allowed. Network/server failures and rate limits preserve previously successful responses with their original observation times. The UI identifies cached data and marks stale active releases as last observed; it never silently presents a failed refresh as current. Without usable cache, failed fields remain unavailable. Corrupt, obsolete, future-dated, or invalid cached responses are ignored, and permission failures invalidate the affected cached entry. An em dash means no active version was observed or tracking is unavailable; accessible labels and tooltips distinguish those cases.
+
+## Project icons
+
+The homepage uses existing project artwork beside project names in the shared card/table markup. `docs/project-icons/` contains the original SVG files and CH348's original PNG, displayed at 28px (24px on phones). Images have empty alternative text because the adjacent project name provides the link's accessible name. Entries without a confirmed project icon stay text-only; no generated or placeholder icons are used.
+
+`docs/project-icons/sources.json` records each source repository, path, revision, SHA-256, and project license, plus the reason for omitted icons. Full upstream license texts are retained in `docs/project-icons/licenses/`. Copy original artwork without re-encoding; keep source metadata and license notices alongside it, especially for raster files. Update the matching `<img>` in `docs/index.html` when changing a filename. Source repositories remain authoritative for artwork and licensing.
 
 ## Updating pinned projects
 

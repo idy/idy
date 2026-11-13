@@ -11,11 +11,14 @@ const gizos = PROJECTS.find((project) => project.repository === "GizClaw/gizos")
 const wgc = PROJECTS.find((project) => project.repository === "idy/wgc");
 const activePages = (...items) => [runs(...items), runs(), runs()];
 
-test("twelve projects retain six primary release workflows and proven tag-push configuration", () => {
-  assert.equal(PROJECTS.length, 12);
-  assert.equal(PROJECTS.filter((project) => project.releaseWorkflow).length, 6);
-  assert.equal(PROJECTS.filter((project) => project.tagPushOnly).length, 5);
+test("thirteen projects retain seven primary release workflows and proven tag-push configuration", () => {
+  assert.equal(PROJECTS.length, 13);
+  assert.equal(PROJECTS.filter((project) => project.releaseWorkflow).length, 7);
+  assert.equal(PROJECTS.filter((project) => project.tagPushOnly).length, 6);
   assert.deepEqual(ACTIVE_RELEASE_STATUSES, ["in_progress", "queued", "waiting"]);
+  const yesman = PROJECTS.find((project) => project.repository === "idy/yesman");
+  assert.equal(yesman.releaseWorkflow, ".github/workflows/release.yml");
+  assert.equal(yesman.tagPushOnly, true);
 });
 
 test("only proven tag pushes identify active versions; dispatches and branches remain unknown", () => {

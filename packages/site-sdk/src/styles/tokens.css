@@ -5,20 +5,23 @@
   --idy-space-4: 2rem;
   --idy-space-5: 3rem;
   --idy-space-6: 4.5rem;
-  --idy-page-width: 72.5rem;
-  --idy-page-gutter: 2rem;
+  --idy-page-width: 84rem;
+  --idy-page-gutter: 3rem;
   --idy-measure: 70ch;
-  --idy-text-small: .875rem;
-  --idy-text-body: 1rem;
-  --idy-text-lead: clamp(1.0625rem, 1.6vw, 1.25rem);
-  --idy-text-title: clamp(2.375rem, 5.2vw, 4.25rem);
-  --idy-text-section: clamp(1.625rem, 3vw, 2.5rem);
-  --idy-text-subheading: clamp(1.125rem, 2vw, 1.4375rem);
-  --idy-leading-body: 1.7;
-  --idy-leading-heading: 1.15;
-  --idy-radius-control: .4375rem;
-  --idy-radius-surface: .75rem;
+  --idy-text-small: .8125rem;
+  --idy-text-body: .9375rem;
+  --idy-text-lead: 1rem;
+  --idy-text-title: 2rem;
+  --idy-text-section: 1.5rem;
+  --idy-text-subheading: 1.125rem;
+  --idy-leading-body: 1.5;
+  --idy-leading-heading: 1.25;
+  --idy-radius-control: 2px;
+  --idy-radius-surface: 2px;
   --idy-font-code: ui-monospace, "SFMono-Regular", Consolas, monospace;
   --idy-control-height: 2.75rem;
-  --idy-section-space: clamp(2.5rem, 6vw, 5rem);
+  --idy-section-space: clamp(2rem, 4vw, 3rem);
+}
+@media (max-width: 760px) {
+  :root { --idy-page-gutter: 1rem; --idy-text-title: 1.75rem; }
 }

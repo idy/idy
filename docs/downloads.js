@@ -15,6 +15,14 @@ export const downloads = {
     },
   ],
   "GizClaw/gizos": [],
+  "idy/yesman": [
+    { label: "downloadYesmanMacArm", pattern: /^yesman-\d[^/]*-arm64\.dmg$/i },
+    { label: "downloadYesmanMacIntel", pattern: /^yesman-\d[^/]*-amd64\.dmg$/i },
+    { label: "downloadYesmanWindowsArm", pattern: /^yesman-setup-\d[^/]*-arm64\.exe$/i },
+    { label: "downloadYesmanWindows", pattern: /^yesman-setup-\d[^/]*-amd64\.exe$/i },
+    { label: "downloadYesmanLinuxArm", pattern: /^yesman-\d[^/]*-linux-arm64\.tar\.gz$/i },
+    { label: "downloadYesmanLinux", pattern: /^yesman-\d[^/]*-linux-amd64\.tar\.gz$/i },
+  ],
   "idy/nootify": [
     {
       label: "downloadNootify",

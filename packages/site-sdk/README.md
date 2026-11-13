@@ -1,12 +1,12 @@
 # idy.dev Site SDK
 
-Shared typography, layouts, page elements, and browser behavior for `idy.dev` and its project websites. The package preserves the existing Monda body, Montserrat heading, Lato supporting-text roles, light/dark palette, and header interactions.
+Shared typography, layouts, page elements, and browser behavior for `idy.dev` and every `*.idy.dev` project website. Version 0.2.0 makes the homepage's Component Datasheet design the default: one self-hosted Archivo family (normal reading width and narrow labels), a blue masthead, a white/deep-navy sheet, fine rules, 2px corners, and no shadows. Existing header and preference interactions remain compatible.
 
 This is a website kit. [Magpie](https://magpie-design-system.idy.dev/) remains a separate kit for desktop panels and application shells.
 
 ## Status and installation
 
-Version `0.1.0` is prepared locally. It has not been published to npm or deployed by this change. The npm scope's publishing rights have not been verified. The SDK source license is still undecided (`UNLICENSED` in package metadata); bundled fonts and icons retain their licenses in `dist/assets/`.
+Version `0.2.0` is prepared locally. It has not been published to npm or deployed by this change. The npm scope's publishing rights have not been verified. The SDK source license is still undecided (`UNLICENSED` in package metadata); bundled fonts and icons retain their licenses in `dist/assets/`.
 
 From the repository root:
 
@@ -17,10 +17,10 @@ npm test
 npm pack --workspace @idy/site-sdk
 ```
 
-Install the resulting `idy-site-sdk-0.1.0.tgz` into a consuming project, or use the npm workspace directly in this repository. After publication:
+Install the resulting `idy-site-sdk-0.2.0.tgz` into a consuming project, or use the npm workspace directly in this repository. After publication:
 
 ```bash
-npm install @idy/site-sdk@0.1.0
+npm install @idy/site-sdk@0.2.0
 ```
 
 ### npm / ESM
@@ -54,8 +54,8 @@ Importing the JavaScript is safe during SSR; call DOM functions only after a doc
 After this site's `docs/` directory is deployed, its versioned files are available at:
 
 ```html
-<script src="https://idy.dev/sdk/0.1.0/idy-site.min.js"></script>
-<link rel="stylesheet" href="https://idy.dev/sdk/0.1.0/idy-site.css">
+<script src="https://idy.dev/sdk/0.2.0/idy-site.min.js"></script>
+<link rel="stylesheet" href="https://idy.dev/sdk/0.2.0/idy-site.css">
 <!-- Site-specific overrides come after the SDK. -->
 <link rel="stylesheet" href="styles.css">
 <script src="page.js" defer></script>
@@ -64,17 +64,27 @@ After this site's `docs/` directory is deployed, its versioned files are availab
 After npm publication, equivalent version-pinned CDN URLs are:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@idy/site-sdk@0.1.0/dist/idy-site.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@idy/site-sdk@0.1.0/dist/idy-site.css">
+<script src="https://cdn.jsdelivr.net/npm/@idy/site-sdk@0.2.0/dist/idy-site.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@idy/site-sdk@0.2.0/dist/idy-site.css">
 ```
 
-UNPKG uses the same paths under `https://unpkg.com/@idy/site-sdk@0.1.0/dist/`. These public URLs are publication targets, not claims of current availability.
+UNPKG uses the same paths under `https://unpkg.com/@idy/site-sdk@0.2.0/dist/`. These public URLs are publication targets, not claims of current availability.
 
 The classic browser script auto-initializes `window.IdySite` before the first paint and exposes the full API as `window.IdySiteSDK`. Put it in the head before styles without `async` or `defer` to avoid a theme flash. The stylesheet is an explicit link; JavaScript does not inject CSS or rewrite your page structure.
 
 ### Download and self-host
 
-Copy **all of `packages/site-sdk/dist/`**, or `package/dist/` from the npm tarball, into your site's asset folder. It contains browser JS, ESM JS, CSS, TypeScript declarations, fonts, and licenses. Link `idy-site.min.js` and `idy-site.css` with relative paths. Preserve the adjacent `assets/` directory; downloading only CSS omits its fonts.
+Copy **all of `packages/site-sdk/dist/`**, `docs/sdk/0.2.0/`, or `package/dist/` from the npm tarball into your site's `shared/sdk/` folder. It contains browser JS, ESM JS, CSS, TypeScript declarations, fonts, and licenses. Preserve the adjacent `assets/` directory, including Archivo and its OFL license; downloading only CSS omits its fonts. JS and CSS have no dependency on idy.dev's origin, so the complete folder works from a subdirectory, offline, or on a project subdomain.
+
+```html
+<script src="shared/sdk/idy-site.min.js"></script>
+<link rel="stylesheet" href="shared/sdk/idy-site.css">
+<link rel="stylesheet" href="styles.css">
+<!-- In the document body: -->
+<body class="idy-site">…</body>
+```
+
+Resolve the relative links from the current HTML page (for example, `../shared/sdk/` on nested pages). Keep project-specific CSS after the SDK.
 
 The component catalogue at `/sdk/` includes direct JS/CSS download links. All three delivery methods use the same build; no build tool is required in a consuming static website.
 
@@ -89,6 +99,8 @@ Add `class="idy-site"` to the body to enable the base page styles, focus treatme
 | `idy-subheading` | Subsection or project heading |
 | `idy-lead` | Introductory paragraph |
 | `idy-caption` | Supporting text and caveats |
+| `idy-label` | Archivo at 75% width for labels |
+| `idy-numeric` | Tabular lining figures for versions, dates, and counts |
 | `idy-prose` | Readable long-form content, up to 70ch |
 | `idy-container` | Centered content with mobile gutters |
 | `idy-section` | Vertical section rhythm and separators |
@@ -178,7 +190,9 @@ Use the shared defaults first, then override semantic tokens in site CSS:
 .install-section { --idy-gap: var(--idy-space-4); }
 ```
 
-Color roles are `--idy-bg`, `--idy-surface`, `--idy-ink`, `--idy-muted`, `--idy-line`, and `--idy-accent`. Font roles are `--idy-font`, `--idy-heading`, `--idy-small`, and `--idy-font-code`. Shared scales cover `--idy-space-1` through `--idy-space-6`, text sizes, leading, radii, page width/gutters, and the readable measure. A color override needs both light and dark values and contrast verification.
+Color roles are `--idy-bg` and `--idy-surface` (the sheet), `--idy-ink` (headings), `--idy-body`, `--idy-muted`, `--idy-line` (edges), `--idy-hairline` (internal rules), `--idy-accent` (links and focus), `--idy-masthead`, `--idy-on-blue`, and `--idy-spec-fill` (table heads and selected states). Light defaults are white, #1a1a1a ink, #333333 body, #4a4a4a muted, and #0b5cad blue; dark defaults use #121b26, #e8eef4, #c9d3de, #a9b6c4, and #8db8ee, with #0b3d73 behind white masthead text. The runtime's default browser chrome colors follow the masthead.
+
+Font roles `--idy-font`, `--idy-heading`, and `--idy-small` all use Archivo; `--idy-narrow: 75%` applies to labels and table heads. `--idy-font-code` remains monospace for actual code. Shared scales cover `--idy-space-1` through `--idy-space-6`, text sizes, leading, 2px radii, 84rem page width, 48px/16px gutters, and a 70ch readable measure. A color override needs both light and dark values and contrast verification. Keep surfaces flat and separate them with rules; avoid project-local copies of the shared palette, fonts, or masthead.
 
 ## Migration
 
@@ -188,10 +202,10 @@ Color roles are `--idy-bg`, `--idy-surface`, `--idy-ink`, `--idy-muted`, `--idy-
 4. Adopt typography/layout/element classes incrementally. Migrate copy buttons to the code-block contract, removing their old handlers.
 5. Check English/Chinese, both themes, keyboard controls, mobile widths, disabled JavaScript, and unavailable GitHub metadata.
 
-The `idy.dev` directory and 404 page in this checkout have been migrated. Other project repositories have not been changed. Nootify, WGC, and TailSplit already share the shell conventions; sing-box-flutter has a different current shell and needs an explicit visual migration.
+The `idy.dev` directory, 404 page, and component catalogue in this checkout consume 0.2.0. All `*.idy.dev` websites use this shared design; each repository should vendor the same complete version and retain its own project content and behavior. This repository's build does not copy assets to sibling repositories. Historical 0.1.0 files remain unchanged for pinned consumers; moving to 0.2.0 intentionally changes their visual defaults.
 
 ## Development and versioning
 
-`npm run build` emits identical npm assets into `packages/site-sdk/dist/` and committed GitHub Pages assets into `docs/sdk/<version>/`. `npm run check:dist` detects stale committed bundles. Build sources are `src/` plus the canonical identity/fonts in `../../docs/shared/`; consumers receive a standalone distribution.
+`npm run build` emits identical npm assets into `packages/site-sdk/dist/` and committed GitHub Pages assets into `docs/sdk/<version>/`. `npm run check:dist` detects stale committed bundles. Build sources are `src/` plus the canonical identity in `../../docs/shared/` and Archivo in `../../docs/fonts/`; consumers receive a standalone distribution.
 
 Pin the same version for JS and CSS. Before updating an already published release, increment `package.json` rather than replacing that version's files; the build retains other version directories. Publish only after choosing the source license, verifying scope ownership, and explicitly authorizing npm/GitHub publication.

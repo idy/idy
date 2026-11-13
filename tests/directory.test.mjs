@@ -31,7 +31,7 @@ test("cards and table render direct GitHub releases without CI fields", async (t
   assert.equal(row.querySelector(".releasing-note").textContent, "Releasing");
   assert.equal(document.querySelector(".workflow-cell"), null);
   assert.deepEqual([...document.querySelectorAll("thead th")].map((e) => e.textContent.trim()), ["Project", "Released", "Releasing"]);
-  assert.equal(calls.length, 30);
+  assert.equal(calls.length, 34);
   assert.ok(calls.every((url) => url.startsWith("https://api.github.com/repos/")));
   assert.match(document.querySelector("#release-check-time").textContent, /^Checked GitHub/);
 });
@@ -43,17 +43,17 @@ test("page reloads reuse localStorage while the refresh button fetches new versi
   const fetcher = api((project, kind) => project === nootify && kind === "release"
     ? ok(release(nootify, { tag_name: updated ? "v0.3.0" : "v0.2.1" })) : undefined, () => calls++);
   await setup(t, {}, fetcher, true, { storage });
-  assert.equal(calls, 30);
+  assert.equal(calls, 34);
   updated = true;
   const page = await setup(t, {}, fetcher, true, { storage });
-  assert.equal(calls, 30, "a new page must read stored responses without any GitHub requests");
+  assert.equal(calls, 34, "a new page must read stored responses without any GitHub requests");
   assert.equal(page.row.querySelector("[data-release-link]").textContent, "v0.2.1");
   assert.match(page.document.querySelector("#release-check-time").textContent, /^Local cache · checked/);
   page.site.language = "zh";
   page.document.dispatchEvent(new page.dom.window.CustomEvent("idy:languagechange"));
   assert.match(page.document.querySelector("#release-check-time").textContent, /^本地缓存 · 上次查询/);
   await page.controller.reload();
-  assert.equal(calls, 60);
+  assert.equal(calls, 68);
   assert.equal(page.row.querySelector("[data-release-link]").textContent, "v0.3.0");
 });
 
@@ -157,7 +157,7 @@ test("offline errors are unavailable rather than a claimed empty release", async
   assert.equal(row.querySelector("[data-releasing-empty]").textContent, "Unavailable");
   assert.equal(row.querySelector("[data-release-status]").textContent, "Version unavailable");
   assert.match(document.querySelector("#release-check-time").textContent, /^GitHub unavailable/);
-  assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 12);
+  assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 13);
 });
 
 test("manual refresh reads newer releases directly and clears finished releasing versions", async (t) => {
@@ -183,7 +183,7 @@ test("manual refresh reads newer releases directly and clears finished releasing
   });
   assert.equal(row.querySelector("[data-release-link]").textContent, "v0.2.2");
   assert.equal(row.querySelector(".releasing-version"), null);
-  assert.equal(requests, 60);
+  assert.equal(requests, 68);
 });
 
 test("failed refresh preserves versions and labels active data as a cached observation", async (t) => {
@@ -220,6 +220,26 @@ test("validated release assets and source archives still provide downloads", asy
   assert.equal(document.querySelector('[data-repository="idy/wgc"] [data-downloads] a').href, "https://api.github.com/repos/idy/wgc/zipball/v0.2.1");
 });
 
+test("yesman matches published installers without exposing updater deltas", async (t) => {
+  const names = [
+    "yesman-0.1.4-arm64.dmg", "yesman-0.1.4-amd64.dmg",
+    "yesman-setup-0.1.4-arm64.exe", "yesman-setup-0.1.4-amd64.exe",
+    "yesman-0.1.4-linux-arm64.tar.gz", "yesman-0.1.4-linux-amd64.tar.gz",
+    "yesman-0.1.2-to-0.1.4-darwin-arm64.delta", "update-darwin-arm64.json",
+  ];
+  const { document } = await setup(t, (project, kind) => {
+    if (project.repository !== "idy/yesman" || kind !== "release") return;
+    return ok(release(project, { tag_name: "v0.1.4", assets: names.map(name => ({
+      name, state: "uploaded", size: 123,
+      browser_download_url: `https://github.com/idy/yesman/releases/download/v0.1.4/${name}`,
+    })) }));
+  });
+  const row = document.querySelector('[data-repository="idy/yesman"]');
+  assert.deepEqual([...row.querySelectorAll('[data-downloads] a')].map(link => link.href.split('/').pop()), names.slice(0, 6));
+  assert.equal(row.querySelector('h2').textContent.trim(), "yesman");
+  assert.ok(row.querySelector('a[href="https://github.com/idy/yesman/releases/latest"]'));
+});
+
 test("search, categories, table view and clear preserve the same project rows", async (t) => {
   const { document, dom } = await setup(t);
   const search = document.querySelector("#project-search");
@@ -232,7 +252,7 @@ test("search, categories, table view and clear preserve the same project rows", 
   search.dispatchEvent(new dom.window.Event("input"));
   assert.equal(document.querySelector(".empty-state").hidden, false);
   document.querySelector("#clear-filters").click();
-  assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 12);
+  assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 13);
   document.querySelector('button[data-category="devices"]').click();
   assert.equal(document.querySelectorAll("tr.project:not([hidden])").length, 4);
   assert.equal(document.querySelector("tbody tr").dataset.repository, "GizClaw/gizclaw");

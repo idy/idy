@@ -1,0 +1,154 @@
+{
+  "description": "Existing project artwork copied without modification for the idy.dev project directory. Project licenses are recorded from each source repository; no separate asset license was found.",
+  "assets": [
+    {
+      "repository": "idy/yesman",
+      "file": "yesman.svg",
+      "sourcePath": "resources/icon.svg",
+      "sourceRevision": "ecc7cd9bb93f669ee85f28faf250e9ff143d1247",
+      "sourceUrl": "https://github.com/idy/yesman/blob/ecc7cd9bb93f669ee85f28faf250e9ff143d1247/resources/icon.svg",
+      "sha256": "92206c20411aa1275de180c5b694dfce92effc3bf8a514129d68c9ed9a8a8f2d",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "MIT",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/yesman.txt"
+      }
+    },
+    {
+      "repository": "idy/nootify",
+      "file": "nootify.svg",
+      "sourcePath": "desktop/icons/icon.svg",
+      "sourceRevision": "671341abc8795f3d13b64ef8f181ff889c201d4c",
+      "sourceUrl": "https://github.com/idy/nootify/blob/671341abc8795f3d13b64ef8f181ff889c201d4c/desktop/icons/icon.svg",
+      "sha256": "ed8b4638bf7fb026d6dd835e3a5f8e440ae02fe11c2e47b97a5f0ebe8f62ec3f",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "MIT",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/nootify.txt"
+      }
+    },
+    {
+      "repository": "idy/tailsplit",
+      "file": "tailsplit.svg",
+      "sourcePath": "mobile/assets/app-icon.svg",
+      "sourceRevision": "4253715b93be76bbeb76f2fe3e6515d8d6625578",
+      "sourceUrl": "https://github.com/idy/tailsplit/blob/4253715b93be76bbeb76f2fe3e6515d8d6625578/mobile/assets/app-icon.svg",
+      "sha256": "d8825bb87290b7bcab8dd387fe8a15baf07176d5361afb65881f59e1f3ed7201",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "GPL-3.0",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/tailsplit.txt"
+      }
+    },
+    {
+      "repository": "idy/ch348-macos",
+      "file": "ch348.png",
+      "sourcePath": "docs/icon.png",
+      "sourceRevision": "c12836df2c36989001bc376d0ad7b29c87bd1795",
+      "sourceUrl": "https://github.com/idy/ch348-macos/blob/c12836df2c36989001bc376d0ad7b29c87bd1795/docs/icon.png",
+      "sha256": "13670f9ff5efdc13242bc9d6d9a94320e7a588ede7a62fb959e2388a1504960e",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "MIT",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/ch348.txt"
+      },
+      "sourceRaster": {
+        "width": 128,
+        "height": 128,
+        "metadata": "Original PNG bytes and embedded metadata preserved; no resizing or re-encoding."
+      }
+    },
+    {
+      "repository": "GizClaw/gizmoth",
+      "file": "gizmoth.svg",
+      "sourcePath": "branding/icon-mono.svg",
+      "sourceRevision": "11d3a2f754e3f6878d607adb0404a0d4d6d799dc",
+      "sourceUrl": "https://github.com/GizClaw/gizmoth/blob/11d3a2f754e3f6878d607adb0404a0d4d6d799dc/branding/icon-mono.svg",
+      "sha256": "3e40cc605d1edca3c47c2096bd7bad25a7b0c8f95e5cd5cf5d838fa97c233534",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "MIT",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/gizmoth.txt"
+      }
+    },
+    {
+      "repository": "idy/tailrelay",
+      "file": "tailrelay.svg",
+      "sourcePath": "site/favicon.svg",
+      "sourceRevision": "6ae9e679938a722d2d887cc259e305420ef51b7c",
+      "sourceUrl": "https://github.com/idy/tailrelay/blob/6ae9e679938a722d2d887cc259e305420ef51b7c/site/favicon.svg",
+      "sha256": "eb90736b727ea7b5b9b7cabdc7b2567466ff84449cd77d6d86268511427d1d08",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "GPL-3.0",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/tailrelay.txt"
+      }
+    },
+    {
+      "repository": "idy/wgc",
+      "file": "wgc.svg",
+      "sourcePath": "site/favicon.svg",
+      "sourceRevision": "c3ca5bb852e4671122f075b0326916eafc978f65",
+      "sourceUrl": "https://github.com/idy/wgc/blob/c3ca5bb852e4671122f075b0326916eafc978f65/site/favicon.svg",
+      "sha256": "7a1496ae8ce7be6393734a24a1fdc8be707562ff52ff84f74572c979d155b4f5",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "MIT",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/wgc.txt"
+      }
+    },
+    {
+      "repository": "idy/wgc-ne",
+      "file": "wgc-ne.svg",
+      "sourcePath": "site/favicon.svg",
+      "sourceRevision": "9af618e82ca9ec40de67c108b136077a3a40321a",
+      "sourceUrl": "https://github.com/idy/wgc-ne/blob/9af618e82ca9ec40de67c108b136077a3a40321a/site/favicon.svg",
+      "sha256": "d4d7d8c4ce849a837c8d6ca1d324ec195442758940799f464f470ce646431022",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "GPL-3.0",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/wgc-ne.txt"
+      }
+    },
+    {
+      "repository": "idy/sing-box-flutter",
+      "file": "sing-box-flutter.svg",
+      "sourcePath": "site/favicon.svg",
+      "sourceRevision": "ea92e86719a370ba7fe8b416c592c47d8cd8805d",
+      "sourceUrl": "https://github.com/idy/sing-box-flutter/blob/ea92e86719a370ba7fe8b416c592c47d8cd8805d/site/favicon.svg",
+      "sha256": "581f5b0dac95939c804edda93ea303327fd1c6fa97ea72ba198f5e27ff37aa7c",
+      "copiedWithoutModification": true,
+      "license": {
+        "projectLicense": "GPL-3.0",
+        "upstreamPath": "LICENSE",
+        "localFile": "licenses/sing-box-flutter.txt"
+      }
+    }
+  ],
+  "withoutConfirmedIcon": [
+    {
+      "repository": "GizClaw/gizclaw",
+      "reason": "No standalone project icon found in the source checkout or icon link on the official documentation site."
+    },
+    {
+      "repository": "GizClaw/gizos",
+      "reason": "No standalone GizOS icon found. The Gizloader application icon belongs to a separate tool."
+    },
+    {
+      "repository": "idy/magpie-design-system",
+      "reason": "No standalone project brand icon found; interface glyphs are not used as project branding."
+    },
+    {
+      "repository": "idy/homebrew",
+      "reason": "No tap-specific icon supplied; the upstream Homebrew project logo is not substituted."
+    }
+  ]
+}
