@@ -1,6 +1,6 @@
 ---
 name: "idy.dev"
-description: "Homepage project directory set as a component datasheet: parts, families, and revision tables."
+description: "Shared Component Datasheet identity for idy.dev and all *.idy.dev websites."
 colors:
   datasheet-blue: "#0b5cad"
   masthead-blue: "#0b5cad"
@@ -28,6 +28,22 @@ typography:
     fontWeight: 700
     lineHeight: "40px"
     letterSpacing: "-0.01em"
+  section:
+    fontFamily: "Archivo, \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: "-0.01em"
+  subheading:
+    fontFamily: "Archivo, \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 700
+    lineHeight: 1.333
+    letterSpacing: "-0.01em"
+  code:
+    fontFamily: "ui-monospace, \"SFMono-Regular\", Consolas, monospace"
+    fontSize: ".875rem"
+    lineHeight: 1.7
   display-phone:
     fontFamily: "Archivo, \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif"
     fontSize: "28px"
@@ -62,6 +78,13 @@ typography:
     fontSize: "14px"
     fontWeight: 400
     lineHeight: "20px"
+  button-label:
+    fontFamily: "Archivo, \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif"
+    fontSize: ".875rem"
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: "0.02em"
+    fontVariation: "\"wdth\" 75"
   label-tab:
     fontFamily: "Archivo, \"PingFang SC\", \"Microsoft YaHei\", system-ui, sans-serif"
     fontSize: "14px"
@@ -113,7 +136,25 @@ spacing:
   part-inset: "20px"
   grid-gap: "24px"
   gutter: "48px"
+  roomy: "2rem"
+  section: "3rem"
+  wide: "4.5rem"
 components:
+  button-primary:
+    backgroundColor: "{colors.sheet}"
+    textColor: "{colors.datasheet-blue}"
+    typography: "{typography.button-label}"
+    rounded: "{rounded.part}"
+    padding: ".625rem 1.125rem"
+  button-primary-hover:
+    backgroundColor: "{colors.spec-fill}"
+    textColor: "{colors.datasheet-blue}"
+  button-secondary:
+    backgroundColor: "{colors.sheet}"
+    textColor: "{colors.ink}"
+    typography: "{typography.button-label}"
+    rounded: "{rounded.part}"
+    padding: ".625rem 1.125rem"
   masthead:
     backgroundColor: "{colors.masthead-blue}"
     textColor: "{colors.on-blue}"
@@ -217,22 +258,22 @@ components:
 
 **Creative North Star: "Component Datasheet"**
 
-The idy.dev homepage documents every project the way an electronics catalogue documents a part: a name, a family designator, one line of function, and a revision table. A solid datasheet-blue masthead sits over a white sheet (deep navy in dark mode); everything below it is ruled, not raised. Parts sit in a dense, even grid so a visitor can scan names, narrow by family, compare revisions, and leave for the project, source, release, or download.
+The shared website identity presents projects with the clarity of a component datasheet. On the idy.dev homepage, every project is documented the way an electronics catalogue documents a part: a name, a family designator, one line of function, and a revision table. A solid datasheet-blue masthead sits over a white sheet (deep navy in dark mode); everything below it is ruled, not raised. Parts sit in a dense, even grid so a visitor can scan names, narrow by family, compare revisions, and leave for the project, source, release, or download.
 
 The world is built from one variable family, Archivo, used at two widths: normal width for reading and 75% width for anything that labels. Structure comes from lines (2px ink at the top of every part, 1px blue-grey rules within), pale spec-table fill for heads and selected states, and 2px corners. The blue is reserved for links, the pressed state, focus, and active releases, so a blue marker in a revision table reads as a signal and not decoration. The design rejects rounded developer-portfolio card grids with badges.
 
-Scope: this system governs the homepage (`docs/index.html`, `docs/styles.css`, `docs/directory.js`) and the 404 page, which shares its stylesheet. The shared site SDK in `packages/site-sdk` and other `*.idy.dev` pages keep their own identity. The homepage maps the SDK shell's `--idy-*` variables onto `--ds-*` for this page only; SDK defaults are not tokens of this system.
+Scope: this system governs `idy.dev` and every `*.idy.dev` project website through `@idy/site-sdk` 0.2.0. Canonical identity and shell rules live in `docs/shared/`; SDK typography, layout, and elements live in `packages/site-sdk/src/styles/`. Shared semantic `--idy-*` tokens own the palette, Archivo typography, masthead, rules, and 2px corners. The homepage aliases these to `--ds-*` for its directory-specific selectors; the project grid and revision presentation stay local. Consumers retain their content, information architecture, and project-specific behavior. Magpie and Peetty website demos retain their product-style specimens inside the shared website shell; these specimens do not redefine the website identity. Magpie's desktop application design system remains separate.
 
 **Key Characteristics:**
 - One blue masthead and white or deep navy sheet, with no other color fields.
-- Archivo only: normal width for reading, 75% width for labels, tabs, and table heads.
+- Archivo for interface text: normal width for reading, 75% width for labels, tabs, and table heads; monospace for code.
 - Tabular lining figures for every version, date, and count.
 - Every part opens with a 2px ink top rule; 1px ruled lines do the rest; 2px corners; no shadows.
 - The revision table is the signature component, with a blue marker cell on active Releasing rows.
 
 ## Colors
 
-The palette is a datasheet in two inks, blue and near-black, on a white sheet, with a pale blue-grey spec fill and two weights of ruled line. Dark mode keeps the same roles on a deep navy sheet. Each `--ds-*` custom property switches between its light and `-dark` value through `data-theme="dark"` or, when no theme is set, `prefers-color-scheme: dark`.
+The palette is a datasheet in two inks, blue and near-black, on a white sheet, with a pale blue-grey spec fill and two weights of ruled line. Dark mode keeps the same roles on a deep navy sheet. The SDK's `--idy-*` semantic properties switch through `data-theme="dark"` or, when no theme is set, `prefers-color-scheme: dark`. The homepage's `--ds-*` properties alias those shared values.
 
 ### Primary
 - **Datasheet Blue** (`datasheet-blue`; `datasheet-blue-dark`): links, the active family tab's text and 3px underline, focus outlines (2px, offset 2px), the Downloads disclosure, the Homebrew copy action, and the marker cell and label on an active Releasing row. In dark mode it lifts to a light, legible blue because it sits as text on the navy sheet.
@@ -257,11 +298,14 @@ The palette is a datasheet in two inks, blue and near-black, on a white sheet, w
 
 **Display Font:** Archivo (self-hosted variable `fonts/archivo-latin.woff2`, weight 100–900, width 62–125%, OFL), falling back to PingFang SC, Microsoft YaHei, system-ui, sans-serif
 **Body Font:** Archivo, same file
-**Label Font:** Archivo at `font-stretch: 75%` (the `--ds-narrow` token)
+**Label Font:** Archivo at `font-stretch: 75%` (shared `--idy-narrow`, aliased as `--ds-narrow` on the homepage)
+**Code Font:** the SDK system monospace stack (`typography.code`), for commands and source text only.
 
 **Character:** Archivo is a single grotesque that works as both a reading face and a condensed catalogue label, so the page reads like a printed datasheet without a second family. Chinese text falls back to PingFang SC or Microsoft YaHei.
 
 ### Hierarchy
+The homepage roles below remain local examples. Shared SDK defaults add section headings (700, 1.5rem/1.25), subheadings (700, 1.125rem/1.333), and code (.875rem/1.7). Yesman retains its 18px/28px lead, 24px/32px section headings, and workspace/install compositions. These are surface adaptations, not a new type identity.
+
 - **Display** (700, 32px/40px, -0.01em; 28px/34px on phones): the page title only.
 - **Wordmark** (700, 22px/44px, 75% width): the masthead's `idy.dev`. Masthead navigation uses 600 15px at 75% width and 0.02em tracking.
 - **Part Name** (700, 18px/24px, -0.005em; 16px in the phone list): the project name at the head of each part.
@@ -281,6 +325,8 @@ The palette is a datasheet in two inks, blue and near-black, on a white sheet, w
 **The Tabular Figures Rule.** Versions, dates, and counts always use `tabular-nums lining-nums` so figures align down a revision column.
 
 ## Layout
+
+The shared SDK uses a spacing scale of .5, 1, 1.5, 2, 3, and 4.5rem, a 70ch reading measure, and section spacing of `clamp(2rem, 4vw, 3rem)`. Project websites keep their own compositions and responsive grids. The directory layout below belongs to the homepage.
 
 The page is a single centered sheet with a maximum width of 84rem, inset by 48px gutters (16px at 760px and below). The masthead, page, and footer share this width. The masthead is at least 52px tall.
 
@@ -302,7 +348,9 @@ The system is flat. No element has a drop shadow, a lift on hover, or a tonal su
 
 ## Shapes
 
-Corners are nearly square: 2px for parts, the selector bar, the view switch's outer ends, the table, panels, the command well, the follow pill, and header popovers. Joined controls share edges; the second view-switch button drops its left border so the pair reads as one segmented control. Icons are simple inline SVG strokes (1.5–1.7px): the search lens, the card/table glyphs, and a single drawn chevron for every disclosure.
+Corners are nearly square: 2px for parts, the selector bar, the view switch's outer ends, the table, panels, the command well, the follow pill, and header popovers. Joined controls share edges; the second view-switch button drops its left border so the pair reads as one segmented control. New website interface icons use simple inline SVG strokes (1.5–1.7px), as on the search lens, card/table controls, and yesman navigation. Original project artwork is an identity asset, not an interface glyph: retain its original SVG or raster form, dimensions, provenance, and licenses; use empty alternative text when an adjacent name already supplies the accessible label. Projects without confirmed artwork stay text-only. The SDK FAQ draws its chevron with CSS borders; homepage disclosures use SVG.
+
+The shipped header retains Phosphor icon-font compatibility. This is pre-existing glyph-icon drift, not a rule for new website components; it is not canonized or repaired by this documentation pass.
 
 **The Ink Top Rule.** Every part-level container (project part, selector table, phone list, empty state, Homebrew panel) opens with a 2px Ink top border over 1px Ruled Line sides.
 
@@ -310,6 +358,9 @@ Corners are nearly square: 2px for parts, the selector bar, the view switch's ou
 
 ### Masthead
 A solid blue band. The wordmark is at 75% width; navigation links are On Blue at 0.86 opacity, reaching full opacity with an underline on hover or focus. The follow action is a 2px-cornered outline pill (1px white at 72% opacity) that fills with white at 14% opacity on hover, the same as the header icon buttons. Header focus outlines switch to On Blue.
+
+### Shared Website Buttons
+Outlined, flat controls on Sheet, with 2px corners, a 1px Datasheet Blue border, condensed 600-weight 14px labels, .625rem 1.125rem padding, and a 44px minimum height. Hover uses Spec Fill; focus uses the shared 2px accent outline with 2px offset; active opacity is .8. Secondary buttons use Ruled Line borders and Ink labels, with an accent border on hover. Disabled opacity is .55; busy opacity is .6. Copy buttons in command wells are transparent until hover. Dark mode resolves the same semantic roles through the shared palette.
 
 ### Selector Bar
 - **Style:** one 1px Ruled Line frame with 2px corners on Sheet, at least 46px tall. Its three zones (search, family tabs, view switch) are divided by 1px Ruled Line.
@@ -323,7 +374,7 @@ A solid blue band. The wordmark is at 75% width; navigation links are On Blue at
 - **Shadow Strategy:** none (see Elevation & Depth).
 - **Border:** 2px Ink top, 1px Ruled Line elsewhere.
 - **Internal Padding:** identity 14px 20px, with 16px at the bottom of the part.
-- **Content order:** heading row (part name left, family designator right, Hairline Rule under it), one-line description, project links, then the Downloads disclosure under the links, then the revision table. The part name is an Ink link that turns Datasheet Blue with an underline on hover.
+- **Content order:** heading row (part name left, family designator right, Hairline Rule under it), one-line description, project links, then the Downloads disclosure under the links, then the revision table. Where a real project icon exists, display its original artwork at 28px (24px on phones) with an 8px gap beside the name. Icons are decorative with empty alternative text and explicit dimensions; projects without confirmed artwork stay text-only. Cards, desktop tables, and phone lists share this name markup. The part name is an Ink link that turns Datasheet Blue with an underline on hover.
 
 ### Revision Table (Signature Component)
 The datasheet's revision history in miniature: a four-column grid with a 4px marker column, Status (6.5rem; 5.5rem on phones), Version, and a right-aligned Date.
@@ -355,14 +406,14 @@ A narrow Datasheet Blue summary under the project links, led by a 14px drawn che
 - **Do** keep blue fields to the masthead and the pressed view switch; use Datasheet Blue for links, focus, the active tab, and active Releasing markers only.
 - **Do** align revision tables across a grid row with subgrid tracks.
 - **Do** use Masthead Blue, not Datasheet Blue, wherever white text sits on blue in dark mode (#8db8ee fails contrast against white).
-- **Do** use one drawn SVG chevron for every disclosure and hide native markers.
+- **Do** hide native disclosure markers when supplying a drawn chevron: SVG on the homepage, CSS borders in the SDK FAQ.
 - **Do** keep tap targets at a minimum of 44px on phones.
 
 ### Don't:
 - **Don't** use drop shadows, hover lifts, or tonal surface steps. Draw a rule or use Spec Fill instead.
 - **Don't** round corners beyond 2px or turn parts into pill-shaped badges.
-- **Don't** add a second typeface. Archivo carries display, body, and labels.
+- **Don't** add a second interface typeface. Archivo carries display, body, and labels; the SDK monospace stack is reserved for code and commands.
 - **Don't** use the blue marker cell for anything but an active, in-progress release.
 - **Don't** show idle Releasing rows on cards.
-- **Don't** apply these `--ds-*` tokens, the 84rem page, or the parts grid as defaults for the shared site SDK or other `*.idy.dev` pages.
-- **Don't** add icon-font glyphs to new components. Icons are inline SVG strokes.
+- **Don't** copy the homepage's directory-specific parts grid into every project page. Use the shared SDK's Component Datasheet defaults and compose layouts around each project's real content.
+- **Don't** add icon-font glyphs, emoji, or text characters as interface icons in new website components. Use inline SVG strokes; preserve confirmed project artwork as identity assets. Legacy Phosphor header compatibility is not a precedent for new components.

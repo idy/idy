@@ -11,11 +11,18 @@ const gizos = PROJECTS.find((project) => project.repository === "GizClaw/gizos")
 const wgc = PROJECTS.find((project) => project.repository === "idy/wgc");
 const activePages = (...items) => [runs(...items), runs(), runs()];
 
-test("twelve projects retain six primary release workflows and proven tag-push configuration", () => {
-  assert.equal(PROJECTS.length, 12);
-  assert.equal(PROJECTS.filter((project) => project.releaseWorkflow).length, 6);
-  assert.equal(PROJECTS.filter((project) => project.tagPushOnly).length, 5);
+test("twelve projects retain seven primary release workflows and proven tag-push configuration", () => {
+  assert.deepEqual(PROJECTS.map(project => project.repository), [
+    "GizClaw/gizclaw", "GizClaw/gizmoth", "GizClaw/gizos", "idy/yesman",
+    "idy/nootify", "idy/ch348-macos", "idy/tailsplit", "idy/tailrelay",
+    "idy/wgc", "idy/sing-box-flutter", "idy/magpie-design-system", "idy/homebrew",
+  ]);
+  assert.equal(PROJECTS.filter((project) => project.releaseWorkflow).length, 7);
+  assert.equal(PROJECTS.filter((project) => project.tagPushOnly).length, 6);
   assert.deepEqual(ACTIVE_RELEASE_STATUSES, ["in_progress", "queued", "waiting"]);
+  const yesman = PROJECTS.find((project) => project.repository === "idy/yesman");
+  assert.equal(yesman.releaseWorkflow, ".github/workflows/release.yml");
+  assert.equal(yesman.tagPushOnly, true);
 });
 
 test("only proven tag pushes identify active versions; dispatches and branches remain unknown", () => {

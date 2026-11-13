@@ -1,70 +1,19 @@
-/* idy.dev homepage: Component Datasheet. Scoped to this site; the shared SDK keeps its own identity. */
-@font-face {
-  font-family: "Archivo";
-  font-style: normal;
-  font-weight: 100 900;
-  font-stretch: 62% 125%;
-  font-display: swap;
-  src: url("fonts/archivo-latin.woff2") format("woff2");
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
-    U+2215, U+FEFF, U+FFFD;
-}
-
+/* Homepage directory layouts consume the shared Component Datasheet SDK. */
 :root {
-  --ds-blue: #0b5cad;
-  --ds-masthead: #0b5cad;
-  --ds-on-blue: #ffffff;
-  --ds-sheet: #ffffff;
-  --ds-ink: #1a1a1a;
-  --ds-body: #333333;
-  --ds-muted: #4a4a4a;
-  --ds-line: #b9c6d3;
-  --ds-rule: #dce3ea;
-  --ds-spec: #e8eef4;
-  --ds-font: "Archivo", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-  --ds-narrow: 75%;
-  --ds-page: 84rem;
-  --ds-gutter: 48px;
-}
-:root[data-theme="dark"] {
-  --ds-blue: #8db8ee;
-  --ds-masthead: #0b3d73;
-  --ds-sheet: #121b26;
-  --ds-ink: #e8eef4;
-  --ds-body: #c9d3de;
-  --ds-muted: #a9b6c4;
-  --ds-line: #33465b;
-  --ds-rule: #263546;
-  --ds-spec: #1b2838;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --ds-blue: #8db8ee;
-    --ds-masthead: #0b3d73;
-    --ds-sheet: #121b26;
-    --ds-ink: #e8eef4;
-    --ds-body: #c9d3de;
-    --ds-muted: #a9b6c4;
-    --ds-line: #33465b;
-    --ds-rule: #263546;
-    --ds-spec: #1b2838;
-  }
-}
-
-/* Map the shared shell onto the datasheet palette for this page only. */
-body.datasheet,
-.not-found-page {
-  --idy-bg: var(--ds-sheet);
-  --idy-surface: var(--ds-sheet);
-  --idy-ink: var(--ds-ink);
-  --idy-muted: var(--ds-muted);
-  --idy-line: var(--ds-line);
-  --idy-accent: var(--ds-blue);
-  --idy-font: var(--ds-font);
-  --idy-heading: var(--ds-font);
-  --idy-small: var(--ds-font);
+  --ds-blue: var(--idy-accent);
+  --ds-masthead: var(--idy-masthead);
+  --ds-on-blue: var(--idy-on-blue);
+  --ds-sheet: var(--idy-bg);
+  --ds-ink: var(--idy-ink);
+  --ds-body: var(--idy-body);
+  --ds-muted: var(--idy-muted);
+  --ds-line: var(--idy-line);
+  --ds-rule: var(--idy-hairline);
+  --ds-spec: var(--idy-spec-fill);
+  --ds-font: var(--idy-font);
+  --ds-narrow: var(--idy-narrow);
+  --ds-page: var(--idy-page-width);
+  --ds-gutter: var(--idy-page-gutter);
 }
 html:has(> body.datasheet) {
   background: var(--ds-sheet);
@@ -125,74 +74,6 @@ body.datasheet {
 }
 .skip-link:focus {
   top: 12px;
-}
-
-/* Masthead */
-.datasheet .idy-header.compact-header {
-  background: var(--ds-masthead);
-  border-bottom: 0;
-}
-.datasheet .compact-header .idy-header-inner {
-  width: min(var(--ds-page), calc(100% - 2 * var(--ds-gutter)));
-  min-height: 52px;
-  gap: 40px;
-}
-.datasheet .compact-header .idy-home {
-  color: var(--ds-on-blue);
-  font: 700 22px/44px var(--ds-font);
-  font-stretch: var(--ds-narrow);
-  letter-spacing: 0.01em;
-}
-.datasheet .compact-header .idy-nav {
-  gap: 28px;
-}
-.datasheet .compact-header .idy-nav a {
-  color: var(--ds-on-blue);
-  font: 600 15px/1.4 var(--ds-font);
-  font-stretch: var(--ds-narrow);
-  letter-spacing: 0.02em;
-  opacity: 0.86;
-}
-.datasheet .compact-header .idy-nav a:hover,
-.datasheet .compact-header .idy-nav a:focus-visible {
-  color: var(--ds-on-blue);
-  opacity: 1;
-  text-decoration: underline;
-}
-.datasheet .compact-header .icon-button,
-.datasheet .compact-header .idy-mobile > summary {
-  color: var(--ds-on-blue);
-}
-.datasheet .compact-header .icon-button:hover,
-.datasheet .compact-header .icon-button[aria-expanded="true"],
-.datasheet .compact-header .idy-mobile > summary:hover,
-.datasheet .compact-header .idy-mobile[open] > summary {
-  color: var(--ds-on-blue);
-  background: rgb(255 255 255 / 0.14);
-}
-.datasheet .compact-header .preference-panel,
-.datasheet .compact-header .idy-mobile-panel {
-  border-radius: 2px;
-}
-.datasheet .compact-header .idy-preferences select {
-  color: var(--ds-on-blue);
-}
-.datasheet .compact-header .idy-action-pill {
-  min-height: 30px;
-  border: 1px solid rgb(255 255 255 / 0.72);
-  border-radius: 2px;
-  background: transparent;
-  color: var(--ds-on-blue);
-  font: 600 13px/18px var(--ds-font);
-  font-stretch: var(--ds-narrow);
-  letter-spacing: 0.02em;
-}
-.datasheet .compact-header .idy-action:hover .idy-action-pill {
-  background: rgb(255 255 255 / 0.14);
-  opacity: 1;
-}
-.datasheet .compact-header :focus-visible {
-  outline-color: var(--ds-on-blue);
 }
 
 /* Page head */
@@ -419,20 +300,36 @@ body.datasheet {
 }
 .project-heading {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--ds-rule);
 }
 .project h2 {
+  min-width: 0;
   margin: 0;
   font: 700 18px/24px var(--ds-font);
   letter-spacing: -0.005em;
 }
 .project-heading h2 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
   color: var(--ds-ink);
   text-decoration: none;
+}
+.project-icon {
+  display: block;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.project-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .project-heading h2 a:hover {
   color: var(--ds-blue);
@@ -947,9 +844,6 @@ body.datasheet {
   }
 }
 @media (max-width: 760px) {
-  :root {
-    --ds-gutter: 16px;
-  }
   .directory-intro {
     flex-direction: column;
     align-items: flex-start;
@@ -1017,6 +911,13 @@ body.datasheet {
   }
   .project-identity {
     padding: 14px 16px 12px;
+  }
+  .project-heading h2 a {
+    min-height: 44px;
+  }
+  .project-icon {
+    width: 24px;
+    height: 24px;
   }
   .version-cell,
   .releasing-cell {
@@ -1095,7 +996,7 @@ body.datasheet {
   .directory[data-view="table"] .project {
     display: grid;
     grid-row: auto;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 44%);
     grid-template-rows: none;
     align-items: center;
     gap: 2px 12px;
@@ -1116,7 +1017,17 @@ body.datasheet {
     border: 0;
   }
   .directory[data-view="table"] .project h2 {
+    flex: 1;
     font-size: 16px;
+  }
+  .directory[data-view="table"] .project-category {
+    display: none;
+  }
+  .directory[data-view="table"] .release-summary {
+    display: block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: right;
   }
   .directory[data-view="table"] .project-description,
   .directory[data-view="table"] .project-links,

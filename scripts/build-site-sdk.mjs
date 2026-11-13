@@ -33,9 +33,8 @@ try {
   ]);
   await cp(join(pkgRoot, 'src/index.d.ts'), join(output, 'index.d.ts'));
   await mkdir(join(output, 'assets'), { recursive: true });
-  for (const license of ['OFL.txt', 'Monda-OFL.txt', 'Montserrat-OFL.txt', 'Lato-OFL.txt', 'Phosphor-MIT.txt']) {
-    await cp(join(root, 'docs/shared', license), join(output, 'assets', license));
-  }
+  await cp(join(root, 'docs/fonts/Archivo-OFL.txt'), join(output, 'assets/Archivo-OFL.txt'));
+  await cp(join(root, 'docs/shared/Phosphor-MIT.txt'), join(output, 'assets/Phosphor-MIT.txt'));
   await writeFile(join(output, 'version.json'), JSON.stringify({ name: pkg.name, version: pkg.version }, null, 2) + '\n');
   if (check) {
     const expected = await files(output);

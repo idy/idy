@@ -1,6 +1,6 @@
 {
   "name": "@idy/site-sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared typography, layouts, components, and browser behavior for idy.dev project pages.",
   "type": "module",
   "license": "UNLICENSED",

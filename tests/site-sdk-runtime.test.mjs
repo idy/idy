@@ -77,7 +77,7 @@ test("early initialization applies stored preferences synchronously and enhances
   assert.equal(document.documentElement.dataset.theme, "dark");
   assert.equal(document.documentElement.lang, "zh-CN");
   assert.equal(document.documentElement.style.colorScheme, "dark");
-  assert.equal(document.querySelector('meta[name="theme-color"]').content, "#142033");
+  assert.equal(document.querySelector('meta[name="theme-color"]').content, "#0b3d73");
   assert.equal(window.IdySite, site);
   document.body.append(createHeader());
   await ready(document);
@@ -116,10 +116,10 @@ test("missing page theme-color overrides retain SDK defaults and optional meta b
   const site = initSite();
   assert.equal(meta.content, "#ffffff");
   site.setTheme("dark");
-  assert.equal(meta.content, "#142033");
+  assert.equal(meta.content, "#0b3d73");
   meta.setAttribute("data-idy-theme-color-light", "  ");
   site.setTheme("light");
-  assert.equal(meta.content, "#f7f9fc");
+  assert.equal(meta.content, "#0b5cad");
   meta.remove();
   assert.doesNotThrow(() => site.setTheme("dark"));
 });

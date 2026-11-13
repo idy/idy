@@ -1,4 +1,4 @@
-/* Existing site identity is the source of truth; build bundles these imports. */
+/* Component Datasheet is the shared website identity; bundle all assets locally. */
 @import "../../../docs/shared/idy.css";
 @import "../../../docs/shared/header.css";
 @import "./styles/tokens.css";

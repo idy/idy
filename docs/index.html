@@ -7,13 +7,13 @@
     <meta name="theme-color" content="#0b5cad" data-idy-theme-color-light="#0b5cad" data-idy-theme-color-dark="#0b3d73" />
     <meta
       name="description"
-      content="Open-source projects by idy: GizClaw, GizMoth, GizOS, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, WGC NE, sing-box-flutter, Magpie Design System, and the Homebrew tap. Explore the projects and their latest releases."
+      content="Open-source projects by idy: GizClaw, GizMoth, GizOS, yesman, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, sing-box-flutter, Magpie Design System, and the Homebrew tap. Explore the projects and their latest releases."
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Open-source projects — idy.dev" />
     <meta
       property="og:description"
-      content="Open-source projects by idy: GizClaw, GizMoth, GizOS, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, WGC NE, sing-box-flutter, Magpie Design System, and the Homebrew tap. Explore the projects and their latest releases."
+      content="Open-source projects by idy: GizClaw, GizMoth, GizOS, yesman, Nootify, CH348 macOS, TailSplit, TailRelay, WGC, sing-box-flutter, Magpie Design System, and the Homebrew tap. Explore the projects and their latest releases."
     />
     <meta property="og:url" content="https://idy.dev/" />
     <title>Open-source projects — idy.dev</title>
@@ -24,14 +24,14 @@
       sizes="180x180"
       href="./apple-touch-icon.png?v=20261107-dy"
     />
-    <script src="sdk/0.1.0/idy-site.min.js"></script>
+    <script src="sdk/0.2.0/idy-site.min.js"></script>
     <link
       rel="preload"
-      href="fonts/archivo-latin.woff2"
+      href="sdk/0.2.0/assets/archivo-latin.woff2"
       type="font/woff2"
       crossorigin=""
     />
-    <link rel="stylesheet" href="sdk/0.1.0/idy-site.css" />
+    <link rel="stylesheet" href="sdk/0.2.0/idy-site.css" />
     <link rel="stylesheet" href="styles.css" />
     <script src="theme.js" defer=""></script>
     <script type="module" src="directory.js"></script>
@@ -380,7 +380,7 @@
               <th scope="row" class="project-identity" role="rowheader">
                 <div class="project-heading">
                   <h2 id="gizmoth-title">
-                    <a href="https://gizmoth.idy.dev/">GizMoth</a>
+                    <a href="https://gizmoth.idy.dev/"><img class="project-icon" src="project-icons/gizmoth.svg" alt="" width="28" height="28" decoding="async"><span class="project-name">GizMoth</span></a>
                   </h2>
                   <span class="project-category" data-i18n="categoryDevices"
                     >Devices</span
@@ -549,15 +549,99 @@
             </tr>
             <tr
               class="project"
-              data-repository="idy/nootify"
+              data-repository="idy/yesman"
               data-category="desktop"
               data-order="3"
               role="row"
             >
               <th scope="row" class="project-identity" role="rowheader">
                 <div class="project-heading">
+                  <h2 id="yesman-title">
+                    <a href="https://yesman.idy.dev/"><img class="project-icon" src="project-icons/yesman.svg" alt="" width="28" height="28" decoding="async"><span class="project-name">yesman</span></a>
+                  </h2>
+                  <span class="project-category" data-i18n="categoryDesktop"
+                    >Desktop</span
+                  >
+                </div>
+
+                <p data-i18n="yesmanDescription" class="project-description">
+                  An early-prototype Go/MyGo tray app for project workspaces, a shared
+                  repository pool, pi lead and worker agents, and shared notes.
+                  macOS has been run; Linux and Windows currently have build-only validation.
+                </p>
+                <p class="project-links">
+                  <a href="https://yesman.idy.dev/" data-i18n="projectPage">Project page</a>
+                  <a href="https://github.com/idy/yesman" data-i18n="source">Source</a>
+                  <a href="https://github.com/idy/yesman/releases/latest" data-i18n="downloads">Downloads</a>
+                </p>
+                <details class="download-details" hidden="">
+                  <summary>
+                    <svg
+                      class="disclosure-icon"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      aria-hidden="true"
+                    >
+                      <path d="m7.5 5 5 5-5 5"></path></svg
+                    ><span data-i18n="downloads">Downloads</span>
+                  </summary>
+                  <ul
+                    class="release-downloads"
+                    data-downloads=""
+                    aria-label="Downloads"
+                    data-i18n-aria-label="downloads"
+                  ></ul>
+                  <p class="release-note" data-download-note="" hidden=""></p>
+                </details>
+              </th>
+
+              <td class="version-cell" role="cell">
+                <div class="rev-head" aria-hidden="true">
+                  <span data-i18n="revStatus">Status</span
+                  ><span data-i18n="revVersion">Version</span
+                  ><span data-i18n="revDate">Date</span>
+                </div>
+                <span class="cell-label" data-i18n="publishedLabel"
+                  >Released</span
+                >
+                <p class="release-summary">
+                  <span data-release-status="">See GitHub</span>
+                  <a
+                    data-release-link=""
+                    href="https://github.com/idy/yesman/releases"
+                    data-i18n="releases"
+                    >Releases</a
+                  >
+                </p>
+                <span class="release-date"></span>
+              </td>
+              <td class="releasing-cell" role="cell">
+                <span class="cell-label" data-i18n="releasingLabel"
+                  >Releasing</span
+                >
+                <ul
+                  class="releasing-list"
+                  data-releasing-list=""
+                  hidden=""
+                ></ul>
+                <span class="releasing-empty" data-releasing-empty=""
+                  >See release information</span
+                >
+              </td>
+            </tr>
+            <tr
+              class="project"
+              data-repository="idy/nootify"
+              data-category="desktop"
+              data-order="4"
+              role="row"
+            >
+              <th scope="row" class="project-identity" role="rowheader">
+                <div class="project-heading">
                   <h2 id="nootify-title">
-                    <a href="https://nootify.idy.dev/">Nootify</a>
+                    <a href="https://nootify.idy.dev/"><img class="project-icon" src="project-icons/nootify.svg" alt="" width="28" height="28" decoding="async"><span class="project-name">Nootify</span></a>
                   </h2>
                   <span class="project-category" data-i18n="categoryDesktop"
                     >Desktop</span
@@ -650,13 +734,13 @@
               class="project"
               data-repository="idy/ch348-macos"
               data-category="devices"
-              data-order="4"
+              data-order="5"
               role="row"
             >
               <th scope="row" class="project-identity" role="rowheader">
                 <div class="project-heading">
                   <h2 id="ch348-title">
-                    <a href="https://ch343-macos.idy.dev/">CH348 macOS</a>
+                    <a href="https://ch343-macos.idy.dev/"><img class="project-icon" src="project-icons/ch348.png" alt="" width="28" height="28" decoding="async"><span class="project-name">CH348 macOS</span></a>
                   </h2>
                   <span class="project-category" data-i18n="categoryDevices"
                     >Devices</span
@@ -744,13 +828,13 @@
               class="project"
               data-repository="idy/tailsplit"
               data-category="networking"
-              data-order="5"
+              data-order="6"
               role="row"
             >
               <th scope="row" class="project-identity" role="rowheader">
                 <div class="project-heading">
                   <h2 id="tailsplit-title">
-                    <a href="https://tailsplit.idy.dev/">TailSplit</a>
+                    <a href="https://tailsplit.idy.dev/"><img class="project-icon" src="project-icons/tailsplit.svg" alt="" width="28" height="28" decoding="async"><span class="project-name">TailSplit</span></a>
                   </h2>
                   <span class="project-category" data-i18n="categoryNetworking"
                     >Networking</span
@@ -837,13 +921,13 @@
               class="project"
               data-repository="idy/tailrelay"
               data-category="networking"
-              data-order="6"
+              data-order="7"
               role="row"
             >
               <th scope="row" class="project-identity" role="rowheader">
                 <div class="project-heading">
                   <h2 id="tailrelay-title">
-                    <a href="https://tailrelay.idy.dev/">TailRelay</a>
+                    <a href="https://tailrelay.idy.dev/"><img class="project-icon" src="project-icons/tailrelay.svg" alt="" width="28" height="28" decoding="async"><span class="project-name">TailRelay</span></a>
                   </h2>
                   <span class="project-category" data-i18n="categoryNetworking"
                     >Networking</span
@@ -925,12 +1009,12 @@
               class="project"
               data-repository="idy/wgc"
               data-category="libraries"
-              data-order="7"
+              data-order="8"
               role="row"
             >
               <th scope="row" class="project-identity" role="rowheader">
                 <div class="project-heading">
-                  <h2 id="wgc-title"><a href="https://wgc.idy.dev/">WGC</a></h2>
+                  <h2 id="wgc-title"><a href="https://wgc.idy.dev/"><img class="project-icon" src="project-icons/wgc.svg" alt="" width="28" height="28" decoding="async"><span class="project-name">WGC</span></a></h2>
                   <span class="project-category" data-i18n="categoryLibraries"
                     >Libraries &amp; design</span
                   >
@@ -1013,99 +1097,6 @@
             </tr>
             <tr
               class="project"
-              data-repository="idy/wgc-ne"
-              data-category="libraries"
-              data-order="8"
-              role="row"
-            >
-              <th scope="row" class="project-identity" role="rowheader">
-                <div class="project-heading">
-                  <h2 id="wgc-ne-title">
-                    <a href="https://wgc-ne.idy.dev/">WGC NE</a>
-                  </h2>
-                  <span class="project-category" data-i18n="categoryLibraries"
-                    >Libraries &amp; design</span
-                  >
-                </div>
-
-                <p data-i18n="wgcNeDescription" class="project-description">
-                  A Flutter plugin and Apple Network Extension SDK built on WGC
-                  and sing-box. Use standard UDP or compile your own transport
-                  into the native core; each app keeps its own signed tunnel
-                  extension.
-                </p>
-                <p class="project-links">
-                  <a href="https://wgc-ne.idy.dev/" data-i18n="projectPage"
-                    >Project page</a
-                  >
-                  <a href="https://github.com/idy/wgc-ne" data-i18n="source"
-                    >Source</a
-                  >
-                  <a
-                    href="https://github.com/idy/wgc-ne/blob/main/docs/apple-integration.md"
-                    data-i18n="integrationGuide"
-                    >Integration guide</a
-                  >
-                </p>
-                <details class="download-details" hidden="">
-                  <summary>
-                    <svg
-                      class="disclosure-icon"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      aria-hidden="true"
-                    >
-                      <path d="m7.5 5 5 5-5 5"></path></svg
-                    ><span data-i18n="downloads">Downloads</span>
-                  </summary>
-                  <ul
-                    class="release-downloads"
-                    data-downloads=""
-                    aria-label="Downloads"
-                    data-i18n-aria-label="downloads"
-                  ></ul>
-                  <p class="release-note" data-download-note="" hidden=""></p>
-                </details>
-              </th>
-
-              <td class="version-cell" role="cell">
-                <div class="rev-head" aria-hidden="true">
-                  <span data-i18n="revStatus">Status</span
-                  ><span data-i18n="revVersion">Version</span
-                  ><span data-i18n="revDate">Date</span>
-                </div>
-                <span class="cell-label" data-i18n="publishedLabel"
-                  >Released</span
-                >
-                <p class="release-summary">
-                  <span data-release-status="">See GitHub</span>
-                  <a
-                    data-release-link=""
-                    href="https://github.com/idy/wgc-ne/releases"
-                    data-i18n="releases"
-                    >Releases</a
-                  >
-                </p>
-                <span class="release-date"></span>
-              </td>
-              <td class="releasing-cell" role="cell">
-                <span class="cell-label" data-i18n="releasingLabel"
-                  >Releasing</span
-                >
-                <ul
-                  class="releasing-list"
-                  data-releasing-list=""
-                  hidden=""
-                ></ul>
-                <span class="releasing-empty" data-releasing-empty=""
-                  >See release information</span
-                >
-              </td>
-            </tr>
-            <tr
-              class="project"
               data-repository="idy/sing-box-flutter"
               data-category="libraries"
               data-order="9"
@@ -1114,9 +1105,7 @@
               <th scope="row" class="project-identity" role="rowheader">
                 <div class="project-heading">
                   <h2 id="sing-box-flutter-title">
-                    <a href="https://sing-box-flutter.idy.dev/"
-                      >sing-box-flutter</a
-                    >
+                    <a href="https://sing-box-flutter.idy.dev/"><img class="project-icon" src="project-icons/sing-box-flutter.svg" alt="" width="28" height="28" decoding="async"><span class="project-name">sing-box-flutter</span></a>
                   </h2>
                   <span class="project-category" data-i18n="categoryLibraries"
                     >Libraries &amp; design</span
